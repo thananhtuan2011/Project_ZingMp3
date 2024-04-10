@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="title">
+        <p>#zingchart</p>
+        <div class="hert">
+            <i class="bi bi-play-fill chart__header-icon"></i>
+        </div>
+    </div>
+
+    <div class="layout" *ngFor="let product of products; let i = index">
+        <div class="linemusic">
+            <div class="left">
+                <div><img [src]="product.image" alt=""></div>
+                <div class="author">
+                    <span>{{ product.name }}</span>
+                    <span style="font-size: 10px; color: grey;">{{ product.author }}</span>
+                </div>
+            </div>
+
+            <div class="right">
+                <i style="font-size: 25px;" class="bi bi-pause icon-pause bi bi-mic-fill"
+                    [ngClass]="{ 'icon-pause': songPlaying === i, 'bi-play': songPlaying !== i }" (click)="toggleSong(i)"
+                    [attr.data-song]="i"></i>
+                <i class="btn--icon song__icon icon--heart bi bi-heart"></i>
+                <i class="btn--icon bi bi-three-dots"></i>
+                <audio [id]="'audioPlayer' + i" [src]="product.audio"></audio>
+            </div>
+        </div>
+
+        <div class="hr"></div>
+    </div>
+</div>

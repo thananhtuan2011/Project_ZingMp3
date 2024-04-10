@@ -1,0 +1,144 @@
+<div class="container">
+    <div class="app_header-user">
+        <div class="app_user-avatar">
+            <img src="./assets/images/avatar.jpg" alt="" class="app_user-img">
+        </div>
+        <span class="app_user-name">Trần Huyền My</span>
+    </div>
+
+    <div class="content">
+        <div class="content_navbar hidenon_mobile">
+            <div class="content_navbar-container">
+                <ul class="content_navbar-menu">
+                    <li class="content_navbar-item"><span>Tổng quan</span></li>
+                    <li class="content_navbar-item"><span>Bài hát</span></li>
+                    <li class="content_navbar-item"><span>Playlist</span></li>
+                    <li class="content_navbar-item"><span>Album</span></li>
+                    <li class="content_navbar-item"><span>Mv</span></li>
+                    <li class="content_navbar-item"><span>Nghệ sĩ</span></li>
+                    <li class="content_navbar-item"><span>Tải lên</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="grid container_tab tab-home active">
+        <div class="content_container">
+            <div class="container_control row">
+
+                <div style="display: flex;" class="col l-12 m-12 c-12 ">
+                    <div class="hidenon_mobile" style="background-color: #411465;width: 30%;padding: 30px;">
+                        <img style="width: 100%;" src="../../../../assets/img/slides/slide1.jpg" alt="">
+                    </div>
+
+                    <div class="container">
+                       <div class="random">
+                        <button class="b1">
+                            <i class="bi bi-upload container__header-icon"></i>
+                            TẢI LÊN
+                        </button>
+                        <button class="b2">
+                            <i class="bi bi-play-fill container__header-icon"></i>
+                            PHÁT NGẪU NHIÊN
+                        </button>
+                       </div>
+                        <div class="layout">
+                            <div class="linemusic">
+                                <div class="left">
+                                    <div><img src="../../../assets/img/artists/artist1.jpg" alt=""></div>
+                                    <div class="author">
+                                        <span>Hẹn em ở lần yêu thứ 2</span>
+                                        <span style="font-size: 10px;color: grey;">Hương Ly</span>
+                                    </div>
+                                </div>
+
+                                <div class="right">
+                                    <i style="font-size: 25px;" class="bi bi-pause icon-pause bi bi-mic-fill"
+                                        [ngClass]="{ 'icon-pause': song1Playing, 'bi-play': !song1Playing }"
+                                        (click)="toggleSong('1')" data-song="1"></i>
+                                    <i class="btn--icon song__icon icon--heart bi bi-heart"></i>
+                                    <i class="btn--icon bi bi-three-dots"></i>
+                                    <audio id="audioPlayer1"
+                                        src="../../../assets/music/HenEmOLanYeuThu2-NguyennDangTuanVu-8865500.mp3"></audio>
+                                    <!-- <span>{{ song1Duration }}</span> Thời gian bài hát 1 -->
+                                </div>
+                            </div>
+
+                            <div class="hr"></div>
+                        </div>
+
+
+                        <div class="layout">
+                            <div class="linemusic">
+                                <div class="left">
+                                    <div><img src="../../../assets/img/artists/artist2.jpg" alt=""></div>
+                                    <div class="author">
+                                        <span>Yêu Là Cưới</span>
+                                        <span style="font-size: 10px;color: grey;">Phát Hồ, X2X,</span>
+                                    </div>
+                                </div>
+
+                                <div class="right">
+                                    <i style="font-size: 25px;" class="bi bi-pause icon-pause bi bi-mic-fill"
+                                        [ngClass]="{ 'icon-pause': song2Playing, 'bi-play': !song2Playing }"
+                                        (click)="toggleSong('2')" data-song="2"></i>
+                                    <i class="btn--icon song__icon icon--heart bi bi-heart"></i>
+                                    <i class="btn--icon bi bi-three-dots"></i>
+                                    <audio id="audioPlayer2" src="../../../assets/music/listSong1/song1.mp3"></audio>
+                                </div>
+                            </div>
+
+                            <div class="hr"></div>
+                        </div>
+
+                        <div class="layout">
+                            <div class="linemusic">
+                                <div class="left">
+                                    <div><img src="../../../assets/img/artists/artist3.jpg" alt=""></div>
+                                    <div class="author">
+                                        <span>Em Là Con Thuyền Cô Đơn</span>
+                                        <span style="font-size: 10px;color: grey;">Thái Học</span>
+                                    </div>
+                                </div>
+
+                                <div class="right">
+                                    <i style="font-size: 25px;" class="bi bi-pause icon-pause bi bi-mic-fill"
+                                        [ngClass]="{ 'icon-pause': song3Playing, 'bi-play': !song3Playing }"
+                                        (click)="toggleSong('3')" data-song="3"></i>
+                                    <i class="btn--icon song__icon icon--heart bi bi-heart"></i>
+                                    <i class="btn--icon bi bi-three-dots"></i>
+                                    <audio id="audioPlayer3" src="../../../assets/music/listSong1/song2.mp3"></audio>
+                                </div>
+                            </div>
+
+                            <div class="hr"></div>
+                        </div>
+
+
+                        <div class="layout">
+                            <div class="linemusic">
+                                <div class="left">
+                                    <div><img src="../../../assets/img/artists/artist4.jpg" alt=""></div>
+                                    <div class="author">
+                                        <span>Khuê Mộc Lang</span>
+                                        <span style="font-size: 10px;color: grey;">Hương Ly, Jombie</span>
+                                    </div>
+                                </div>
+
+                                <div class="right">
+                                    <i style="font-size: 25px;" class="bi bi-pause icon-pause bi bi-mic-fill"
+                                        [ngClass]="{ 'icon-pause': song4Playing, 'bi-play': !song4Playing }"
+                                        (click)="toggleSong('4')" data-song="4"></i>
+                                    <i class="btn--icon song__icon icon--heart bi bi-heart"></i>
+                                    <i class="btn--icon bi bi-three-dots"></i>
+                                    <audio id="audioPlayer4" src="../../../assets/music/listSong1/song16.mp3"></audio>
+                                </div>
+                            </div>
+
+                            <div class="hr"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
