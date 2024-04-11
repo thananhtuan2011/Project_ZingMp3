@@ -2,18 +2,18 @@
 
     <div href="#" class="sidebar_logo">
         <a style="position: fixed;" class="sidebar_logo-link">
-            <img src="../../../assets/images/main-logo.svg" alt="">
+            <img style="cursor: pointer;" routerLink="home" src="../../../assets/images/main-logo.svg" alt="">
         </a>
     </div>
  
     <ul class="list-unstyled app_sidebar sidebar_nav-list--separate ">
         <div class="sidebar-nav">
             <ul class="sidebar_nav-list">
-                <li class="sidebar_nav-item"><a routerLink="home" class="sidebar_item-link"><i
+                <li routerLink="home"    routerLinkActive="item-active" class="sidebar_nav-item"><a  class="sidebar_item-link"><i
                             class="bi bi-music-player"></i> <span>Cá Nhân</span></a></li>
-                <li class="sidebar_nav-item"><a routerLink="khampha" class="sidebar_item-link"><i
+                <li routerLink="khampha"    routerLinkActive="item-active" class="sidebar_nav-item"><a  class="sidebar_item-link"><i
                             class="bi bi-vinyl"></i> <span>Khám Phá</span></a></li>
-                <li class="sidebar_nav-item"><a routerLink="zingchart" class="sidebar_item-link"><i
+                <li routerLink="zingchart"    routerLinkActive="item-active" class="sidebar_nav-item"><a  class="sidebar_item-link"><i
                             class="bi bi-music-note-list"></i> <span>#Zingchart</span></a></li>
                 <li class="sidebar_nav-item"><a routerLink="radio" class="sidebar_item-link"><i
                             class="bi bi-soundwave"></i> <span>Radio</span><input class="bt-live" type="button"

@@ -101,11 +101,7 @@ svg {
     display: flex;
 }
 
-.title-music {
-    display: grid;
-    padding: 15px;
 
-}
 
 .name_author {
     color: grey;
@@ -200,11 +196,13 @@ svg {
     top: 10px;
     right: 10px;
 }
-.btn-next{
+
+.btn-next {
     margin: 0px;
     padding: 0px;
 }
-.next-music{
+
+.next-music {
     font-size: 30px !important;
 }
 
@@ -251,4 +249,37 @@ svg {
     audio::-webkit-media-controls-timeline {
         display: none;
     }
+}
+
+// mobile
+
+@media only screen and (max-width:739px) {
+    .title-music {
+        display: grid;
+        padding: 15px;
+
+    }
+}
+
+// ipad
+
+@media only screen and (min-width:739px) and (max-width:1023px) {
+
+    .title-music {
+        display: grid;
+        padding: 15px;
+
+    }
+}
+
+
+// pc
+@media only screen and (min-width:1024px) {
+    .title-music {
+        display: grid;
+        width: 200px;
+        padding: 15px;
+
+    }
+
 }

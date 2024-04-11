@@ -21,7 +21,7 @@
     </div>
   </div>
   <div class="header__nav ic">
-    <ul class="header__nav-list">
+    <ul class="header__nav-list"  >
       <li class="header__nav-item">
         <div class="header__nav-btn nav-btn--theme">
           <svg width="20" height="20" class="header__nav-icon" viewBox="0 0 20 20">
@@ -97,8 +97,8 @@
           </label>
         </div>
       </li>
-      <li class="nav-item dropdown border-nav-list header__nav-item hide-on-mobile header__nav-btn1 nav-btn--theme">
-        <a (click)="toggleDropdown()" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <li class="nav-item dropdown  border-nav-list header__nav-item hide-on-mobile header__nav-btn1 nav-btn--theme">
+        <a (click)="toggleDropdown()" class="nav-link dropdown-toggle" href="javascript:;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i  style="color: white" class="bi bi-gear header__nav-icon dropbtn"></i>
         </a>
 
@@ -114,9 +114,26 @@
         
         </div>
       </li> 
-      <li class="header__nav-item">
+      <!--  user infor  -->
+      <li class="nav-item dropdown border-nav-list header__nav-item hide-on-mobile header__nav-btn1 nav-btn--theme">
+            <div class="header__nav-item">
+        <img  (click)="toggleDropdown_User()" data-bs-toggle="dropdown" aria-expanded="false" src="../../../assets/images/logo.png" alt="" class="header__nav-btn dropbtn_user" />
+      </div>
+        <div class="dropdown-content" [ngClass]="{'show': isDropdownOpen_User}" style="left:-110px;top:50px">
+          <li><a class="dropdown-item" href="#"style="display: flex"><i class="bi bi-shield-lock icon-size"></i>Đăng Nhập</a></li>
+          <li>
+            <a class="dropdown-item" href="#" style="display: flex"><i class="bi bi-badge-hd icon-size"></i>List bài hát yêu thích
+            </a>
+          <li>
+            <a class="dropdown-item" href="#" style="display: flex"><i class="bi bi-play-circle icon-size"></i>Đăng Xuất
+               </a>
+          </li>
+        
+        </div>
+      </li> 
+      <!-- <li class="header__nav-item">
         <img src="../../../assets/images/logo.png" alt="" class="header__nav-btn" />
-      </li>
+      </li> -->
     </ul>
   </div>
 </header>

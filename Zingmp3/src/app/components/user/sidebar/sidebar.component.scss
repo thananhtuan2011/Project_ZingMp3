@@ -55,6 +55,7 @@ ul li a {
     list-style: none;
     position: relative;
 }
+
 .sidebar_nav-list--separate::before {
     content: "";
     height: 1px;
@@ -233,10 +234,14 @@ ul li a {
 
 // responesiv mobible
 @media (max-width: 46.1875em) {
-    .sidebar_logo-link , .hide-on-mobile , .bt-live{
+
+    .sidebar_logo-link,
+    .hide-on-mobile,
+    .bt-live {
         display: none;
     }
-    .app_sidebar{
+
+    .app_sidebar {
         // position: relative;
         left: 0;
         bottom: 0;
@@ -245,37 +250,48 @@ ul li a {
         border-top: 1px solid rgba(255, 255, 255, 0.1);
         z-index: 1000;
     }
-    .sidebar-nav{
+
+    .sidebar-nav {
         position: relative;
         height: 100%;
     }
-    .sidebar_nav-list{
+
+    .sidebar_nav-list {
         height: 100%;
         display: flex;
         flex-direction: row;
     }
-    .sidebar_nav-item{
+
+    .sidebar_nav-item {
         flex: 1;
         margin: 0;
         border: none;
     }
-    .sidebar_item-link{
+
+    .sidebar_item-link {
         width: 100%;
         padding: 0;
         flex-direction: column;
         justify-content: center;
     }
-    .sidebar_item-link i{
+
+    .sidebar_item-link i {
         width: 16px;
         height: 16px;
         font-size: 1.0rem;
         line-height: 1.2rem;
     }
-    .sidebar_item-link span{
+
+    .sidebar_item-link span {
         display: inline-block;
         font-size: 1rem;
         font-weight: 400;
         padding-left: 0;
         transform: translateY(1px);
     }
+}
+
+.item-active {
+    background: #64616175;
+
 }
