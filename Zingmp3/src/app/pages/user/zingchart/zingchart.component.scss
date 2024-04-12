@@ -118,3 +118,9 @@ p {
     display: flex;
     align-items: center;
 }
+
+:host ::ng-deep svg {
+    float: none;
+    width: 100%;
+    height: auto;
+}

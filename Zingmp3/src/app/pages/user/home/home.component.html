@@ -36,19 +36,29 @@
                             <i class="bi bi-upload container__header-icon"></i>
                             TẢI LÊN
                         </button>
-                        <button class="b2">
+                        <button (click)="RandomMusic()" class="b2">
                             <i class="bi bi-play-fill container__header-icon"></i>
                             PHÁT NGẪU NHIÊN
                         </button>
                        </div>
                         <div class="layout">
                             <div class="linemusic">
-                                <div class="left">
-                                    <div><img src="../../../assets/img/artists/artist1.jpg" alt=""></div>
+                                <div class="left title_home" >
+                                    <div>
+                                        
+                                        <img src="../../../assets/img/artists/artist1.jpg" alt="">
+                                     
+                                              
+                                    </div>
                                     <div class="author">
-                                        <span>Hẹn em ở lần yêu thứ 2</span>
+                                        <span class="title_home">Hẹn em ở lần yêu thứ 2</span>
                                         <span style="font-size: 10px;color: grey;">Hương Ly</span>
                                     </div>
+                                </div>
+                                <div  class="pauseloading" id="showplay1">
+                                    <img style="height: 60px;
+                                    width: 100% !important;
+                                " src="../../../../assets/gif/playgif.gif">
                                 </div>
 
                                 <div class="right">
@@ -69,13 +79,19 @@
 
                         <div class="layout">
                             <div class="linemusic">
-                                <div class="left">
+                                <div class="left title_home"   >
                                     <div><img src="../../../assets/img/artists/artist2.jpg" alt=""></div>
                                     <div class="author">
-                                        <span>Yêu Là Cưới</span>
+                                        <span  >Yêu Là Cưới</span>
                                         <span style="font-size: 10px;color: grey;">Phát Hồ, X2X,</span>
                                     </div>
                                 </div>
+                                <div  class="pauseloading" id="showplay2">
+                                    <img style="height: 60px;
+                                    width: 100% !important;
+                                " src="../../../../assets/gif/playgif.gif">
+                                </div>
+
 
                                 <div class="right">
                                     <i style="font-size: 25px;" class="bi bi-pause icon-pause bi bi-mic-fill"
@@ -92,13 +108,19 @@
 
                         <div class="layout">
                             <div class="linemusic">
-                                <div class="left">
+                                <div class="left title_home"  >
                                     <div><img src="../../../assets/img/artists/artist3.jpg" alt=""></div>
                                     <div class="author">
-                                        <span>Em Là Con Thuyền Cô Đơn</span>
+                                        <span >Em Là Con Thuyền Cô Đơn</span>
                                         <span style="font-size: 10px;color: grey;">Thái Học</span>
                                     </div>
                                 </div>
+                                <div class="pauseloading" id="showplay3">
+                                    <img style="height: 60px;
+                                    width: 100% !important;
+                                " src="../../../../assets/gif/playgif.gif">
+                                </div>
+
 
                                 <div class="right">
                                     <i style="font-size: 25px;" class="bi bi-pause icon-pause bi bi-mic-fill"
@@ -123,7 +145,11 @@
                                         <span style="font-size: 10px;color: grey;">Hương Ly, Jombie</span>
                                     </div>
                                 </div>
-
+                                <div class="pauseloading" id="showplay4">
+                                    <img style="height: 60px;
+                                    width: 100% !important;
+                                " src="../../../../assets/gif/playgif.gif">
+                                </div>
                                 <div class="right">
                                     <i style="font-size: 25px;" class="bi bi-pause icon-pause bi bi-mic-fill"
                                         [ngClass]="{ 'icon-pause': song4Playing, 'bi-play': !song4Playing }"

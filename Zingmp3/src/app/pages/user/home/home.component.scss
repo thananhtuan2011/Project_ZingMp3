@@ -11,6 +11,10 @@
     background-color: #411465;
 }
 
+.title_home {
+    cursor: pointer;
+}
+
 .app_header-user {
     left: 0;
     right: 0;
@@ -76,7 +80,7 @@ ul li span {
     height: 32px;
     padding: 3px;
     margin: 0 auto;
-    border-radius: 15px;
+    border-radius: 5px;
     list-style: none;
     display: flex;
     align-items: center;
@@ -194,7 +198,7 @@ ul li span {
     display: flex;
     gap: 10px;
     justify-content: end;
-    color:white;
+    color: white;
 }
 
 .button {
@@ -213,8 +217,8 @@ ul li span {
 }
 
 .b1 {
-    background-color: #4B206E; 
-    color:white;
+    background-color: #4B206E;
+    color: white;
     padding: 10px;
     font-size: 13px;
     border-radius: 100px;
@@ -222,8 +226,8 @@ ul li span {
 }
 
 .b2 {
-    background-color: #ED2B91; 
-    color:white;
+    background-color: #ED2B91;
+    color: white;
     padding: 10px;
     font-size: 13px;
     border-radius: 100px;
@@ -393,9 +397,14 @@ p {
     display: flex;
 }
 
+.pauseloading {
+    display: none;
+}
+
 .right {
     float: right;
     display: flex;
+    cursor: pointer;
     align-items: center;
     color: white;
     gap: 20px;

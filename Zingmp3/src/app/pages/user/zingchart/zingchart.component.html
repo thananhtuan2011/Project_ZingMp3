@@ -6,6 +6,15 @@
         </div>
     </div>
 
+    <div class="container">
+        <ngx-charts-line-chart
+          [results]="data"
+          [xAxis]="false"
+          [scheme]="colorScheme"
+          [showGridLines]="false">
+        </ngx-charts-line-chart>
+        </div>
+
     <div class="layout" *ngFor="let product of products; let i = index">
         <div class="linemusic">
             <div class="left">

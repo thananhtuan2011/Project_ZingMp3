@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
-
+import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/user/home/home.component';
 import { SidebarComponent } from './components/user/sidebar/sidebar.component';
 import { SidebarModule } from 'ng-cdbangular';
+import { MatMenuModule } from '@angular/material/menu';
 import { BaseLayoutComponent } from './layout/base-layout/base-layout.component';
 import { CanhanComponent } from './pages/user/canhan/canhan.component';
 import { ZingchartComponent } from './pages/user/zingchart/zingchart.component';
@@ -21,6 +22,7 @@ import { AdminSidebarComponent } from './components/admin/admin-sidebar/admin-si
 import { AdminHeaderComponent } from './components/admin/admin-header/admin-header.component';
 import { AddProductComponent } from './pages/admin/add-product/add-product.component';
 import { EditProductComponent } from './pages/admin/edit-product/edit-product.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 // decorators
@@ -42,14 +44,17 @@ import { EditProductComponent } from './pages/admin/edit-product/edit-product.co
     AdminHeaderComponent,
     AddProductComponent,
     EditProductComponent,
-   
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SidebarModule,
+    MatIconModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatMenuModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

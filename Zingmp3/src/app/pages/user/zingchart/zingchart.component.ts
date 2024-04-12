@@ -14,7 +14,192 @@ export class ZingchartComponent {
   constructor(private http: HttpClient) {
     this.getProducts();
   }
+  colorScheme = {
+    domain: ['#08DDC1', '#FFDC1B', '#FF5E3A']
+  };
 
+  data = [
+    {
+      "name": "Hẹn em kiếp sau",
+      "series": [
+        {
+          "name": "Jan",
+          "value": 140
+        },
+        {
+          "name": "Feb",
+          "value": 60
+        },
+        {
+          "name": "Mar",
+          "value": 50
+        },
+        {
+          "name": "Apr",
+          "value": 25
+        },
+        {
+          "name": "May",
+          "value": 16
+        },
+        {
+          "name": "Jun",
+          "value": 19
+        },
+        {
+          "name": "Jul",
+          "value": 43
+        },
+        {
+          "name": "Aug",
+          "value": 30
+        },
+        {
+          "name": "Sep",
+          "value": 35
+        },
+        {
+          "name": "Oct",
+          "value": 4
+        },
+        {
+          "name": "Nov",
+          "value": 17
+        },
+        {
+          "name": "Dec",
+          "value": 14
+        },
+        {
+          "name": "Jan",
+          "value": 35
+        }
+      ]
+    },
+
+    {
+      "name": "Ngày mai yêu",
+      "series": [
+        {
+          "name": "Jan",
+          "value": 140
+        },
+        {
+          "name": "Feb",
+          "value": 60
+        },
+        {
+          "name": "Mar",
+          "value": 520
+        },
+        {
+          "name": "Apr",
+          "value": 215
+        },
+        {
+          "name": "May",
+          "value": 126
+        },
+        {
+          "name": "Jun",
+          "value": 149
+        },
+        {
+          "name": "Jul",
+          "value": 43
+        },
+        {
+          "name": "Aug",
+          "value": 30
+        },
+        {
+          "name": "Aug",
+          "value": 364
+        },
+        {
+          "name": "Sep",
+          "value": 412
+        },
+        {
+          "name": "Oct",
+          "value": 437
+        },
+        {
+          "name": "Nov",
+          "value": 437
+        },
+        {
+          "name": "Dec",
+          "value": 364
+        },
+        {
+          "name": "Jan",
+          "value": 412
+        }
+      ]
+    },
+    {
+      "name": "Tình đầu",
+      "series": [
+        {
+          "name": "Jan",
+          "value": 140
+        },
+        {
+          "name": "Feb",
+          "value": 200
+        },
+        {
+          "name": "Mar",
+          "value": 120
+        },
+        {
+          "name": "Apr",
+          "value": 234
+        },
+        {
+          "name": "May",
+          "value": 160
+        },
+        {
+          "name": "Jun",
+          "value": 190
+        },
+        {
+          "name": "Jul",
+          "value": 43
+        },
+        {
+          "name": "Aug",
+          "value": 30
+        },
+        {
+          "name": "Aug",
+          "value": 168
+        },
+        {
+          "name": "Sep",
+          "value": 343
+        },
+        {
+          "name": "Oct",
+          "value": 512
+        },
+        {
+          "name": "Nov",
+          "value": 291
+        },
+        {
+          "name": "Dec",
+          "value": 168
+        },
+        {
+          "name": "Jan",
+          "value": 343
+        },
+      ]
+    }
+  ]
   getProducts() {
     this.http.get<any>('http://localhost:8080/api/products').subscribe(
       data => {

@@ -10,7 +10,7 @@
   <div class="header__with-search">
     <img src="../../../../assets/" alt="">
     <button  class="header__button ">
-      <i class="bi bi-arrow-left header__button-icon hidenon_mobile"></i>
+      <i  routerLink="home"  class="bi bi-arrow-left header__button-icon hidenon_mobile"></i>
       <i class="bi bi-arrow-right header__button-icon text_gray hidenon_mobile"></i>
     </button>
     <div class="header__search">
@@ -104,12 +104,20 @@
 
         <div class="dropdown-content" [ngClass]="{'show': isDropdownOpen}" style="left:-110px;top:50px">
           
-          <li><a class="dropdown-item" href="#"style="display: flex"><i class="bi bi-shield-lock icon-size"></i>Trình Phát Nhạc</a></li>
           <li>
-            <a class="dropdown-item" href="#" style="display: flex"><i class="bi bi-badge-hd icon-size"></i>Liên Hệ
+            
+            <a class="dropdown-item" href="javascript:;"style="display: flex"><i class="bi bi-play-circle icon-size"></i>Trình Phát Nhạc</a>
+          
+          </li>
+          <li>
+            <a class="dropdown-item" href="javascript:;"style="display: flex"><mat-icon style="margin-right: 5px;
+              margin-left: 9px;
+              font-size: 20px;"> phone</mat-icon>Liên Hệ
             </a>
           <li>
-            <a class="dropdown-item" href="#" style="display: flex"><i class="bi bi-play-circle icon-size"></i>Giới Thiệu
+            <a class="dropdown-item" href="javascript:;" style="display: flex">	<mat-icon  style="margin-right: 5px;
+              margin-left: 9px;
+              font-size: 20px;">dashboard</mat-icon>Giới Thiệu
                </a>
           </li>
         
@@ -121,12 +129,12 @@
         <img  (click)="toggleDropdown_User()" data-bs-toggle="dropdown" aria-expanded="false" src="../../../assets/images/logo.png" alt="" class="header__nav-btn dropbtn_user" />
       </div>
         <div class="dropdown-content" [ngClass]="{'show': isDropdownOpen_User}" style="left:-150px;top:50px">
-          <li><a class="dropdown-item" href="#"style="display: flex"><i class="bi bi-shield-lock icon-size"></i>Đăng Nhập</a></li>
+          <li><a class="dropdown-item" href="javascript:;"style="display: flex"><i class="bi bi-shield-lock icon-size"></i>Đăng Nhập</a></li>
           <li>
-            <a class="dropdown-item" href="#" style="display: flex"><i class="bi bi-badge-hd icon-size"></i>List bài hát yêu thích
+            <a class="dropdown-item" href="javascript:;" style="display: flex"><i class="bi bi-badge-hd icon-size"></i>List bài hát yêu thích
             </a>
           <li>
-            <a class="dropdown-item" href="#" style="display: flex"><i class="bi bi-play-circle icon-size"></i>Đăng Xuất
+            <a class="dropdown-item" href="javascript:;" style="display: flex"><i class="bi bi-play-circle icon-size"></i>Đăng Xuất
                </a>
           </li>
         
