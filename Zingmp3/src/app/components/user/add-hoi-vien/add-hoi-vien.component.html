@@ -1,0 +1,21 @@
+<div class="p-8" style="    font-size: 20px;font-weight: bold;
+font-size: 30px;">
+           
+    <div class="d-flex align-items-center justify-content-between mb-7" style="    padding: 20px;">
+      <span class="font-weight-bold font-size-sm mr-2" style="font-size: 22px;color: white;">Số tiền nâng cấp hội viên:</span>
+      <span class="font-weight-bolder text-primary text-right">{{tongtien |number}} đ</span>
+    </div>
+    <div    style="flex-direction: column;
+    display: flex;">
+      <img  (click)="Pay()" style="border-radius: 10px;cursor: pointer;" src="../../../../assets/images/vnpay.png">
+      <br>
+      <button
+        (click)="Pay()"
+        type="submit"
+        id="kt_login_signup_submit"
+        class="btn btn-success font-weight-bolder font-size-h6"
+      >
+        VNPay
+      </button>
+    </div>
+  </div>

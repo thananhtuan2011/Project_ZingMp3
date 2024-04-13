@@ -26,6 +26,7 @@ import { EditProductComponent } from './pages/admin/edit-product/edit-product.co
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddplayListComponent } from './components/user/addplay-list/addplay-list.component';
+import { AddHoiVienComponent } from './components/user/add-hoi-vien/add-hoi-vien.component';
 
 // decorators
 @NgModule({
@@ -47,6 +48,7 @@ import { AddplayListComponent } from './components/user/addplay-list/addplay-lis
     AddProductComponent,
     EditProductComponent,
     AddplayListComponent,
+    AddHoiVienComponent,
 
   ],
   imports: [

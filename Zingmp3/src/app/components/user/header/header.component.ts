@@ -1,4 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddHoiVienComponent } from '../add-hoi-vien/add-hoi-vien.component';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +10,27 @@ import { Component, OnInit, HostListener } from '@angular/core';
 export class HeaderComponent implements OnInit {
   isDropdownOpen = false;
   isDropdownOpen_User = false;
-  constructor() { }
+  constructor(private dialog: MatDialog,) { }
 
   ngOnInit(): void {
+  }
+
+
+  AddHoiVien() {
+    const dialogRef = this.dialog.open(AddHoiVienComponent, {
+      // width: '300px',
+      // height: '200px',
+      // data: {  },
+      // with:'500px',
+      // panelClass: 'dialogcss'
+
+    });
+    dialogRef.afterClosed().subscribe(res => {
+
+      if (res) {
+        // this.LoadAllCustomer()
+      }
+    })
   }
 
   @HostListener('document:click', ['$event'])
