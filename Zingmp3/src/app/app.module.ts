@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/user/home/home.component';
 import { SidebarComponent } from './components/user/sidebar/sidebar.component';
 import { SidebarModule } from 'ng-cdbangular';
+import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { BaseLayoutComponent } from './layout/base-layout/base-layout.component';
 import { CanhanComponent } from './pages/user/canhan/canhan.component';
@@ -23,7 +24,8 @@ import { AdminHeaderComponent } from './components/admin/admin-header/admin-head
 import { AddProductComponent } from './pages/admin/add-product/add-product.component';
 import { EditProductComponent } from './pages/admin/edit-product/edit-product.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { AddplayListComponent } from './components/user/addplay-list/addplay-list.component';
 
 // decorators
 @NgModule({
@@ -44,12 +46,15 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     AdminHeaderComponent,
     AddProductComponent,
     EditProductComponent,
+    AddplayListComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SidebarModule,
+    MatDialogModule,
+    MatButtonModule,
     MatIconModule,
     HttpClientModule,
     FormsModule,
