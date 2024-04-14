@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddHoiVienComponent } from '../add-hoi-vien/add-hoi-vien.component';
+import { GioithieuComponent } from '../gioithieu/gioithieu.component';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +11,29 @@ import { AddHoiVienComponent } from '../add-hoi-vien/add-hoi-vien.component';
 export class HeaderComponent implements OnInit {
   isDropdownOpen = false;
   isDropdownOpen_User = false;
+  myVal!: string
   constructor(private dialog: MatDialog,) { }
 
   ngOnInit(): void {
   }
 
+
+  AddGioiThieu() {
+    const dialogRef = this.dialog.open(GioithieuComponent, {
+      // width: '300px',
+      // height: '200px',
+      // data: {  },
+      // with:'500px',
+      // panelClass: 'dialogcss'
+
+    });
+    dialogRef.afterClosed().subscribe(res => {
+
+      if (res) {
+        // this.LoadAllCustomer()
+      }
+    })
+  }
 
   AddHoiVien() {
     const dialogRef = this.dialog.open(AddHoiVienComponent, {

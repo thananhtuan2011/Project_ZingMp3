@@ -27,6 +27,12 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddplayListComponent } from './components/user/addplay-list/addplay-list.component';
 import { AddHoiVienComponent } from './components/user/add-hoi-vien/add-hoi-vien.component';
+import { GioithieuComponent } from './components/user/gioithieu/gioithieu.component';
+import { SearchComponent } from './components/user/header/component/search/search.component';
+import { AvatarModule } from 'ngx-avatar';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbDropdown, NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // decorators
 @NgModule({
@@ -49,6 +55,8 @@ import { AddHoiVienComponent } from './components/user/add-hoi-vien/add-hoi-vien
     EditProductComponent,
     AddplayListComponent,
     AddHoiVienComponent,
+    GioithieuComponent,
+    SearchComponent,
 
   ],
   imports: [
@@ -58,12 +66,17 @@ import { AddHoiVienComponent } from './components/user/add-hoi-vien/add-hoi-vien
     MatDialogModule,
     MatButtonModule,
     MatIconModule,
+    AvatarModule,
+    NgbModule,
+    NgbDropdownModule,
     HttpClientModule,
     FormsModule,
     MatMenuModule,
+    BrowserAnimationsModule,
+    PerfectScrollbarModule,
     NgxChartsModule
   ],
-  providers: [],
+  providers: [NgbDropdown],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

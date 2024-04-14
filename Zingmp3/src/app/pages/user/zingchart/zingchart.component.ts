@@ -12,7 +12,7 @@ export class ZingchartComponent {
   products: Product[] = [];
 
   constructor(private http: HttpClient) {
-    this.getProducts();
+    // this.getProducts();
   }
   @ViewChild('audioPlayer', { static: true }) audioPlayer!: ElementRef;
 
@@ -297,16 +297,16 @@ export class ZingchartComponent {
       ]
     }
   ]
-  getProducts() {
-    this.http.get<any>('http://localhost:8080/api/products').subscribe(
-      data => {
-        this.products = data.data;
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
+  // getProducts() {
+  //   this.http.get<any>('http://localhost:8080/api/products').subscribe(
+  //     data => {
+  //       this.products = data.data;
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 
 
   songPlaying: number | null = null;

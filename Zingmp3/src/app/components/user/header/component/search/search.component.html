@@ -1,0 +1,94 @@
+<div
+style=" color: #FFFF;
+border-radius: 5px;
+background: #411465ed;
+padding: 20px;"
+  class="quick-search quick-search-dropdown"
+  [ngClass]="{ 'quick-search-has-result': data?.length }"
+  id="kt_quick_search_dropdown"
+>
+  
+<div >
+  <div  style="display: flex;
+  justify-content: center;">
+  <div
+ 
+  class="input-group-append"
+  [ngClass]="{ 'spinner spinner-sm spinner-primary': loading }"
+>
+ 
+</div>
+  </div>
+  <div style="text-align: center;font-weight: bold;font-size: 25px;">
+    Gợi ý kết quả
+  </div>
+  <hr>
+
+ <div    [ngStyle]="{ 'max-height': '50vh', position: 'relative' }"
+ class="scroll"
+ [perfectScrollbar]="{wheelPropagation: false}"
+>
+
+  <!-- begin search  -->
+  <div  style="display: flex;align-items: center;" *ngFor="let item of data">
+
+ 
+    <div>
+      <ng-container >
+        <div class="d-flex align-items-center flex-grow-1 mb-2 list home-links">
+          <div class="symbol symbol-45 bg-transparent flex-shrink-0">
+            <!-- <span class="icon-svg" [inlineSVG]="el.svgPath"></span> -->
+            <!-- <img [src]="el.svgPath" alt="" /> -->
+          </div>
+          <div class="d-flex f ml-3 mt-2 mb-2 li">
+            <div _ngcontent-jcs-c115=""><img style="    width: 50px;
+                border-radius: 10px;" _ngcontent-jcs-c115="" src="../../../assets/img/artists/artist1.jpg" alt=""></div>
+           
+           <div style="padding-left: 15px;">
+
+          
+           <div style="color: white;font-weight: bold;" class="font-size-sm  font-weight-bolder text-uppercase ">
+              {{item.NoiDung}}
+      </div>
+            
+            <div class="d-flex">
+                <span (click)="RemoveSearch()" [routerLink]="['/Home/detail',1]"  style="color: #d4cbcb8a !important;
+            font-size: 15px;"  class="font-weight-bold text-dark text-hover-primary">
+              {{ item.title }}
+            </span>
+             <div style="    display: flex;
+             padding-left: 30px;
+             justify-content: space-between;
+             width: 80px;">
+                <i class="btn--icon song__icon icon--heart bi bi-heart"></i>
+                <i class="btn--icon bi bi-three-dots"></i>
+             </div>
+               
+        
+                <!-- <span>{{ song1Duration }}</span> Thời gian bài hát 1 -->
+            </div>
+            <!-- <span *ngIf="item.NoiDung.length<80" class="font-size-sm font-weight-bold text-muted">
+              {{ item.NoiDung}}
+            </span> -->
+            <!-- <span *ngIf="item.NoiDung.length>80" class="font-size-sm font-weight-bold text-muted">
+              {{ item.NoiDung | slice:0:80 }}...
+            </span>
+
+            <a (click)="RemoveSearch()" [routerLink]="['/Home/detail',item.Id_BaiDang]"  style="font-size: 15px;" href="#" *ngIf="item.NoiDung.length<80" class="font-weight-bold text-dark text-hover-primary">
+              {{ item.NoiDung}}
+            </a>
+            <a (click)="RemoveSearch()" [routerLink]="['/Home/detail',item.Id_BaiDang]"  style="font-size: 15px;" href="#" *ngIf="item.NoiDung.length>80" class="font-weight-bold text-dark text-hover-primary">
+              {{ item.NoiDung | slice:0:80 }}...
+            </a> -->
+        </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <!-- begin search  -->
+  
+ </div>
+</div>
+ 
+</div>

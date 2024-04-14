@@ -13,12 +13,16 @@
       <i  routerLink="home"  class="bi bi-arrow-left header__button-icon hidenon_mobile"></i>
       <i class="bi bi-arrow-right header__button-icon text_gray hidenon_mobile"></i>
     </button>
-    <div class="header__search">
-      <input type="text" placeholder="Nhập tên bài hát, nghệ sĩ hoặc MV..." class="header__search-input" />
-      <div class="header__search-btn">
+    <div class="header__search"  autoClose="outside" ngbDropdown #myDrop="ngbDropdown">
+      <input ngbDropdownToggle  [(ngModel)]="myVal"  type="text" placeholder="Nhập tên bài hát, nghệ sĩ hoặc MV..." class="header__search-input" />
+      <div class="header__search-btn" (click)="$event.stopPropagation(); myDrop.open()">
         <i class="bi bi-search header__search-icon"></i>
       </div>
+      <div *ngIf="myVal" class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg" ngbDropdownMenu>
+        <app-search [myValProp]="myVal" ></app-search>
+      </div>
     </div>
+
   </div>
   <div class="header__nav ic">
     <ul class="header__nav-list"  >
@@ -115,7 +119,7 @@
               font-size: 20px;"> phone</mat-icon>Liên Hệ
             </a>
           <li>
-            <a class="dropdown-item" href="javascript:;" style="display: flex">	<mat-icon  style="margin-right: 5px;
+            <a (click)="AddGioiThieu()" class="dropdown-item" href="javascript:;" style="display: flex">	<mat-icon  style="margin-right: 5px;
               margin-left: 9px;
               font-size: 20px;">dashboard</mat-icon>Giới Thiệu
                </a>
@@ -146,3 +150,4 @@
     </ul>
   </div>
 </header>
+  
