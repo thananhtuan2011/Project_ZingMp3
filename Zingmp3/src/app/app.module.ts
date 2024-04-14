@@ -33,6 +33,7 @@ import { AvatarModule } from 'ngx-avatar';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbDropdown, NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InforUserComponent } from './components/user/header/component/infor-user/infor-user.component';
 
 // decorators
 @NgModule({
@@ -57,6 +58,7 @@ import { NgbDropdown, NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-boot
     AddHoiVienComponent,
     GioithieuComponent,
     SearchComponent,
+    InforUserComponent,
 
   ],
   imports: [
