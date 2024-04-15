@@ -47,3 +47,8 @@ C:\Users\thana\OneDrive\Máy tính\Project_ZingMp3\BE_Music\BE_Music\obj\Debug\n
 C:\Users\thana\OneDrive\Máy tính\Project_ZingMp3\BE_Music\BE_Music\obj\Debug\net6.0\BE_Music.pdb
 C:\Users\thana\OneDrive\Máy tính\Project_ZingMp3\BE_Music\BE_Music\obj\Debug\net6.0\BE_Music.genruntimeconfig.cache
 C:\Users\thana\OneDrive\Máy tính\Project_ZingMp3\BE_Music\BE_Music\obj\Debug\net6.0\ref\BE_Music.dll
+C:\Users\thana\OneDrive\Máy tính\Project_ZingMp3\BE_Music\BE_Music\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\thana\OneDrive\Máy tính\Project_ZingMp3\BE_Music\BE_Music\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\thana\OneDrive\Máy tính\Project_ZingMp3\BE_Music\BE_Music\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\thana\OneDrive\Máy tính\Project_ZingMp3\BE_Music\BE_Music\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\thana\OneDrive\Máy tính\Project_ZingMp3\BE_Music\BE_Music\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

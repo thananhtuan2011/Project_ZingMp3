@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+        <title>Chérir Login Page</title>
+    </head>
+
+    <body>
+        <div class="container" #container>
+            <div class="form-container sign-up">
+                <form>
+                    <h1>Create Account</h1>
+                    <div class="social-icons">
+                        <a href="javascript:;" class="icon">
+                            <i class="uil uil-google"></i>
+                        </a>
+
+                        <a href="javascript:;" class="icon">
+                            <i class="uil uil-facebook"></i>
+                        </a>
+                        <a href="javascript:;" class="icon">
+                            <i class="uil uil-github"></i>
+                        </a>
+                        <a href="javascript:;" class="icon">
+                            <i class="uil uil-linkedin"></i>
+                        </a>
+                    </div>
+                    <span>or use your email for registeration</span>
+                    <input  [(ngModel)]="firstname" [ngModelOptions]="{standalone: true}" type="text" placeholder="Firstname">
+                    <input  [(ngModel)]="lastname" [ngModelOptions]="{standalone: true}" type="text" placeholder="Lastname">
+                    <input  [(ngModel)]="username" [ngModelOptions]="{standalone: true}" type="text" placeholder="Username">
+                    <input  [(ngModel)]="pass" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password">
+                 
+                    <button (click)="register()">Sign up</button>
+                </form>
+            </div>
+
+            <div class="form-container sign-in">
+                <form>
+                    <h1>Sign in</h1>
+                    <div class="social-icons">
+                        <a href="javascript:;" class="icon">
+                            <i class="uil uil-google"></i>
+                        </a>
+
+                        <a href="javascript:;" class="icon">
+                            <i class="uil uil-facebook"></i>
+                        </a>
+                        <a href="javascript:;" class="icon">
+                            <i class="uil uil-github"></i>
+                        </a>
+                        <a href="javascript:;" class="icon">
+                            <i class="uil uil-linkedin"></i>
+                        </a>
+                    </div>
+                    <span>or use your username password</span>
+                    <input [(ngModel)]="username" [ngModelOptions]="{standalone: true}" type="text" placeholder="Username">
+                    <input [(ngModel)]="password" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password">
+                    <span *ngIf="badUserNamePass" style="color: red;"> user does not exists</span>
+                    <a href="javascript:;">Forget Your Password</a> 
+                  
+                    <button (click)="login()">Sign In</button>
+                </form>
+            </div>
+            <div class="toggle-container">
+                <div class="toggle">
+                    <div class="toggle-panel
+                    toggle-left">
+                    <h1>Welcome Back!</h1>
+                    <p><b>Enter your personal details
+                        to use all of site features</b></p>
+                    <button class="hidden"(click)="toggleInactiveState()" id="loginBtn">Sign In</button>
+                    </div>
+
+                    <div class="toggle-panel
+                    toggle-right">
+                    <h1>Hello, Friend!</h1>
+                    <p><b>Register with  your personal details to use all of site features</b></p>
+                    <button class="hidden" (click)="toggleActiveState()"
+                    id="registerBtn">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

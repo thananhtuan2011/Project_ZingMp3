@@ -133,12 +133,15 @@
         <img  (click)="toggleDropdown_User()" data-bs-toggle="dropdown" aria-expanded="false" src="../../../assets/images/logo.png" alt="" class="header__nav-btn dropbtn_user" />
       </div>
         <div class="dropdown-content" [ngClass]="{'show': isDropdownOpen_User}" style="left:-150px;top:50px">
-          <li><a class="dropdown-item" href="javascript:;"style="display: flex"><i class="bi bi-shield-lock icon-size"></i>Đăng Nhập</a></li>
+          <li routerLink="login">
+            <a class="dropdown-item" href="javascript:;"style="display: flex">
+              <i class="bi bi-shield-lock icon-size"></i>Đăng Nhập</a>
+            </li>
           <li>
             <a class="dropdown-item" href="javascript:;" style="display: flex"><i class="bi bi-badge-hd icon-size"></i>List bài hát yêu thích
             </a>
           <li>
-            <li>
+            <li (click)="Infor()">
               <a class="dropdown-item" href="javascript:;" style="display: flex"><mat-icon style="margin-right: 5px;
                 margin-left: 9px;
                 font-size: 20px;">person</mat-icon>Tài khoản

@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddHoiVienComponent } from '../add-hoi-vien/add-hoi-vien.component';
 import { GioithieuComponent } from '../gioithieu/gioithieu.component';
+import { InforUserComponent } from './component/infor-user/infor-user.component';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,22 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  Infor() {
+    const dialogRef = this.dialog.open(InforUserComponent, {
+      // width: '300px',
+      // height: '200px',
+      // data: {  },
+      // with:'500px',
+      // panelClass: 'dialogcss'
 
+    });
+    dialogRef.afterClosed().subscribe(res => {
+
+      if (res) {
+        // this.LoadAllCustomer()
+      }
+    })
+  }
 
   AddGioiThieu() {
     const dialogRef = this.dialog.open(GioithieuComponent, {

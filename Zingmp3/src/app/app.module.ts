@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Import FormsModule
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +15,6 @@ import { CanhanComponent } from './pages/user/canhan/canhan.component';
 import { ZingchartComponent } from './pages/user/zingchart/zingchart.component';
 import { FooterComponent } from './components/user/footer/footer.component';
 import { HeaderComponent } from './components/user/header/header.component';
-import { LoginComponent } from './pages/user/login/login.component';
 import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { AdminFooterComponent } from './components/admin/admin-footer/admin-footer.component';
@@ -34,6 +33,7 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbDropdown, NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InforUserComponent } from './components/user/header/component/infor-user/infor-user.component';
+import { LoginComponent } from './components/user/header/component/login/login.component';
 
 // decorators
 @NgModule({
@@ -45,8 +45,8 @@ import { InforUserComponent } from './components/user/header/component/infor-use
     BaseLayoutComponent,
     ZingchartComponent,
     FooterComponent,
-    HeaderComponent,
     LoginComponent,
+    HeaderComponent,
     AdminLayoutComponent,
     DashboardComponent,
     AdminFooterComponent,
@@ -65,6 +65,7 @@ import { InforUserComponent } from './components/user/header/component/infor-use
     BrowserModule,
     AppRoutingModule,
     SidebarModule,
+    ReactiveFormsModule,
     MatDialogModule,
     MatButtonModule,
     MatIconModule,
