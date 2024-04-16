@@ -9,6 +9,8 @@ import { DashboardComponent } from './pages/admin/dashboard/dashboard.component'
 import { AddProductComponent } from './pages/admin/add-product/add-product.component';
 import { EditProductComponent } from './pages/admin/edit-product/edit-product.component';
 import { LoginComponent } from './components/user/header/component/login/login.component';
+import { Top10Component } from './pages/user/top10/top10.component';
+import { MvComponent } from './pages/user/mv/mv.component';
 
 
 
@@ -19,6 +21,8 @@ const routes: Routes = [
       { path: "home", component: HomeComponent },
       { path: "khampha", component: KhamphaComponent },
       { path: "zingchart", component: ZingchartComponent },
+      { path: "top10", component: Top10Component },
+      { path: "mv", component: MvComponent },
 
 
     ]

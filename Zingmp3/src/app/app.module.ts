@@ -40,6 +40,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { Top10Component } from './pages/user/top10/top10.component';
+import { MvComponent } from './pages/user/mv/mv.component';
 // decorators
 @NgModule({
   declarations: [
@@ -64,6 +66,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
     GioithieuComponent,
     SearchComponent,
     InforUserComponent,
+    Top10Component,
+    MvComponent,
 
   ],
   imports: [
