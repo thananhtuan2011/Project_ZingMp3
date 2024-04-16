@@ -14,9 +14,9 @@ const DOMAIN = environment.DOMAIN_COOKIES
 })
 export class LoginComponent {
   radiovalue!: any;
+  error: boolean = false
   name!: string;
   email!: string;
-  lastname!: string;
   firstname!: string
   username!: string;
   password!: string;
@@ -47,6 +47,14 @@ export class LoginComponent {
   BackHome() {
     this.router.navigate(['']);
   }
+  Register() {
+    this.auth.Register(this.name, this.username, this.pass).subscribe(res => {
+      this.username = res.data.username
+      this.password = res.data.password
+      this.toggleInactiveState();
+    }
+    )
+  }
 
   // ItemAccount(): AcountModel {
 
@@ -61,22 +69,36 @@ export class LoginComponent {
   //   return item
   // }
   login() {
+    try {
 
-    this.auth
-      .Login(this.username, this.password)
-      .subscribe((obj: any) => {
-        console.log("objobj", obj)
-        // if (obj.status === 'success') {
-        //   this.cookieService.set("access_token", 'tét', 365, '/', DOMAIN);
-        //   localStorage.setItem("roles", JSON.stringify(obj.role));
-        //   localStorage.setItem("user", JSON.stringify(obj.result));
+      this.auth
+        .Login(this.username, this.password)
+        .subscribe((obj: any) => {
 
-        //     this.router.navigate(['Home']);
+          if (obj) {
+            this.error = false
+            this.cookieService.set("accessToken", obj.accessToken, 365, '/', DOMAIN);
+            this.cookieService.set("refreshToken", obj.refreshToken, 365, '/', DOMAIN);
+            localStorage.setItem("roles", JSON.stringify(obj.role));
+            localStorage.setItem("user", JSON.stringify(obj.user));
 
-        // } 
-      });
+            this.router.navigateByUrl('/home');
+
+          }
+          else {
+            this.error = true;
+          }
+        });
+    }
+    catch (errr) {
+      alert("Tài khoản không chính xác")
+    }
 
 
+  }
+  GoogleAuth() {
+    this.auth.GoogleAuth();
+    localStorage.setItem("isGoogle", 'active')
   }
 
   register() {

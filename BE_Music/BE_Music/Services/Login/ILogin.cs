@@ -11,6 +11,7 @@ namespace BE_Music.Interface_Service
         Task<object> Login(string username, string pass);
         ClaimsPrincipal GetPrincipalFromExpiredToken(string token);
         public string GenerateAccessToken(IEnumerable<Claim> claims);
+        public string CreateRefreshToken(IEnumerable<Claim> claims);
         public string GenerateRefreshToken();
     }
 }

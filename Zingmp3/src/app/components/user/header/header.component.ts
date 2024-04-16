@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddHoiVienComponent } from '../add-hoi-vien/add-hoi-vien.component';
 import { GioithieuComponent } from '../gioithieu/gioithieu.component';
 import { InforUserComponent } from './component/infor-user/infor-user.component';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +15,7 @@ export class HeaderComponent implements OnInit {
   isDropdownOpen = false;
   isDropdownOpen_User = false;
   myVal!: string
-  constructor(private dialog: MatDialog,) { }
+  constructor(private router: Router, private cookie_services: CookieService, private dialog: MatDialog,) { }
 
   ngOnInit(): void {
   }
@@ -49,6 +51,12 @@ export class HeaderComponent implements OnInit {
         // this.LoadAllCustomer()
       }
     })
+  }
+  Logout() {
+    this.cookie_services.deleteAll();
+    localStorage.clear();
+    this.router.navigateByUrl("/login")
+
   }
 
   AddHoiVien() {

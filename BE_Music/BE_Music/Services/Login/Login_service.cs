@@ -64,6 +64,21 @@ namespace BE_Music.Services.Login
             var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
             return tokenString;
         }
+        public string CreateRefreshToken(IEnumerable<Claim> claims)
+        {
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"]));
+            var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+            var tokeOptions = new JwtSecurityToken(
+                issuer: "https://localhost:5001",
+                audience: "https://localhost:5001",
+                claims: claims,
+                expires: DateTime.Now.AddDays(20),
+                signingCredentials: signinCredentials
+            );
+            var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
+            return tokenString;
+        }
+
         public async Task<object> Login(string username, string pass)   
         {
             string ConnectionString = _config["AppConfig:ConnectionString"];
@@ -120,11 +135,18 @@ namespace BE_Music.Services.Login
                 );
                 var tokenHandler = new JwtSecurityTokenHandler();
 
+                var claims_refresh = new[]
+               {
+                new Claim("UserName",username),
+               
+                     new Claim("account_id",infor.account_id.ToString()),
+
+            };
                 // var token = tokenHandler.CreateToken(tokenDescriptor);
                 var dt_token = new
                 {
                     accessToken = tokenHandler.WriteToken(token),
-                    refreshToken = GenerateRefreshToken(),
+                    refreshToken = CreateRefreshToken(claims_refresh),
                     role = infor.role_code.ToString(),
                     User = infor
                 };

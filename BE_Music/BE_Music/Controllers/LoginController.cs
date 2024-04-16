@@ -13,6 +13,8 @@ using BE_Music.Models;
 using BE_Music.Models.Common;
 using BE_Music.Common;
 using BE_Music.Interface_Service;
+using DpsLibs.Data;
+using Microsoft.Extensions.Configuration;
 
 namespace BE_Music.Controllers
 {
@@ -21,9 +23,11 @@ namespace BE_Music.Controllers
     public class LoginController : ControllerBase
     {
         private readonly ILogin _login;
-        public LoginController(ILogin login )
+        private IConfiguration _configuration;
+        public LoginController(ILogin login, IConfiguration configuration)
         {
             _login = login;
+            _configuration = configuration;
         }
         [HttpGet]
         [Route("Login")]
@@ -32,11 +36,104 @@ namespace BE_Music.Controllers
             var data = await _login.Login(username, pass);
             if (data == null)
             {
-                return BadRequest("no token");
+                return null;
             }
             return data;
 
 
+        }
+
+        [HttpGet]
+        [Route("Register")]
+        public async Task<object> Register(string fullname, string username,string pass)
+        {
+
+
+            string ConnectionString = _configuration["AppConfig:ConnectionString"];
+            using (DpsConnection cnn = new DpsConnection(ConnectionString))
+            {
+                SqlConditions Conds = new SqlConditions();
+                Conds.Add("user_name", username);
+
+                DataTable checktbl = new DataTable();
+                checktbl = cnn.CreateDataTable(@" select * from  Acount where user_name=@user_name", Conds);
+                if (checktbl.Rows.Count == 0)
+                {
+
+                    Hashtable val = new Hashtable();
+
+                    val.Add("user_name", username);
+                    val.Add("password", pass);
+                    val.Add("role_code", 2);
+                    val.Add("isGoogle", false);
+                    val.Add("full_name", fullname);
+                    
+
+
+                    if (cnn.Insert(val, "Acount") < 0)
+                    {
+                        cnn.RollbackTransaction();
+                        return JsonResultCommon.ThatBai("Cập nhật thất bại", cnn.LastError);
+                    }
+                }
+                else
+                {
+                    return JsonResultCommon.ThatBai("Đã tồn tại");
+                }
+            }
+
+
+            var data = new
+            {
+                username = username,
+                 password = pass
+        };
+
+
+            return JsonResultCommon.ThanhCong(data);
+
+        }
+
+        [HttpGet]
+            [Route("LoginWithGoogle")]
+            public async Task<object> LoginWithGoogle(string email, string name)
+            {
+
+
+            string ConnectionString = _configuration["AppConfig:ConnectionString"];
+            using (DpsConnection cnn = new DpsConnection(ConnectionString))
+            {
+                SqlConditions Conds = new SqlConditions();
+                Conds.Add("email", email);
+                Conds.Add("isGoogle", true);
+
+                DataTable checktbl = new DataTable();
+                checktbl = cnn.CreateDataTable(@" select * from  Acount where email=@email and isGoogle=@isGoogle", Conds);
+               if(checktbl.Rows.Count==0)
+                {
+
+                Hashtable val = new Hashtable();
+
+                val.Add("email", email);
+                val.Add("full_name", name);
+                    val.Add("role_code", 2);
+                    val.Add("isGoogle", true);
+                
+
+            if (cnn.Insert(val, "Acount") < 0)
+            {
+                cnn.RollbackTransaction();
+                return JsonResultCommon.ThatBai("Cập nhật thất bại", cnn.LastError);
+            }
+                }
+            else
+                {
+                    return JsonResultCommon.ThanhCong();
+                }    
+            }
+
+
+            return JsonResultCommon.ThanhCong();
 
         }
 
@@ -260,7 +357,7 @@ namespace BE_Music.Controllers
         //    }
         //}
 
-   
+
 
 
 

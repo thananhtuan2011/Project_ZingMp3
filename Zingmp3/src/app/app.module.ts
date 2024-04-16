@@ -34,7 +34,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbDropdown, NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InforUserComponent } from './components/user/header/component/infor-user/infor-user.component';
 import { LoginComponent } from './components/user/header/component/login/login.component';
-
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 // decorators
 @NgModule({
   declarations: [
@@ -63,6 +68,11 @@ import { LoginComponent } from './components/user/header/component/login/login.c
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
     AppRoutingModule,
     SidebarModule,
     ReactiveFormsModule,

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Route, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-base-layout',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./base-layout.component.scss']
 })
 export class BaseLayoutComponent {
+  constructor(private cookieService: CookieService, private router: Router) {
+    const accessToken = this.cookieService.get("accessToken");
+    if (!accessToken) {
+      this.cookieService.deleteAll();
+      localStorage.clear()
+      this.router.navigateByUrl('/login')
+
+    }
+  }
 
 }
