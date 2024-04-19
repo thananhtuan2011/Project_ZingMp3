@@ -11,6 +11,7 @@ import { EditProductComponent } from './pages/admin/edit-product/edit-product.co
 import { LoginComponent } from './components/user/header/component/login/login.component';
 import { Top10Component } from './pages/user/top10/top10.component';
 import { MvComponent } from './pages/user/mv/mv.component';
+import { NewsongComponent } from './pages/user/newsong/newsong.component';
 
 
 
@@ -23,7 +24,7 @@ const routes: Routes = [
       { path: "zingchart", component: ZingchartComponent },
       { path: "top10", component: Top10Component },
       { path: "mv", component: MvComponent },
-
+      { path: "newsong", component: NewsongComponent },
 
     ]
 

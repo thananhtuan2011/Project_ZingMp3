@@ -42,12 +42,14 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { Top10Component } from './pages/user/top10/top10.component';
 import { MvComponent } from './pages/user/mv/mv.component';
+import { NewsongComponent } from './pages/user/newsong/newsong.component';
 // decorators
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SidebarComponent,
+    NewsongComponent,
     BaseLayoutComponent,
     BaseLayoutComponent,
     ZingchartComponent,
