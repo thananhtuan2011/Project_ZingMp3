@@ -1894,19 +1894,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\thana\\.nuget\\packages\\": {}
+    "C:\\Users\\Sang\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thana\\OneDrive\\Máy tính\\Project_ZingMp3\\BE_Music\\BE_Music\\BE_Music.csproj",
+      "projectUniqueName": "E:\\Tốt nghiệp@\\Project_ZingMp3\\BE_Music\\BE_Music\\BE_Music.csproj",
       "projectName": "BE_Music",
-      "projectPath": "C:\\Users\\thana\\OneDrive\\Máy tính\\Project_ZingMp3\\BE_Music\\BE_Music\\BE_Music.csproj",
-      "packagesPath": "C:\\Users\\thana\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thana\\OneDrive\\Máy tính\\Project_ZingMp3\\BE_Music\\BE_Music\\obj\\",
+      "projectPath": "E:\\Tốt nghiệp@\\Project_ZingMp3\\BE_Music\\BE_Music\\BE_Music.csproj",
+      "packagesPath": "C:\\Users\\Sang\\.nuget\\packages\\",
+      "outputPath": "E:\\Tốt nghiệp@\\Project_ZingMp3\\BE_Music\\BE_Music\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\thana\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Sang\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1914,6 +1914,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1926,6 +1927,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -1980,8 +1986,30 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Data.SqlClient' 4.8.2 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-8g2p-5pqh-5jmc",
+      "libraryId": "System.Data.SqlClient",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Data.SqlClient' 4.8.2 has a known high severity vulnerability, https://github.com/advisories/GHSA-98g6-xh36-x2p7",
+      "libraryId": "System.Data.SqlClient",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

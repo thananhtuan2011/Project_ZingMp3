@@ -63,10 +63,10 @@ export class AuthService {
   }
 
   signup(user: any): Observable<any> {
-    return this.http.post<any>(`http://localhost:8080/api/signup`, user)
+    return this.http.post<any>(`https://localhost:5001/api/signup`, user)
   }
   signin(user: any): Observable<any> {
-    return this.http.post<any>(`http://localhost:8080/api/signin`, user)
+    return this.http.post<any>(`https://localhost:5001/api/sigin`, user)
   }
   isAuthenticated(): any {
     return JSON.parse(localStorage.getItem('userInfo') || '{}');
