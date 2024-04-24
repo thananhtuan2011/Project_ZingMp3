@@ -1,0 +1,288 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|e:\\t\u1ED1t nghi\u1EC7p@\\project_zingmp3\\be_music\\be_music\\services\\type\\typesong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|solutionrelative:be_music\\services\\type\\typesong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|e:\\t\u1ED1t nghi\u1EC7p@\\project_zingmp3\\be_music\\be_music\\services\\type\\itypesong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|solutionrelative:be_music\\services\\type\\itypesong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|e:\\t\u1ED1t nghi\u1EC7p@\\project_zingmp3\\be_music\\be_music\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|solutionrelative:be_music\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|e:\\t\u1ED1t nghi\u1EC7p@\\project_zingmp3\\be_music\\be_music\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|solutionrelative:be_music\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|e:\\t\u1ED1t nghi\u1EC7p@\\project_zingmp3\\be_music\\be_music\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|solutionrelative:be_music\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|e:\\t\u1ED1t nghi\u1EC7p@\\project_zingmp3\\be_music\\be_music\\services\\login\\login_service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|solutionrelative:be_music\\services\\login\\login_service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|e:\\t\u1ED1t nghi\u1EC7p@\\project_zingmp3\\be_music\\be_music\\services\\login\\ilogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|solutionrelative:be_music\\services\\login\\ilogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|e:\\t\u1ED1t nghi\u1EC7p@\\project_zingmp3\\be_music\\be_music\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|solutionrelative:be_music\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|e:\\t\u1ED1t nghi\u1EC7p@\\project_zingmp3\\be_music\\be_music\\class\\uploadhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|solutionrelative:be_music\\class\\uploadhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|e:\\t\u1ED1t nghi\u1EC7p@\\project_zingmp3\\be_music\\be_music\\common\\queryparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|solutionrelative:be_music\\common\\queryparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|e:\\t\u1ED1t nghi\u1EC7p@\\project_zingmp3\\be_music\\be_music\\common\\jsonresultcommon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|solutionrelative:be_music\\common\\jsonresultcommon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|e:\\t\u1ED1t nghi\u1EC7p@\\project_zingmp3\\be_music\\be_music\\common\\constant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|solutionrelative:be_music\\common\\constant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|e:\\t\u1ED1t nghi\u1EC7p@\\project_zingmp3\\be_music\\be_music\\common\\commonmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|solutionrelative:be_music\\common\\commonmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|e:\\t\u1ED1t nghi\u1EC7p@\\project_zingmp3\\be_music\\be_music\\model\\basemodel\\basemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|solutionrelative:be_music\\model\\basemodel\\basemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|e:\\t\u1ED1t nghi\u1EC7p@\\project_zingmp3\\be_music\\be_music\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C71B884-70E3-4934-BE2D-43029BDFCF99}|BE_Music\\BE_Music.csproj|solutionrelative:be_music\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TypeSong.cs",
+              "DocumentMoniker": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Services\\Type\\TypeSong.cs",
+              "RelativeDocumentMoniker": "BE_Music\\Services\\Type\\TypeSong.cs",
+              "ToolTip": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Services\\Type\\TypeSong.cs",
+              "RelativeToolTip": "BE_Music\\Services\\Type\\TypeSong.cs",
+              "ViewState": "AQIAAHsAAAAAAAAAAAAAAIoAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T04:56:47.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ITypeSong.cs",
+              "DocumentMoniker": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Services\\Type\\ITypeSong.cs",
+              "RelativeDocumentMoniker": "BE_Music\\Services\\Type\\ITypeSong.cs",
+              "ToolTip": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Services\\Type\\ITypeSong.cs",
+              "RelativeToolTip": "BE_Music\\Services\\Type\\ITypeSong.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T04:56:46.835Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Login_service.cs",
+              "DocumentMoniker": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Services\\Login\\Login_service.cs",
+              "RelativeDocumentMoniker": "BE_Music\\Services\\Login\\Login_service.cs",
+              "ToolTip": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Services\\Login\\Login_service.cs",
+              "RelativeToolTip": "BE_Music\\Services\\Login\\Login_service.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T04:54:06.519Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ILogin.cs",
+              "DocumentMoniker": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Services\\Login\\ILogin.cs",
+              "RelativeDocumentMoniker": "BE_Music\\Services\\Login\\ILogin.cs",
+              "ToolTip": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Services\\Login\\ILogin.cs",
+              "RelativeToolTip": "BE_Music\\Services\\Login\\ILogin.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAWwAoAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T04:54:06.677Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "BE_Music\\Controllers\\LoginController.cs",
+              "ToolTip": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "BE_Music\\Controllers\\LoginController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T04:54:06.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "BE_Music\\Properties\\launchSettings.json",
+              "ToolTip": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Properties\\launchSettings.json",
+              "RelativeToolTip": "BE_Music\\Properties\\launchSettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-24T04:54:06.695Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "QueryParams.cs",
+              "DocumentMoniker": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Common\\QueryParams.cs",
+              "RelativeDocumentMoniker": "BE_Music\\Common\\QueryParams.cs",
+              "ToolTip": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Common\\QueryParams.cs",
+              "RelativeToolTip": "BE_Music\\Common\\QueryParams.cs",
+              "ViewState": "AQIAADsAAAAAAAAAAAAswEAAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T04:54:06.702Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Program.cs",
+              "RelativeDocumentMoniker": "BE_Music\\Program.cs",
+              "ToolTip": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Program.cs",
+              "RelativeToolTip": "BE_Music\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T04:54:06.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "BE_Music\\appsettings.Development.json",
+              "ToolTip": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\appsettings.Development.json",
+              "RelativeToolTip": "BE_Music\\appsettings.Development.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAB1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-24T04:54:06.718Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "JsonResultCommon.cs",
+              "DocumentMoniker": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Common\\JsonResultCommon.cs",
+              "RelativeDocumentMoniker": "BE_Music\\Common\\JsonResultCommon.cs",
+              "ToolTip": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Common\\JsonResultCommon.cs",
+              "RelativeToolTip": "BE_Music\\Common\\JsonResultCommon.cs",
+              "ViewState": "AQIAAAcBAAAAAAAAAAAqwA0BAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T04:54:06.725Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Constant.cs",
+              "DocumentMoniker": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Common\\Constant.cs",
+              "RelativeDocumentMoniker": "BE_Music\\Common\\Constant.cs",
+              "ToolTip": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Common\\Constant.cs",
+              "RelativeToolTip": "BE_Music\\Common\\Constant.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T04:54:06.733Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CommonModel.cs",
+              "DocumentMoniker": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Common\\CommonModel.cs",
+              "RelativeDocumentMoniker": "BE_Music\\Common\\CommonModel.cs",
+              "ToolTip": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Common\\CommonModel.cs",
+              "RelativeToolTip": "BE_Music\\Common\\CommonModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T04:54:06.741Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UploadHelper.cs",
+              "DocumentMoniker": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Class\\UploadHelper.cs",
+              "RelativeDocumentMoniker": "BE_Music\\Class\\UploadHelper.cs",
+              "ToolTip": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Class\\UploadHelper.cs",
+              "RelativeToolTip": "BE_Music\\Class\\UploadHelper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T04:54:06.75Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "BaseModel.cs",
+              "DocumentMoniker": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Model\\BaseModel\\BaseModel.cs",
+              "RelativeDocumentMoniker": "BE_Music\\Model\\BaseModel\\BaseModel.cs",
+              "ToolTip": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Model\\BaseModel\\BaseModel.cs",
+              "RelativeToolTip": "BE_Music\\Model\\BaseModel\\BaseModel.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwA0AAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T04:54:06.766Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "BE_Music\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "E:\\T\u1ED1t nghi\u1EC7p@\\Project_ZingMp3\\BE_Music\\BE_Music\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "BE_Music\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T04:54:06.772Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 87,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,8 +1,11 @@
 using BE_Music.Interface_Service;
 using BE_Music.Services.Login;
+using BE_Music.Services.Type;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddTransient<ILogin, Login_service>();
+builder.Services.AddTransient<ITypeSong, TypeSongService>();
+
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 // Add services to the container.
 
@@ -35,3 +38,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
