@@ -1,3 +1,4 @@
+import { LayoutUtilsService, MessageType } from './../../../components/crud/utils/layout-utils.service';
 import { CategoryService } from './../../../services/Category/category.service';
 import { environment } from './../../../../environments/environment';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
@@ -5,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { GroupingState } from 'src/app/models/grouping.model';
 import { PaginatorState } from 'src/app/models/paginator.model';
 import { SortState } from 'src/app/models/sort.model';
+import { AddCategoryComponent } from '../add-category/add-category.component';
 
 @Component({
   selector: 'app-category',
@@ -31,6 +33,7 @@ export class CategoryComponent implements OnInit {
   constructor(
     public category_services: CategoryService,
     private dialog: MatDialog,
+    private layoutUtilsService: LayoutUtilsService,
     private cdr: ChangeDetectorRef
   ) {
     this.user = JSON.parse(localStorage.getItem("user")!);
@@ -56,20 +59,20 @@ export class CategoryComponent implements OnInit {
 
   }
   Add() {
-    // const dialogRef = this.dialog.open(AddCustomerComponent, {
-    //   width: '600px',
-    //   // data: {  },
-    //   // with:'500px',
+    const dialogRef = this.dialog.open(AddCategoryComponent, {
+      width: '400px',
+      // data: {  },
+      // with:'500px',
 
-    //   // panelClass:'no-padding'
+      // panelClass:'no-padding'
 
-    // });
-    // dialogRef.afterClosed().subscribe(res => {
+    });
+    dialogRef.afterClosed().subscribe(res => {
 
-    //   if (res) {
-    //     this.LoadAllCustomer()
-    //   }
-    // })
+      if (res) {
+        this.LoadAllTypeSong()
+      }
+    })
 
 
   }
@@ -110,27 +113,27 @@ export class CategoryComponent implements OnInit {
 
   }
   Delete(id: any) {
-    // const _title = this.translate.instant('Xóa customer');
-    // const _description = this.translate.instant('Bạn có muốn xóa không ?');
-    // const _waitDesciption = this.translate.instant('Dữ liệu đang được xử lý');
-    // const _deleteMessage = this.translate.instant('Xóa thành công !');
-    // const _erroMessage = this.translate.instant('Thất bại !');
-    // const dialogRef = this.layoutUtilsService.deleteElement(_title, _description, _waitDesciption);
-    // dialogRef.afterClosed().subscribe((res) => {
-    //   if (!res) {
-    //     return;
-    //   }
-    //   else {
-    //     this.category_services.deleteCustomer(id).subscribe(res => {
-    //       if (res) {
-    //         this.LoadAllCustomer();
-    //         this.layoutUtilsService.showActionNotification("Successfully", MessageType.Delete, 400000000, true, false, 3000, 'top', 1);
-    //       }
+    const _title = 'Xóa';
+    const _description = 'Bạn có muốn xóa không ?';
+    const _waitDesciption = 'Dữ liệu đang được xử lý';
+    const _deleteMessage = 'Xóa thành công !';
+    const _erroMessage = 'Thất bại !';
+    const dialogRef = this.layoutUtilsService.deleteElement(_title, _description, _waitDesciption);
+    dialogRef.afterClosed().subscribe((res) => {
+      if (!res) {
+        return;
+      }
+      else {
+        this.category_services.deleteType(id).subscribe(res => {
+          if (res) {
+            this.LoadAllTypeSong();
+            this.layoutUtilsService.showActionNotification("Successfully", MessageType.Delete, 4000, true, false, 3000, 'top', 1);
+          }
 
-    //     })
-    //   }
+        })
+      }
 
-    // });
+    });
   }
   Update(item: any) {
 

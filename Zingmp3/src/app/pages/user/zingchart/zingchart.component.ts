@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./zingchart.component.scss']
 })
 export class ZingchartComponent {
-
   products: Product[] = [];
 
   constructor(private http: HttpClient) {

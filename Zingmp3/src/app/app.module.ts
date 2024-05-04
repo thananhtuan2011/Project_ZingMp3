@@ -49,6 +49,11 @@ import { ListMusicComponent } from './pages/admin/list-music/list-music.componen
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { NgPagination } from './components/paginator/ng-pagination/ng-pagination.component';
 import { CommonModule } from '@angular/common';
+import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import { ActionNotificationComponent } from './components/crud/action-natification/action-notification.component';
+import { LayoutUtilsService } from './components/crud/utils/layout-utils.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DeleteEntityDialogComponent } from './components/crud';
 // decorators
 @NgModule({
   declarations: [
@@ -61,9 +66,11 @@ import { CommonModule } from '@angular/common';
     ZingchartComponent,
     FooterComponent,
     LoginComponent,
+    ActionNotificationComponent,
     HeaderComponent,
     AdminLayoutComponent,
     DashboardComponent,
+    DeleteEntityDialogComponent,
     AdminFooterComponent,
     AdminSidebarComponent,
     AdminHeaderComponent,
@@ -81,6 +88,7 @@ import { CommonModule } from '@angular/common';
     ListMusicComponent,
     PaginatorComponent,
     NgPagination,
+    AddCategoryComponent,
 
   ],
   imports: [
@@ -105,9 +113,10 @@ import { CommonModule } from '@angular/common';
     MatMenuModule,
     BrowserAnimationsModule,
     PerfectScrollbarModule,
-    NgxChartsModule
+    NgxChartsModule,
+    MatSnackBarModule
   ],
-  providers: [NgbDropdown],
+  providers: [NgbDropdown, LayoutUtilsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

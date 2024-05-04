@@ -79,10 +79,17 @@ export class LoginComponent {
             this.error = false
             this.cookieService.set("accessToken", obj.accessToken, 365, '/', DOMAIN);
             this.cookieService.set("refreshToken", obj.refreshToken, 365, '/', DOMAIN);
+
             localStorage.setItem("roles", JSON.stringify(obj.role));
             localStorage.setItem("user", JSON.stringify(obj.user));
+            if (obj.role == "1") {
+              this.router.navigateByUrl('/admin');
 
-            this.router.navigateByUrl('/home');
+            }
+            else {
+              this.router.navigateByUrl('/home');
+
+            }
 
           }
           else {

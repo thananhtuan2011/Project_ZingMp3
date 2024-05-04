@@ -179,8 +179,7 @@ namespace BE_Music.Controllers
                                     typename = r["typename"],
                                     type_description = r["type_description"],
                                     created_at = r["created_at"],
-                                    updated_at = r["updated_at"]!=null?r["updated_at"] : null,
-                                    deleted_at = r["deleted_at"],
+                                    updated_at = r["updated_at"],
 
 
 
@@ -216,27 +215,33 @@ namespace BE_Music.Controllers
 
         // TypeSongController.cs
         [HttpDelete("{typeId}")]
-        public IActionResult DeleteType(int typeId)
+        public BaseModel<object> DeleteType(int typeId)
         {
             try
             {
-                // Kiểm tra xem loại nhạc có tồn tại không
-                var type = _typeSongService.GetTypeById(typeId);
-                if (type == null)
+                string connectionString = _configuration["AppConfig:ConnectionString"];
+                using (DpsConnection cnn = new DpsConnection(connectionString))
                 {
-                    return NotFound($"Type with ID {typeId} not found");
+
+                    SqlConditions Conds = new SqlConditions();
+                    Conds.Add("type_id", typeId);
+                    if (cnn.Delete( Conds, "TypeSong") < 0)
+                    {
+                        cnn.RollbackTransaction();
+                        return JsonResultCommon.ThatBai("Cập nhật thất bại", cnn.LastError);
+                    }
+
+                    return JsonResultCommon.ThanhCong();
+
                 }
 
-                // Gọi hàm xóa loại nhạc từ service
-                _typeSongService.DeleteType(typeId);
+                    // Kiểm tra xem loại nhạc có tồn tại không
 
-                // Trả về mã NoContent để chỉ ra rằng loại nhạc đã được xóa thành công
-                return NoContent();
-            }
+                }
             catch (Exception ex)
             {
                 // Trả về lỗi 500 nếu có lỗi xảy ra trong quá trình xóa loại nhạc
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                return JsonResultCommon.Exception(ex);
             }
         }
 

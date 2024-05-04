@@ -51,7 +51,6 @@ namespace BE_Music.Services.Type
                 val.Add("type_description", type.type_description);
                 val.Add("created_at", DateTime.Now);
                 val.Add("updated_at", DBNull.Value);
-                val.Add("deleted_at", DBNull.Value);
 
                 if (cnn.Insert(val, "TypeSong") < 0)
                 {
@@ -91,7 +90,6 @@ namespace BE_Music.Services.Type
                     type_description = row["type_description"] != DBNull.Value ? row["type_description"].ToString() : null,
                     created_at = row["created_at"] != DBNull.Value ? Convert.ToDateTime(row["created_at"]) : default(DateTime),
                     updated_at = row["updated_at"] != DBNull.Value ? Convert.ToDateTime(row["updated_at"]) : default(DateTime),
-                    deleted_at = row["deleted_at"] != DBNull.Value ? Convert.ToDateTime(row["deleted_at"]) : default(DateTime)
                 };
 
                 return type;
