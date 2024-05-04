@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "./assets/plugins/flaticon/flaticon.css";
+@import "./assets/plugins/flaticon2/flaticon.css";
+@import "./assets/plugins/keenthemes-icons/font/ki.css";
 
 .mat-mdc-dialog-container .mdc-dialog__surface {
     background-color: #411465 !important;
@@ -11,4 +15,21 @@
     position: initial;
     width: initial;
     overflow: hidden;
+}
+
+.btn {
+    margin-left: 5px;
+    width: 33px;
+    padding: 5px;
+}
+
+.btn.disabled {
+    background-color: #d0d6db8a !important;
+}
+
+.btn.active {
+    background-color: #57a1eb !important;
+    width: 33px;
+    padding: 5px;
+    color: white !important;
 }

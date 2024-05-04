@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   Infor() {
     const dialogRef = this.dialog.open(InforUserComponent, {
       // width: '300px',

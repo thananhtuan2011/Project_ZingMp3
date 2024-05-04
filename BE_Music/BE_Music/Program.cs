@@ -1,6 +1,7 @@
 using BE_Music.Interface_Service;
 using BE_Music.Services.Login;
 using BE_Music.Services.Type;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddTransient<ILogin, Login_service>();
@@ -32,7 +33,13 @@ if (app.Environment.IsDevelopment())
 }
 app.UseCors(MyAllowSpecificOrigins);
 app.UseHttpsRedirection();
-
+app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+       Path.Combine(Directory.GetCurrentDirectory(), "Song")),
+    RequestPath = "/Song"
+});
 app.UseAuthorization();
 
 app.MapControllers();

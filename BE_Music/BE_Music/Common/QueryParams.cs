@@ -5,6 +5,7 @@ using System.Web;
 
 namespace BE_Music.Models.Common
 {
+   
     public class QueryParams
     {
         public bool more { get; set; } = false;
@@ -15,22 +16,6 @@ namespace BE_Music.Models.Common
         public FilterModel filter { get; set; }
         public FilterGroupModel filterGroup { get; set; }
         public QueryParams()
-        {
-            filter = new FilterModel();
-            filterGroup = new FilterGroupModel();
-        }
-    }
-
-    public class QueryParams_New
-    {
-        public bool more { get; set; } = false;
-        public int page { get; set; } = 1;
-        public int record { get; set; } = 10;
-        public string sortOrder { get; set; } = "";
-        public string sortField { get; set; } = "";
-        public FilterModel filter { get; set; }
-        public FilterGroupModel filterGroup { get; set; }
-        public QueryParams_New()
         {
             filter = new FilterModel();
             filterGroup = new FilterGroupModel();

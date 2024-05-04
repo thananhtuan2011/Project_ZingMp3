@@ -65,36 +65,7 @@ namespace BE_Music.Services.Type
 
 
 
-        public IEnumerable<TypeSong> GetAllTypes()
-        {
-            List<TypeSong> types = new List<TypeSong>();
-
-            // Kết nối và thực hiện truy vấn để lấy danh sách tất cả các loại nhạc
-            string connectionString = _config["AppConfig:ConnectionString"];
-            using (DpsConnection cnn = new DpsConnection(connectionString))
-            {
-                // Thực hiện truy vấn và lấy kết quả
-                DataTable dt = cnn.CreateDataTable("SELECT * FROM TypeSong");
-
-                // Duyệt qua từng dòng kết quả và thêm vào danh sách loại nhạc
-                foreach (DataRow row in dt.Rows)
-                {
-                    TypeSong type = new TypeSong
-                    {
-                        type_id = Convert.ToInt32(row["type_id"]),
-                        typename = row["typename"] != DBNull.Value ? row["typename"].ToString() : null,
-                        type_description = row["type_description"] != DBNull.Value ? row["type_description"].ToString() : null,
-                        created_at = row["created_at"] != DBNull.Value ? Convert.ToDateTime(row["created_at"]) : default(DateTime),
-                        updated_at = row["updated_at"] != DBNull.Value ? Convert.ToDateTime(row["updated_at"]) : default(DateTime),
-                        deleted_at = row["deleted_at"] != DBNull.Value ? Convert.ToDateTime(row["deleted_at"]) : default(DateTime)
-                    };
-                    types.Add(type);
-                }
-
-            }
-
-            return types;
-        }
+      
 
         public TypeSong GetTypeById(int typeId)
         {

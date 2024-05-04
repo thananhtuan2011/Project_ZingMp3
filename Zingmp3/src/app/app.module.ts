@@ -43,6 +43,12 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { Top10Component } from './pages/user/top10/top10.component';
 import { MvComponent } from './pages/user/mv/mv.component';
 import { NewsongComponent } from './pages/user/newsong/newsong.component';
+import { CategoryComponent } from './pages/admin/category/category.component';
+import { ListUserComponent } from './pages/admin/list-user/list-user.component';
+import { ListMusicComponent } from './pages/admin/list-music/list-music.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
+import { NgPagination } from './components/paginator/ng-pagination/ng-pagination.component';
+import { CommonModule } from '@angular/common';
 // decorators
 @NgModule({
   declarations: [
@@ -70,6 +76,11 @@ import { NewsongComponent } from './pages/user/newsong/newsong.component';
     InforUserComponent,
     Top10Component,
     MvComponent,
+    CategoryComponent,
+    ListUserComponent,
+    ListMusicComponent,
+    PaginatorComponent,
+    NgPagination,
 
   ],
   imports: [
@@ -80,6 +91,7 @@ import { NewsongComponent } from './pages/user/newsong/newsong.component';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     AppRoutingModule,
+    CommonModule,
     SidebarModule,
     ReactiveFormsModule,
     MatDialogModule,

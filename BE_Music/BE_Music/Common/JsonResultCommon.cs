@@ -3,6 +3,7 @@ using System;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using BE_Music.Models;
 using BE_Music.Models.BaseModel;
+using System.Data;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -231,7 +232,7 @@ namespace BE_Music.Common
                 panigator = panigator
             };
         }
-        public static BaseModel<object> ThanhCongPhanTrang(object data ,PageModel pageModel)
+        public static BaseModel<object> ThanhCongPhanTrang(object data, Models.Common.PageModel pageModel)
         {
             return new BaseModel<object>
             {
@@ -267,6 +268,6 @@ namespace BE_Music.Common
            
         }
 
-       
+     
     }
 } 

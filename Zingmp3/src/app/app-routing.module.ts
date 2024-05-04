@@ -12,6 +12,9 @@ import { LoginComponent } from './components/user/header/component/login/login.c
 import { Top10Component } from './pages/user/top10/top10.component';
 import { MvComponent } from './pages/user/mv/mv.component';
 import { NewsongComponent } from './pages/user/newsong/newsong.component';
+import { ListUserComponent } from './pages/admin/list-user/list-user.component';
+import { ListMusicComponent } from './pages/admin/list-music/list-music.component';
+import { CategoryComponent } from './pages/admin/category/category.component';
 
 
 
@@ -34,8 +37,9 @@ const routes: Routes = [
     path: 'admin', component: AdminLayoutComponent, children: [
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
       { path: "dashboard", component: DashboardComponent },
-      { path: "add", component: AddProductComponent },
-      { path: ":id/edit", component: EditProductComponent },
+      { path: "user", component: ListUserComponent },
+      { path: "music", component: ListMusicComponent },
+      { path: "category", component: CategoryComponent },
 
     ]
   }

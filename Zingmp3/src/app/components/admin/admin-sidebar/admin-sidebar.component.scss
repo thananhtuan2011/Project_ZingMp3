@@ -30,7 +30,7 @@ ul li a {
 .sidebar-nav {
     display: block;
     width: 100%;
-    min-height: 85vh;
+    min-height: 100vh;
 }
 
 .sidebar_nav-list {
@@ -57,11 +57,7 @@ ul li a {
 }
 
 .sidebar_nav-item {
-    display: flex;
     cursor: pointer;
-    margin-left: 10px;
-    align-items: center;
-    justify-content: flex-start;
 }
 
 .sidebar_nav-item:hover {
@@ -101,6 +97,11 @@ ul li a {
     color: #8e94a9;
     margin: 10px 0px 5px 38px;
     font-size: 12px;
+}
+
+.item-active {
+    background: #aaa7a775;
+
 }
 
 // responesiv mobible
