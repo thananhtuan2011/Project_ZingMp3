@@ -37,8 +37,8 @@ app.UseStaticFiles();
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
-       Path.Combine(Directory.GetCurrentDirectory(), "Song")),
-    RequestPath = "/Song"
+       Path.Combine(Directory.GetCurrentDirectory(), "UploadSong")),
+    RequestPath = "/UploadSong"
 });
 app.UseAuthorization();
 

@@ -1,1 +1,145 @@
-<p>list-music works!</p>
+<style>
+
+  
+    .fullname{
+      display: flex;
+      align-items: center;
+      padding-left: 5px;
+    }
+    .titile
+    {
+      font-weight: bold;
+    }
+   
+  </style>
+  
+  
+  <div class="card card-custom card-sticky gutter-b">
+    <div class="card-header">
+      <div class="card-title">
+        <!-- <mat-form-field appearance="fill">
+          <mat-label> Supplier</mat-label>
+          <mat-select  [(ngModel)]="selected"  (ngModelChange)="onDepartmentSelection()">
+            <mat-option *ngFor="let item of listSup" [value]="item.idsuppliers">
+              {{ item.supplieName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field> -->
+      </div>
+      <div class="card-toolbar" style="display: flex;">
+        <ng-container  >
+          <!-- <button style="margin-right: 5px;margin-bottom: 5px;"  class="btn btn-md btn-outline-info" (click)="exportTable()">Export to Excel</button> -->
+        </ng-container>
+          <ng-container>
+              <button  style="margin-right: 10px;margin-bottom: 5px;" color="primary"  (click)="Add()" mat-raised-button>Add Music</button>
+           
+            </ng-container>
+          <form style="padding-right: 10px;">
+          
+            <span style="    display: flex;
+            align-items: center;
+            position: absolute;
+            margin-top: 7px;
+            margin-left: 10px;">
+                <mat-icon>search</mat-icon>
+            </span>
+            <input    (ngModelChange)="saverange($event)"  [(ngModel)]="searchtext"  type="text" name="search" placeholder="Tìm kiếm ...">
+          </form>
+        </div>
+
+    </div>
+    <!-- body -->
+    <div class="card-body">
+      <div class="table-responsive angular-bootstrap-table"  [ngStyle]="{'height.px': pageHeight}" >
+        <table class="table table-head-custom table-vertical-center overflow-hidden">
+          <thead>
+            <th >
+              <span class="titile">Type_id</span>
+             
+            </th>
+            <th>
+              <span class="titile">Type name</span>
+             
+            </th>
+            <th>
+              <span class="titile">Type_description</span>
+             
+            </th>
+            <th >
+              <span class="titile">Created</span>
+            
+            </th>
+            <th >
+              <span class="titile">Updated</span>
+            
+            </th>
+           
+          
+            <th style="text-align: center;"  >
+              <span class="titile">Action</span>
+             
+            </th>
+           
+          </thead>
+          <tbody>
+           
+          <tr *ngFor="let r of music_serives._itemsTypeSong$ | async">
+             
+              <td>
+                <div>
+                  <span class="cssusername">{{ r.type_id }}</span>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <span class="cssDepartment">{{ r.typename  }} </span>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <span class="cssDepartment">{{ r.type_description  }} </span>
+                </div>
+              </td>
+             
+              <td>
+                <span class="cssJobtitle">{{ r.created_at  | date : 'dd/M/yyyy – hh:mm ' }}</span>
+              </td>
+              <td>
+                <span *ngIf=" (r.updated_at | json) != '{}'" class="cssJobtitle">{{ r.updated_at  | date : 'dd/mM/yyyy – hh:mm' }}</span>
+              </td>
+
+              <td  style="text-align: center">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>settings</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button (click)="Delete(r.type_id )" mat-menu-item>
+                      <mat-icon>clear</mat-icon>
+                      <span>Remove</span>
+                    </button>
+                    <button (click)="Update(r )"  mat-menu-item >
+                      <mat-icon>schedule</mat-icon>
+                      <span>Update</span>
+                    </button>
+                   
+                  </mat-menu>
+                    
+                </td>
+          
+              
+              
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- end: Table -->
+      <app-paginator
+        class="d-flex justify-content-between align-items-center flex-wrap"
+        [paginator]="paginator"
+        [isLoading]="isLoading"
+        (paginate)="paginate($event)"
+      ></app-paginator>
+    </div>
+  </div>
+  
+  

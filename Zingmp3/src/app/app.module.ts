@@ -54,6 +54,7 @@ import { ActionNotificationComponent } from './components/crud/action-natificati
 import { LayoutUtilsService } from './components/crud/utils/layout-utils.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DeleteEntityDialogComponent } from './components/crud';
+import { AddMusicComponent } from './pages/admin/list-music/add-music/add-music.component';
 // decorators
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { DeleteEntityDialogComponent } from './components/crud';
     PaginatorComponent,
     NgPagination,
     AddCategoryComponent,
+    AddMusicComponent,
 
   ],
   imports: [
