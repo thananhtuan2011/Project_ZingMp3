@@ -15,6 +15,15 @@ export class AddMusicComponent implements OnInit {
   isuploadfile: boolean = false
   namesinger!: string;
   files: File[] = [];
+  radioSelected: any = 0
+  listGroup: any = [
+    {
+      vip: "VIP", value: 1
+    },
+    {
+      vip: "Normal", value: 0
+    },
+  ]
   selected_customer: any
   filename_image!: string;
   selectedcode: any;
@@ -88,6 +97,8 @@ export class AddMusicComponent implements OnInit {
       formData.append("base64", this.base64);
       formData.append("file_name_image", this.filename_image);
       formData.append("type_id", this.selectedcode);
+      formData.append("vip", this.radioSelected);
+
       formData.append("song_name", this.list_music[0]);
       // this._thuchi_services.UploadFile(formData).subscribe(res => {
 

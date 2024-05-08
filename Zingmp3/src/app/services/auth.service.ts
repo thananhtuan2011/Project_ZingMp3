@@ -26,6 +26,7 @@ export class AuthService {
       .then((result: any) => {
         this.LoginWithGoogle(result.additionalUserInfo?.profile?.email, result.additionalUserInfo?.profile.name).subscribe(res => {
 
+          localStorage.setItem("user", JSON.stringify(res.data));
         }
         )
         this.cookie_services.set("accessToken", result.credential.idToken, 365, '/', DOMAIN);

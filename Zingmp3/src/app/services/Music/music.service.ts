@@ -18,6 +18,10 @@ export class MusicService extends TableService<any> {
   CreateType(body: any): Observable<any> {
     return this.http.post<any>(this.baseUrl + `/CreateTypeNew`, body)
   }
+  GetRanDomMusic(): Observable<any> {
+    return this.http.get<any>(this.baseUrl_song + `/GetRanDomMusic`)
+  }
+
   getHttpHeaderFiles() {
 
     let result = new HttpHeaders({

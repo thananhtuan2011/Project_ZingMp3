@@ -10,14 +10,22 @@
                 <span style="color: aliceblue;font-size: 22px;">Create Song </span>
             </div>
             <div style="padding-top: 20px;padding-bottom: 20px;">
+              <label style="color: white;">Name Singer</label>
                 <input  [(ngModel)]="namesinger" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name Singer">
             </div>
             <div class="col-lg-10">
                 <label style="color: white;">Type Song</label>
-                <select   [(ngModel)]="selectedcode" class="form-control form-control-lg form-control-solid" 
+                <select   placeholder="Type Song"  [(ngModel)]="selectedcode" class="form-control form-control-lg form-control-solid" 
                >
                   <option *ngFor="let item  of listAllCategory"  [value]="item.type_id">{{item.typename}}</option>
                 </select>
+
+
+                <mat-radio-group class="example-radio-group" [(ngModel)]="radioSelected">
+                  <mat-radio-button style="outline: none;" *ngFor="let option of listGroup" [value]="option.value" class="example-radio-button">
+                 <span style="color: white;">   {{option.vip}}</span>
+                  </mat-radio-button>
+                </mat-radio-group>
               </div>
               <div style="display: flex;justify-content: space-around;">
 

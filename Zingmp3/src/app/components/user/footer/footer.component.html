@@ -3,9 +3,9 @@
     <div class="ca">
         <div>
             <div class="detail">
-                <div class="fl-1">
-                    <div class="col-2 anhnen">
-                        <img class="scl-1" src="../../../assets/img/music/listSong3/song10.jpg" alt="">
+                <div class="fl-1" style="height: 100vh;">
+                    <div class="col-2 anhnen image-music_up croll" >
+                        <img  class="scl-1 croll rotate "  #image src="../../../assets/img/music/listSong3/song10.jpg" alt="">
                     </div>
                     <div class="col-8 lyric">
                         <marquee style="height: 450px;" direction="up" scrollamount="3">
@@ -39,19 +39,24 @@
                 </div>
             </div>
         </div>
+        <!-- <button class="close-btn  close" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon>clear</mat-icon>
+          </button> -->
         <button class="close-btn  close" (click)="moveDivDown()">X</button>
     </div>
+
+
     <div class="flex-3">
         <div class="container text-center">
 
             <div class="row">
 
                 <!-- left -->
-                <div class="col flex">
+                <div class="col flex" (click)="moveDivUp()">
 
                     <div class="image-music croll">
-                        <img class="croll" #image src="../../../assets/img/music/listSong3/song10.jpg" alt=""
-                            [ngClass]="{'rotate': isPlaying}" (click)="moveDivUp()">
+                        <img style="cursor: pointer;" class="croll" #image src="../../../assets/img/music/listSong3/song10.jpg" alt=""
+                            [ngClass]="{'rotate': isPlaying}" >
                     </div>
 
                     <div class="title-music">

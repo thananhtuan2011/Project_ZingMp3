@@ -7,7 +7,7 @@
         <input  [(ngModel)]="nameplaylist" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Playlist name">
     </div>
     <div style="text-align: center;display: flex;justify-content: space-around;">
-        <button [disabled]="nameplaylist!==''?false:true" mat-raised-button color="primary"><span style="color: aliceblue;">Save</span></button>
+        <button (click)="Save()" [disabled]="nameplaylist!==''?false:true" mat-raised-button color="primary"><span style="color: aliceblue;">Save</span></button>
         <button (click)="_Back()" mat-raised-button >Cancel</button>
     </div>
     

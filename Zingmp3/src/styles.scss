@@ -6,6 +6,13 @@
 @import "./assets/plugins/flaticon2/flaticon.css";
 @import "./assets/plugins/keenthemes-icons/font/ki.css";
 
+.mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled:not(:checked)+.mdc-radio__background .mdc-radio__outer-circle {
+    border-color: white !important
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+    background: #3e1169 !important;
+}
 
 .mat-mdc-dialog-container .mdc-dialog__surface {
     background-color: #411465 !important;

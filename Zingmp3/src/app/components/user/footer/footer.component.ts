@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 export class FooterComponent {
   isPlaying = false;
 
-  constructor(private renderer: Renderer2, private el: ElementRef) {}
+  constructor(private renderer: Renderer2, private el: ElementRef) { }
 
   toggleRotate() {
     this.isPlaying = !this.isPlaying;
@@ -17,7 +17,7 @@ export class FooterComponent {
 
   moveDivUp() {
     const div1 = this.el.nativeElement.querySelector('.ca');
-    this.renderer.setStyle(div1, 'transform', 'translateY(-62%)');
+    this.renderer.setStyle(div1, 'transform', 'translateY(-100%)');
   }
   moveDivDown() {
     const div1 = this.el.nativeElement.querySelector('.ca');

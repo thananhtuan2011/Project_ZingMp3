@@ -220,7 +220,9 @@ namespace BE_Music.Controllers
             public async Task<object> LoginWithGoogle(string email, string name)
             {
 
-
+            DataTable _datatable2;
+            DataTable _datatable;
+            
             string ConnectionString = _configuration["AppConfig:ConnectionString"];
             using (DpsConnection cnn = new DpsConnection(ConnectionString))
             {
@@ -247,15 +249,40 @@ namespace BE_Music.Controllers
                 cnn.RollbackTransaction();
                 return JsonResultCommon.ThatBai("Cập nhật thất bại", cnn.LastError);
             }
+
+                     _datatable = cnn.CreateDataTable($@"select  email,account_id,role_code,full_name from  Acount where email=@email and isGoogle=@isGoogle", Conds);
+                    var data =
+                                        (from user in _datatable.AsEnumerable()
+                                        select new
+                                        {
+                                            account_id = user["account_id"],
+                                            email = user["email"],
+                                            full_name = user["full_name"],
+                                            role_code = user["role_code"],
+
+                                        }).FirstOrDefault();
+
+                    return JsonResultCommon.ThanhCong(data);
                 }
             else
                 {
-                    return JsonResultCommon.ThanhCong();
+
+                    _datatable2 = cnn.CreateDataTable($@"select email, account_id,role_code,full_name from  Acount where email=@email and isGoogle=@isGoogle", Conds);
+                    var data2 =
+                                       (from user in _datatable2.AsEnumerable()
+                                         select new
+                                         {
+                                             account_id = user["account_id"],
+                                             email = user["email"],
+                                             full_name = user["full_name"],
+                                             role_code = user["role_code"],
+
+                                         }).FirstOrDefault();
+                return JsonResultCommon.ThanhCong(data2);
                 }    
             }
 
 
-            return JsonResultCommon.ThanhCong();
 
         }
 

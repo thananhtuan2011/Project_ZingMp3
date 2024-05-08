@@ -58,6 +58,7 @@ namespace BE_Music.Controllers
                     val.Add("singer_name", formCollection["singer_name"].ToString()); // cái này là điều kiện để update
                     val.Add("song_name", formCollection["song_name"].ToString());
                     val.Add("image", img);
+                    val.Add("vip", int.Parse(formCollection["vip"].ToString()));
                     val.Add("type_id",int.Parse( formCollection["type_id"].ToString()));
                     val.Add("created_at", DateTime.Now);
 
@@ -83,6 +84,47 @@ namespace BE_Music.Controllers
             }
 
             return JsonResultCommon.ThanhCong();
+        }
+        [Route("GetRanDomMusic")]
+        [HttpGet]
+        public BaseModel<object> GetRanDomMusic()
+        {
+
+            try
+            {
+
+                string connectionString = _configuration["AppConfig:ConnectionString"];
+                using (DpsConnection cnn = new DpsConnection(connectionString))
+                {
+                  
+                    DataTable _datatable = cnn.CreateDataTable($@"SELECT TOP 4 *  FROM Song
+ORDER BY NEWID()");
+                   
+
+                    var _data = from r in _datatable.AsEnumerable()
+                                select new
+                                {
+                                    //Id_group = r["ID_GROUP"],
+                                    id_song = r["id_song"],
+                                    singer_name = r["singer_name"],
+                                    song_name = r["song_name"].ToString().Replace(".mp3",""),
+                                    url_song= "https://localhost:5001/" + "UploadSong/" + r["song_name"],
+                                    image = "https://localhost:5001/" + "HinhAnh/" + r["image"],
+                                    type_id = r["type_id"],
+                                    created_at = r["created_at"],
+                                    updated_at = r["updated_at"],
+                                    
+
+
+                                };
+
+                    return JsonResultCommon.ThanhCong(_data);
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonResultCommon.Exception(ex);
+            }
         }
         [Route("GetAllSong")]
         [HttpPost]

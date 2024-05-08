@@ -54,6 +54,7 @@ import { ActionNotificationComponent } from './components/crud/action-natificati
 import { LayoutUtilsService } from './components/crud/utils/layout-utils.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DeleteEntityDialogComponent } from './components/crud';
+import { MatRadioModule } from '@angular/material/radio';
 import { AddMusicComponent } from './pages/admin/list-music/add-music/add-music.component';
 // decorators
 @NgModule({
@@ -102,6 +103,7 @@ import { AddMusicComponent } from './pages/admin/list-music/add-music/add-music.
     AngularFireDatabaseModule,
     AppRoutingModule,
     CommonModule,
+    MatRadioModule,
     SidebarModule,
     ReactiveFormsModule,
     MatDialogModule,
