@@ -1,13 +1,18 @@
 ﻿using BE_Music.Common;
+using BE_Music.Model.Song;
 using BE_Music.Models;
 using BE_Music.Models.BaseModel;
 using BE_Music.Services.Type;
 using DpsLibs.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections;
+using System;
 using System.Data;
 using System.IO;
 using System.Web;
+using BE_Music.Classes;
+
 namespace BE_Music.Controllers
 {
     [Route("api/song")]
@@ -20,35 +25,58 @@ namespace BE_Music.Controllers
         {
             _configuration = configuration;
         }
-        [Route("UpFile")]
-        [HttpPost]
-        public async Task<object> UpFile(IFormFile file)
+        [Route("AddSong")]
+        [HttpPost, DisableRequestSizeLimit]
+        public async Task<object> AddSong()
         {
           
             try
             {
                 string path = "";
-               
-
+                var formCollection = await Request.ReadFormAsync();
+                var file = formCollection.Files.First();
+                //var httpPostedFile = Request.Form.Files;
                 //Path to save file
-              
 
-                    path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, "UploadSong"));
+
+                path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, "UploadSong"));
                     if (!Directory.Exists(path))
                     {
                         Directory.CreateDirectory(path);
                     }
                     using (var fileStream = new FileStream(Path.Combine(path, file.FileName), FileMode.Create))
                     {
-                        await file.CopyToAsync(fileStream);
+                    await file.CopyToAsync(fileStream);
                     }
+                string connectionString = _configuration["AppConfig:ConnectionString"];
+                using (DpsConnection cnn = new DpsConnection(connectionString))
+                {
+                    var img = UploadHelper.UploadImage(formCollection["base64"], formCollection["file_name_image"], "HinhAnh", "HinhAnh", true);
+                   // Thực hiện truy vấn thêm mới loại nhạc
+                    SqlConditions Conds = new SqlConditions();
+                    Hashtable val = new Hashtable(); //  Hashtable này dùng để insert dữ liệu vào db
+                    val.Add("singer_name", formCollection["singer_name"].ToString()); // cái này là điều kiện để update
+                    val.Add("song_name", formCollection["song_name"].ToString());
+                    val.Add("image", img);
+                    val.Add("type_id",int.Parse( formCollection["type_id"].ToString()));
+                    val.Add("created_at", DateTime.Now);
+
+
+                    if (cnn.Insert(val, "Song") < 0)
+                    {
+                        cnn.RollbackTransaction();
+                        return JsonResultCommon.ThatBai("Cập nhật thất bại", cnn.LastError);
+                    }
+                    // Sau khi thêm mới, trả về thông tin loại nhạc đã được thêm
+                    return JsonResultCommon.ThanhCong(); ;
                     //string ext = Path.GetExtension(postedFile.FileName);
                     //if (!String.IsNullOrEmpty(ext))
                     //{
                     //    filename += ext; ///EX: "namefile.pdf"
                     //    postedFile.SaveAs(dpath + "/" + filename);
                     //}
-            }
+                }
+                }
             catch (Exception)
             {
                
@@ -133,8 +161,9 @@ namespace BE_Music.Controllers
                         page_index = p.Panigator.PageIndex;
                     }
                     #endregion
-                    _sqlQuery = $@"select * from TypeSong" + " " + _whereCondition + " " + _orderBy + " ";
+                    _sqlQuery = $@"select * from Song" + " " + _whereCondition + " " + _orderBy + " ";
                     DataTable _datatable = cnn.CreateDataTable(_sqlQuery, Conds);
+                    DataTable _datatable_category = cnn.CreateDataTable(@"select * from TypeSong");
                     int _countRows = _datatable.Rows.Count;
                     if (cnn.LastError != null || _datatable == null)
                         return JsonResultCommon.NotData();
@@ -156,11 +185,19 @@ namespace BE_Music.Controllers
                                 select new
                                 {
                                     //Id_group = r["ID_GROUP"],
+                                    id_song = r["id_song"],
+                                    singer_name = r["singer_name"],
+                                    song_name = r["song_name"],
+                                    image = "https://localhost:5001/" + "HinhAnh/" + r["image"],
                                     type_id = r["type_id"],
-                                    typename = r["typename"],
-                                    type_description = r["type_description"],
                                     created_at = r["created_at"],
                                     updated_at = r["updated_at"],
+                                    category = (from ca in _datatable_category.AsEnumerable()
+                                                where ca["type_id"].ToString().Equals(r["type_id"].ToString())
+                                                select new
+                                                {
+                                                    typename = ca["typename"]
+                                                }).FirstOrDefault()
 
 
 

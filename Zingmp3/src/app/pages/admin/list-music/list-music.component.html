@@ -52,19 +52,28 @@
     <div class="card-body">
       <div class="table-responsive angular-bootstrap-table"  [ngStyle]="{'height.px': pageHeight}" >
         <table class="table table-head-custom table-vertical-center overflow-hidden">
-          <thead>
+          <thead style="font-size: 20px;">
             <th >
-              <span class="titile">Type_id</span>
+              <span class="titile">ID_song</span>
              
             </th>
             <th>
-              <span class="titile">Type name</span>
+              <span class="titile">Singer name</span>
              
             </th>
             <th>
-              <span class="titile">Type_description</span>
+              <span class="titile">Song  name</span>
              
             </th>
+            <th>
+              <span class="titile">Image</span>
+             
+            </th>
+            <th>
+              <span class="titile">Category</span>
+             
+            </th>
+            
             <th >
               <span class="titile">Created</span>
             
@@ -81,26 +90,40 @@
             </th>
            
           </thead>
+          <div style="height: 20px;"></div>
           <tbody>
            
-          <tr *ngFor="let r of music_serives._itemsTypeSong$ | async">
+          <tr *ngFor="let r of music_serives._itemsAllSong$ | async">
              
               <td>
                 <div>
-                  <span class="cssusername">{{ r.type_id }}</span>
+                  <span class="cssusername">{{ r.id_song }}</span>
                 </div>
               </td>
               <td>
                 <div>
-                  <span class="cssDepartment">{{ r.typename  }} </span>
+                  <span class="cssDepartment">{{ r.singer_name  }} </span>
+                </div>
+              </td>
+              <td>
+                <div style="display:  flex;align-items: center;">
+                  <img style="width: 30px; padding-right: 5px;" src="../../../../../assets/icon/iconnhac.png">
+                  <span class="cssDepartment">{{ r.song_name  }} </span>
+                </div>
+              </td>
+           
+              <td>
+                <div>
+                  <img style="    width: 50px;
+                  height: 50px;
+                  border-radius: 10px;" src="{{ r.image }}">
                 </div>
               </td>
               <td>
                 <div>
-                  <span class="cssDepartment">{{ r.type_description  }} </span>
+                  <span class="cssDepartment">{{ r.category.typename  }} </span>
                 </div>
               </td>
-             
               <td>
                 <span class="cssJobtitle">{{ r.created_at  | date : 'dd/M/yyyy – hh:mm ' }}</span>
               </td>

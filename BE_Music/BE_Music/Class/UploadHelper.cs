@@ -278,47 +278,24 @@ namespace BE_Music.Classes
             }
             try
             {
+              string   path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, folder));
+
+                //Check if directory exist
+                if (!System.IO.Directory.Exists(path))
+                {
+                    System.IO.Directory.CreateDirectory(path); //Create directory if it doesn't exist
+                }
+
+                string imageName = filename ;
+
+                //set the image path
+                string imgPath = Path.Combine(path, imageName);
+
                 byte[] imageBytes = Convert.FromBase64String(strBase64);
-                if (imageBytes.Length > Constant.MaxSize)
-                {
-                    error = "File hình không được lớn hơn " + Constant.MaxSize / 1000 + "MB";
-                    return false;
-                }
-                string path = folder;
-                string Base_Path = Path.Combine(ContentRootPath, path);
-                if (!Directory.Exists(Base_Path)) //tạo thư mục nếu chưa có
-                    Directory.CreateDirectory(Base_Path);
-                filename = checkFilename(filename, path);
-                System.Drawing.Image img = Base64ToImage(strBase64);
-                if (keepSize)
-                {
-                    img.Save(Base_Path + filename);
-                }
-                else
-                {
-                    int maxsize = img.Height > img.Width ? img.Width : img.Height;
-                    if (maxsize < 64)
-                    {
-                        error = "Kích thước hình ảnh quá nhỏ";
-                        return false;
-                    }
-                    maxsize = maxsize > 512 ? 512 : maxsize;
-                    using (MemoryStream sr = new MemoryStream())
-                    {
-                        MemoryStream d = new MemoryStream(imageBytes);
-                        if (!Directory.Exists(Base_Path)) //tạo thư mục nếu chưa có
-                            Directory.CreateDirectory(Base_Path);
-                        //var rs = DpsLibs.Common.IProcess.Resize(d, maxsize, maxsize, Base_Path, filename, out filename, System.Drawing.Imaging.ImageFormat.Png, false);//nén hình và lưu file
-                        //if (rs != DpsLibs.Common.ResizeResult.Success && rs != DpsLibs.Common.ResizeResult.Nochange)
-                        //{
-                        //    error = "Upload hình ảnh thất bại";
-                        //    return false;
-                        //}
-                    }
-                }
-                //string s_name = Path.GetFileName(filename);
-              //  filepath = folder +"/"+ filename;
-                return Base_Path + filename;
+
+                File.WriteAllBytes(imgPath, imageBytes);
+
+                return  filename;
             }
             catch (Exception ex)
             {

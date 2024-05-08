@@ -117,7 +117,7 @@ namespace BE_Music.Services.Type
                     return JsonResultCommon.ThatBai("Cập nhật thất bại", cnn.LastError);
                 }
                 // Sau khi thêm mới, trả về thông tin loại nhạc đã được thêm
-                return JsonResultCommon.ThanhCong(); ;
+                return JsonResultCommon.ThanhCong();
             }
         }
 

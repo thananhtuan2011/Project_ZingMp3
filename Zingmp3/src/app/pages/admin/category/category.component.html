@@ -52,7 +52,7 @@
     <div class="card-body">
       <div class="table-responsive angular-bootstrap-table"  [ngStyle]="{'height.px': pageHeight}" >
         <table class="table table-head-custom table-vertical-center overflow-hidden">
-          <thead>
+          <thead style="font-size: 22px;">
             <th >
               <span class="titile">Type_id</span>
              
@@ -81,6 +81,7 @@
             </th>
            
           </thead>
+          <div style="height: 20px;"></div>
           <tbody>
            
           <tr *ngFor="let r of category_services._itemsTypeSong$ | async">

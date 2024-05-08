@@ -1,1 +1,83 @@
-<p>add-music works!</p>
+<div class="modal-content">
+
+    <div class="overlay overlay-block cursor-default modal-body" >
+   
+  
+      <ng-container>
+        <div >
+  
+            <div style="text-align: center;">
+                <span style="color: aliceblue;font-size: 22px;">Create Song </span>
+            </div>
+            <div style="padding-top: 20px;padding-bottom: 20px;">
+                <input  [(ngModel)]="namesinger" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name Singer">
+            </div>
+            <div class="col-lg-10">
+                <label style="color: white;">Type Song</label>
+                <select   [(ngModel)]="selectedcode" class="form-control form-control-lg form-control-solid" 
+               >
+                  <option *ngFor="let item  of listAllCategory"  [value]="item.type_id">{{item.typename}}</option>
+                </select>
+              </div>
+              <div style="display: flex;justify-content: space-around;">
+
+              
+        <div >
+             
+              <button 
+              (click)="hiddenfileinput_image.click()" 
+            matTooltip="Hỉnh ảnh" mat-icon-button aria-label="Example icon button with a home icon">
+            <mat-icon style="color: white;">image</mat-icon>
+          </button>
+          
+          <input type='file' accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .heic, .heif, .tiff|image/*"
+          id="PDFInpdd" #hiddenfileinput_image (change)="onSelectFile_Image($event)" 
+          style="display: none;">
+    
+        
+            <div *ngFor="let img of list_image">
+              <img style="width: 150px;" [src]="img">
+          </div>
+        </div>
+      
+<div>
+
+          <button 
+          (click)="hiddenfileinput_music.click()" 
+        matTooltip="Hỉnh ảnh" mat-icon-button aria-label="Example icon button with a home icon">
+        <mat-icon style="color: white;">cloud_upload</mat-icon>
+      </button>
+      
+      <input type='file'accept="audio/mp3,audio/*;capture=microphone"
+      id="PDFInpdd" #hiddenfileinput_music (change)="onSelectFile_PDF($event)" 
+      style="display: none;">
+    
+        <div style="color: white;" *ngIf="list_music.length>0">
+            <hr>
+        </div>
+        
+        <div *ngFor="let mu of list_music">
+            <div style="display: flex;align-items: center;">
+                <img style="width: 30px;" src="../../../../../assets/icon/iconnhac.png">
+               <span style="padding-left: 5px;color: white;"> {{mu}}</span>
+            </div>
+          <!-- <img style="width: 200px;" [src]="img"> -->
+      </div>
+</div>
+</div>
+<div style="color: white;" >
+    <hr>
+</div>
+      <div style="display: flex;justify-content: space-between; margin-top: 20px;">
+        <button (click)="Save()" [disabled]="namesinger!==''?false:true" mat-raised-button color="primary"><span style="color: aliceblue;">Save</span></button>
+        <button (click)="_Back()" mat-raised-button >Cancel</button>
+      </div>
+
+    
+  </div>
+      </ng-container>
+    </div>
+
+  
+
+  </div>

@@ -16,7 +16,7 @@ import { AddMusicComponent } from './add-music/add-music.component';
 export class ListMusicComponent implements OnInit {
   pageHeight = window.innerHeight - 236;
   api = environment.HOST_API;
-  api_type_song = this.api + "/api/typesong/GetAllType"
+  api_type_song = this.api + "/api/song/GetAllSong"
   paginator!: PaginatorState;
   subheaderCSSClasses = '';
   subheaderContainerCSSClasses = '';
@@ -39,7 +39,7 @@ export class ListMusicComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem("user")!);
   }
   paginate(paginator: PaginatorState) {
-    this.music_serives.patchStateAllTypeSong({ paginator }, this.api_type_song);
+    this.music_serives.patchStateAllSong({ paginator }, this.api_type_song);
   }
   sort(column: string) {
     const sorting = this.sorting;
@@ -55,12 +55,12 @@ export class ListMusicComponent implements OnInit {
 
   LoadAllTypeSong() {
     const filter = {};
-    this.music_serives.patchStateAllTypeSong({ filter }, this.api_type_song);
+    this.music_serives.patchStateAllSong({ filter }, this.api_type_song);
 
   }
   Add() {
     const dialogRef = this.dialog.open(AddMusicComponent, {
-      width: '500px',
+      width: '600px',
       // data: {  },
       // with:'500px',
 
@@ -160,6 +160,6 @@ export class ListMusicComponent implements OnInit {
   onDepartmentSelection() {
 
     const filter = { idsuppliers: this.selected };
-    this.music_serives.patchStateAllTypeSong({ filter }, this.api_type_song);
+    this.music_serives.patchStateAllSong({ filter }, this.api_type_song);
   }
 }

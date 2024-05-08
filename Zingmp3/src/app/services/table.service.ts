@@ -24,7 +24,7 @@ export abstract class TableService<T> {
   private _items$ = new BehaviorSubject<T[]>([]);
   public _itemsacount$ = new BehaviorSubject<T[]>([]);
   public _itemsTypeSong$ = new BehaviorSubject<T[]>([]);
-  public _itemsChi$ = new BehaviorSubject<T[]>([]);
+  public _itemsAllSong$ = new BehaviorSubject<T[]>([]);
   public _itemsThu$ = new BehaviorSubject<T[]>([]);
   public _itemsThuChi$ = new BehaviorSubject<T[]>([]);
   public _itemsBill$ = new BehaviorSubject<T[]>([]);
@@ -112,15 +112,16 @@ export abstract class TableService<T> {
     this.patchStateWithoutFetch(patch);
     this.fetchBill(apiRoute, "");
   }
-  public patchStateDanhMucThu(patch: Partial<ITableState>, apiRoute: string = '') {
+
+  public patchStateAllSong(patch: Partial<ITableState>, apiRoute: string = '') {
     this.patchStateWithoutFetch(patch);
-    this.fetch_AllDMThu(apiRoute, "");
-  }
-  public patchStateDanhMucChi(patch: Partial<ITableState>, apiRoute: string = '') {
-    this.patchStateWithoutFetch(patch);
-    this.fetch_AllDMChi(apiRoute, "");
+    this.fetch_AllSong(apiRoute, "");
   }
   public patchStateAllTypeSong(patch: Partial<ITableState>, apiRoute: string = '') {
+    this.patchStateWithoutFetch(patch);
+    this.fetch_AllTypeSong(apiRoute, "");
+  }
+  public patchStateAllUser(patch: Partial<ITableState>, apiRoute: string = '') {
     this.patchStateWithoutFetch(patch);
     this.fetch_AllTypeSong(apiRoute, "");
   }
@@ -353,9 +354,9 @@ export abstract class TableService<T> {
         tap((res: any) => {
           if (res) {
             resItems = res.data;
-            resTotalRow = res.total;
+            resTotalRow = res.panigator.total;
           }
-          console.log("Acccount", resItems)
+          // console.log("Acccount", resItems)
           this._itemsacount$.next(resItems);
           this.__responseData$.next(res);
           this.patchStateWithoutFetch({
@@ -486,7 +487,6 @@ export abstract class TableService<T> {
       .pipe(
         tap((res: any) => {
           if (res) {
-            console.log("resss", res)
             resItems = res.data;
             resTotalRow = res.panigator.total;
           }
@@ -522,7 +522,7 @@ export abstract class TableService<T> {
       .subscribe();
     this._subscriptions.push(request);
   }
-  public fetch_AllDMThu(apiRoute: string = '', nameKey: string = 'id') {
+  public fetch_AllUser(apiRoute: string = '', nameKey: string = 'id') {
     var resItems: any = [];
     var resTotalRow: number = 0;
     this._isLoading$.next(true);
@@ -566,19 +566,20 @@ export abstract class TableService<T> {
       .subscribe();
     this._subscriptions.push(request);
   }
-  public fetch_AllDMChi(apiRoute: string = '', nameKey: string = 'id') {
+  public fetch_AllSong(apiRoute: string = '', nameKey: string = 'id') {
     var resItems: any = [];
     var resTotalRow: number = 0;
     this._isLoading$.next(true);
     this._errorMessage.next('');
-    const request = this.find_AllDMChi(this._tableState$.value, apiRoute)
+    const request = this.find_AllSong(this._tableState$.value, apiRoute)
       .pipe(
         tap((res: any) => {
           if (res) {
             resItems = res.data;
-            resTotalRow = res.total;
+            resTotalRow = res.panigator.total;
           }
-          this._itemsChi$.next(resItems);
+          console.log("resItems", resItems)
+          this._itemsAllSong$.next(resItems);
           this.__responseData$.next(res);
           this.patchStateWithoutFetch({
             paginator: this._tableState$.value.paginator.recalculatePaginator(
@@ -634,7 +635,7 @@ export abstract class TableService<T> {
       })
     );
   }
-  find_AllDMChi(tableState: ITableState, routeFind: string = '',): Observable<any> {
+  find_AllSong(tableState: ITableState, routeFind: string = '',): Observable<any> {
     const url = routeFind;
     const httpHeader = this.getHttpHeaders();
     this._errorMessage.next('');

@@ -17,7 +17,12 @@ export class CategoryService extends TableService<any> {
   CreateType(body: any): Observable<any> {
     return this.http.post<any>(this.baseUrl + `/CreateTypeNew`, body)
   }
+  getAll_category(body: any): Observable<any> {
+    const url = this.baseUrl + '/GetAllType';
+    const httpHeader = this.getHttpHeaders();
+    return this.http.post<any>(url, body, { headers: httpHeader });
 
+  }
   deleteType(id: any): Observable<any> {
     return this.http.delete<any>(this.baseUrl + `/${id}`)
   }

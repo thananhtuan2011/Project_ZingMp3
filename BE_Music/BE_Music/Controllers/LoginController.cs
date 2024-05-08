@@ -29,6 +29,127 @@ namespace BE_Music.Controllers
             _login = login;
             _configuration = configuration;
         }
+        [Route("GetAllUser")]
+        [HttpPost]
+        public BaseModel<object> GetAllUser([FromBody] QueryRequestParams p)
+        {
+
+            try
+            {
+
+                string connectionString = _configuration["AppConfig:ConnectionString"];
+                using (DpsConnection cnn = new DpsConnection(connectionString))
+                {
+
+                    Dictionary<string, string> _sortableFields = new Dictionary<string, string>
+                    {
+                        { "FullName", "FullName" },
+                        //{ "DonViTinh", "DonViTinh" }
+                    };
+                    Panigator v_panigator = null;
+                    IDictionary<string, string> v_dic_keyFilter = new Dictionary<string, string>
+                    {
+                       { "FullName", "FullName" },
+                        //{ "DonViTinh", "DonViTinh"},
+                    };
+
+                    string _select = "", _sqlQuery = "", v_str_paginate = "", _orderBy = "", _whereCondition = "";
+                    SqlConditions Conds = new SqlConditions();
+                    #region Filter, sort, paganitor
+                    //filter request have to right and enough , same in code
+                    if (p.Filter != null)
+                    {
+                        if (p.Filter.Count > 0)
+                        {
+                            var listKeySearch = p.Filter.Where(x => !v_dic_keyFilter.ContainsKey(x.Key)).Select(q => q.Key).ToList();
+                            if (listKeySearch != null && listKeySearch.Count > 0)
+                            {
+                                return JsonResultCommon.NotData();
+                            }
+
+                            foreach (string _filter in p.Filter.Keys)
+                            {
+                                if (!string.IsNullOrEmpty(p.Filter[_filter]))
+                                {
+                                    foreach (string vl in p.Filter.Values)
+                                    {
+                                        //_whereCondition += " AND " + v_dic_keyFilter[_filter] + " = @" + _filter;
+                                        _whereCondition += " AND " + v_dic_keyFilter[_filter] + " LIKE'%";
+                                        _whereCondition += vl;
+                                        _whereCondition += "%'";
+                                        Conds.Add(_filter, p.Filter[_filter]);
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+
+                    //sort column in datatable
+                    if (p.Sort != null)
+                    {
+                        if (!string.IsNullOrEmpty(p.Sort.ColumnName) && v_dic_keyFilter.ContainsKey(p.Sort.ColumnName))
+                        {
+                            _orderBy = "order by" + " " + v_dic_keyFilter[p.Sort.ColumnName] + " " + (p.Sort.Direction.ToLower().Equals("asc") ? "asc" : "desc");
+                        }
+                    }
+
+                    int page_index = 0;
+                    //set up panigator for datatable
+                    if (p.Panigator != null)
+                    {
+                        //v_str_paginate = $@" OFFSET @PageSize * (@PageNumber - 1) ROWS FETCH NEXT @PageSize ROWS ONLY;";
+                        //// offset fetch là các tùy chọn của mệnh đề order by
+                        //_cond.Add("PageSize", p.Panigator.PageSize);
+                        //_cond.Add("PageNumber", p.Panigator.PageIndex);
+
+                        page_index = p.Panigator.PageIndex;
+                    }
+                    #endregion
+                    _sqlQuery = $@"select * from Acount" + " " + _whereCondition + " " + _orderBy + " ";
+                    DataTable _datatable = cnn.CreateDataTable(_sqlQuery, Conds);
+                    int _countRows = _datatable.Rows.Count;
+                    if (cnn.LastError != null || _datatable == null)
+                        return JsonResultCommon.NotData();
+
+                    if (_datatable.Rows.Count == 0)
+                        return JsonResultCommon.NotData();
+                    else
+                    {
+                        if (page_index == 0)
+                        {
+                            p.Panigator.PageSize = _countRows;
+                        }
+                        v_panigator = new Panigator(p.Panigator.PageIndex, p.Panigator.PageSize, _datatable.Rows.Count);
+                    }
+
+
+
+                    var _data = from r in _datatable.AsEnumerable().Skip((p.Panigator.PageIndex - 1) * p.Panigator.PageSize).Take(p.Panigator.PageSize).ToList()
+                                select new
+                                {
+                                    //Id_group = r["ID_GROUP"],
+                                    account_id = r["account_id"],
+                                    active = r["active"],
+                                    address = r["address"],
+                                    full_name = r["full_name"],
+                                    phone = r["phone"],
+                                    user_name = r["user_name"],
+                                    email = r["email"],
+                                    created_at = r["created_at"],
+                                    updated_at = r["updated_at"],
+                                    isGoogle = r["isGoogle"],
+
+                                };
+
+                    return JsonResultCommon.ThanhCong(_data, v_panigator);
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonResultCommon.Exception(ex);
+            }
+        }
         [HttpGet]
         [Route("Login")]
         public async Task<object> Login(string username, string pass)
@@ -65,10 +186,10 @@ namespace BE_Music.Controllers
                     val.Add("user_name", username);
                     val.Add("password", pass);
                     val.Add("role_code", 2);
+                    val.Add("created_at", DateTime.Now);
                     val.Add("isGoogle", false);
                     val.Add("full_name", fullname);
                     
-
 
                     if (cnn.Insert(val, "Acount") < 0)
                     {
@@ -115,7 +236,8 @@ namespace BE_Music.Controllers
                 Hashtable val = new Hashtable();
 
                 val.Add("email", email);
-                val.Add("full_name", name);
+                    val.Add("full_name", name);
+                         val.Add("created_at", DateTime.Now);
                     val.Add("role_code", 2);
                     val.Add("isGoogle", true);
                 

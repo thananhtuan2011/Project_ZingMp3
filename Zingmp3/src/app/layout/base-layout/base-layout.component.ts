@@ -15,6 +15,12 @@ export class BaseLayoutComponent {
       localStorage.clear()
       this.router.navigateByUrl('/login')
 
+    } else {
+      const role = localStorage.getItem("roles");
+      if (role === '"1"') {
+        this.router.navigateByUrl('/admin');
+
+      }
     }
   }
 
