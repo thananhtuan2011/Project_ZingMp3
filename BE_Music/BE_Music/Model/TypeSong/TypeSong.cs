@@ -13,6 +13,8 @@ namespace BE_Music.Model.TypeSong
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int type_id { get; set; }
         public string typename { get; set; }
+        public string base64 { get; set; }
+        public string file_name { get; set; }
         public  string type_description { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }

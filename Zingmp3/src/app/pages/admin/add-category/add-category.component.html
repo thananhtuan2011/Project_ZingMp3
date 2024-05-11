@@ -10,10 +10,30 @@
     <div style="padding-top: 20px;padding-bottom: 20px;">
         <input  [(ngModel)]="type_description" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Description">
     </div>
+
+    <div  style="margin-bottom: 15px;">
+             
+        <button 
+        (click)="hiddenfileinput_image.click()" 
+      matTooltip="Hỉnh ảnh" mat-icon-button aria-label="Example icon button with a home icon">
+      <mat-icon style="color: white;">image</mat-icon>
+    </button>
+    
+    <input type='file' accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .heic, .heif, .tiff|image/*"
+    id="PDFInpdd" #hiddenfileinput_image (change)="onSelectFile_Image($event)" 
+    style="display: none;">
+
+  
+      <div *ngFor="let img of list_image">
+        <img style="width: 150px;" [src]="img">
+    </div>
+  </div>
     <div style="text-align: center;display: flex;justify-content: space-around;">
         <button (click)="Add()" [disabled]="typename!==''?false:true" mat-raised-button color="primary"><span style="color: aliceblue;">Save</span></button>
         <button (click)="_Back()" mat-raised-button >Cancel</button>
     </div>
+
+ 
     
 
 </div>

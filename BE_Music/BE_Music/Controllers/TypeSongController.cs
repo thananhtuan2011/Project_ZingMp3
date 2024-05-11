@@ -174,7 +174,7 @@ namespace BE_Music.Controllers
                     var _data = from r in _datatable.AsEnumerable().Skip((p.Panigator.PageIndex - 1) * p.Panigator.PageSize).Take(p.Panigator.PageSize).ToList()
                                 select new
                                 {
-                                    //Id_group = r["ID_GROUP"],
+                                  img = "https://localhost:5001/" + "HinhAnh/" + r["img"],
                                     type_id = r["type_id"],
                                     typename = r["typename"],
                                     type_description = r["type_description"],

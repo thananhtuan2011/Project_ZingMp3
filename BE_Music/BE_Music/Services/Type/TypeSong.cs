@@ -1,4 +1,5 @@
-﻿using BE_Music.Common;
+﻿using BE_Music.Classes;
+using BE_Music.Common;
 using BE_Music.Interface_Service;
 using BE_Music.Model.TypeSong;
 using BE_Music.Models.BaseModel;
@@ -44,9 +45,11 @@ namespace BE_Music.Services.Type
             string connectionString = _config["AppConfig:ConnectionString"];
             using (DpsConnection cnn = new DpsConnection(connectionString))
             {
+                var img = UploadHelper.UploadImage(type.base64, type.file_name, "HinhAnh", "HinhAnh", true);
                 // Thực hiện truy vấn thêm mới loại nhạc
                 Hashtable val = new Hashtable(); //  Hashtable này dùng để insert dữ liệu vào db
 
+                val.Add("img", img);
                 val.Add("typename", type.typename);
                 val.Add("type_description", type.type_description);
                 val.Add("created_at", DateTime.Now);

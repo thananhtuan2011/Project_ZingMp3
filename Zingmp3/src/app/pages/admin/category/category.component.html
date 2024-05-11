@@ -65,6 +65,10 @@
               <span class="titile">Type_description</span>
              
             </th>
+            <th>
+              <span class="titile">Img</span>
+             
+            </th>
             <th >
               <span class="titile">Created</span>
             
@@ -101,7 +105,11 @@
                   <span class="cssDepartment">{{ r.type_description  }} </span>
                 </div>
               </td>
-             
+              <td>
+                <div>
+                 <img style="width: 200px;" src="{{r.img}}">
+                </div>
+              </td>
               <td>
                 <span class="cssJobtitle">{{ r.created_at  | date : 'dd/M/yyyy – hh:mm ' }}</span>
               </td>
