@@ -146,7 +146,7 @@ ORDER BY NEWID()");
                     Panigator v_panigator = null;
                     IDictionary<string, string> v_dic_keyFilter = new Dictionary<string, string>
                     {
-                       { "FullName", "FullName" },
+                       { "song_name", "song_name" },
                         //{ "DonViTinh", "DonViTinh"},
                     };
 
@@ -171,7 +171,7 @@ ORDER BY NEWID()");
                                     foreach (string vl in p.Filter.Values)
                                     {
                                         //_whereCondition += " AND " + v_dic_keyFilter[_filter] + " = @" + _filter;
-                                        _whereCondition += " AND " + v_dic_keyFilter[_filter] + " LIKE'%";
+                                        _whereCondition += " where " + v_dic_keyFilter[_filter] + " LIKE N'%";
                                         _whereCondition += vl;
                                         _whereCondition += "%'";
                                         Conds.Add(_filter, p.Filter[_filter]);

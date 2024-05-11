@@ -99,16 +99,15 @@ export class ListMusicComponent implements OnInit {
 
 
       const filter: any = {};
-      filter['customerName'] = value
-
-      // this.music_serives.patchStateAllCustomer({ filter }, this.api_type_song);
+      filter['song_name'] = value
+      this.music_serives.patchStateAllSong({ filter }, this.api_type_song);
     }
     else {
 
       const filter = {};
 
 
-      this.music_serives.patchStateAllCustomer({ filter }, this.api_type_song);
+      this.music_serives.patchStateAllSong({ filter }, this.api_type_song);
     }
 
   }

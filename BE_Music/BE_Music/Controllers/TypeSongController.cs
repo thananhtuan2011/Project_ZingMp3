@@ -89,13 +89,13 @@ namespace BE_Music.Controllers
 
                     Dictionary<string, string> _sortableFields = new Dictionary<string, string>
                     {
-                        { "FullName", "FullName" },
+                        { "typename", "typename" },
                         //{ "DonViTinh", "DonViTinh" }
                     };
                     Panigator v_panigator = null;
                     IDictionary<string, string> v_dic_keyFilter = new Dictionary<string, string>
                     {
-                       { "FullName", "FullName" },
+                       { "typename", "typename" },
                         //{ "DonViTinh", "DonViTinh"},
                     };
 
@@ -120,7 +120,7 @@ namespace BE_Music.Controllers
                                     foreach (string vl in p.Filter.Values)
                                     {
                                         //_whereCondition += " AND " + v_dic_keyFilter[_filter] + " = @" + _filter;
-                                        _whereCondition += " AND " + v_dic_keyFilter[_filter] + " LIKE'%";
+                                        _whereCondition += " where " + v_dic_keyFilter[_filter] +" LIKE N'%";
                                         _whereCondition += vl;
                                         _whereCondition += "%'";
                                         Conds.Add(_filter, p.Filter[_filter]);

@@ -99,16 +99,15 @@ export class CategoryComponent implements OnInit {
 
 
       const filter: any = {};
-      filter['customerName'] = value
-
-      // this.category_services.patchStateAllCustomer({ filter }, this.api_type_song);
+      filter['typename'] = value
+      this.category_services.patchStateAllTypeSong({ filter }, this.api_type_song);
     }
     else {
 
       const filter = {};
 
 
-      this.category_services.patchStateAllCustomer({ filter }, this.api_type_song);
+      this.category_services.patchStateAllTypeSong({ filter }, this.api_type_song);
     }
 
   }
