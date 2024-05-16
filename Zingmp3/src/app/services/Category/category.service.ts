@@ -17,6 +17,13 @@ export class CategoryService extends TableService<any> {
   CreateType(body: any): Observable<any> {
     return this.http.post<any>(this.baseUrl + `/CreateTypeNew`, body)
   }
+  GetRanDomTypeSong(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + `/GetRanDomTypeSong`)
+  }
+
+  UpdateType(type_id: number, body: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl + `/UpdateTypeSong?type_id=${type_id}`, body)
+  }
   getAll_category(body: any): Observable<any> {
     const url = this.baseUrl + '/GetAllType';
     const httpHeader = this.getHttpHeaders();

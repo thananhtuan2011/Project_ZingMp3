@@ -1,17 +1,19 @@
 import { LayoutUtilsService, MessageType } from './../../../components/crud/utils/layout-utils.service';
-import { CategoryService } from './../../../services/Category/category.service';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { CategoryService } from 'src/app/services/Category/category.service';
 
 @Component({
-  selector: 'app-add-category',
-  templateUrl: './add-category.component.html',
-  styleUrls: ['./add-category.component.scss']
+  selector: 'app-update-category',
+  templateUrl: './update-category.component.html',
+  styleUrls: ['./update-category.component.scss']
 })
-export class AddCategoryComponent implements OnInit {
+export class UpdateCategoryComponent implements OnInit {
   typename!: string;
+  type_id!: number;
+  img_update!: string;
   type_description!: string;
-  constructor(private dialogRef: MatDialogRef<AddCategoryComponent>
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<UpdateCategoryComponent>
     , private _cate: CategoryService, private cdr: ChangeDetectorRef,
     private layoutUtilsService: LayoutUtilsService,
   ) {
@@ -31,9 +33,8 @@ export class AddCategoryComponent implements OnInit {
       file_name: this.filename_image == undefined ? "" : this.filename_image
     }
 
-    console.log("item", item)
 
-    this._cate.CreateType(item).subscribe(res => {
+    this._cate.UpdateType(this.type_id, item).subscribe(res => {
       if (res) {
         this.CloseDia(res)
         this.layoutUtilsService.showActionNotification("Successfully", MessageType.Delete, 4000, true, false, 3000, 'top', 1);
@@ -73,7 +74,11 @@ export class AddCategoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.list_image = [];
+    this.type_id = this.data.item.type_id;
+    this.typename = this.data.item.typename
+    this.type_description = this.data.item.type_description
+    this.img_update = this.data.item.img
 
   }
-
 }

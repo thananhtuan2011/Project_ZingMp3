@@ -15,6 +15,8 @@ import { NewsongComponent } from './pages/user/newsong/newsong.component';
 import { ListUserComponent } from './pages/admin/list-user/list-user.component';
 import { ListMusicComponent } from './pages/admin/list-music/list-music.component';
 import { CategoryComponent } from './pages/admin/category/category.component';
+import { LoadPlaylistComponent } from './pages/user/load-playlist/load-playlist.component';
+import { DiscoveryCategoryComponent } from './pages/user/discovery-category/discovery-category.component';
 
 
 
@@ -23,10 +25,16 @@ const routes: Routes = [
     path: '', component: BaseLayoutComponent, children: [
       { path: "", redirectTo: "home", pathMatch: "full" },
       { path: "home", component: HomeComponent },
-      { path: "khampha", component: KhamphaComponent },
-      { path: "zingchart", component: ZingchartComponent },
+      {
+        path: "khampha", component: KhamphaComponent
+      },
+      {
+        path: "zingchart", component: ZingchartComponent
+      },
       { path: "top10", component: Top10Component },
+      { path: "playlist/:id", component: LoadPlaylistComponent },
       { path: "mv", component: MvComponent },
+      { path: "discovery/:id", component: DiscoveryCategoryComponent },
       { path: "newsong", component: NewsongComponent },
 
     ]

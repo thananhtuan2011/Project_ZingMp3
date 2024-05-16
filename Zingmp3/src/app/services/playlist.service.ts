@@ -20,5 +20,11 @@ export class PlaylistService extends TableService<any> {
   GetPlayList(): Observable<any> {
     return this.http.get<any>(this.baseUrl + `/GetPlayList`)
   }
+  GetPlayListDetail(id: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + `/GetPlayListDetail?play_id=${id}`)
+  }
+  GetPlayListSong(id: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + `/GetPlayListSong?play_id=${id}`)
+  }
 
 }

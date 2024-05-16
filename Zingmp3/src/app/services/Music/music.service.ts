@@ -37,8 +37,11 @@ export class MusicService extends TableService<any> {
     return this.http.post<any>(url, body, { headers: httpHeader });
 
   }
+  DeleteSong(id: any): Observable<any> {
+    const httpHeader = this.getHttpHeaderFiles();
+    const url = this.baseUrl_song + `/DeleteSong?id_song=${id}`;
+    return this.http.post<any>(url, null, { headers: httpHeader });
 
-  deleteType(id: any): Observable<any> {
-    return this.http.delete<any>(this.baseUrl + `/${id}`)
   }
+
 }

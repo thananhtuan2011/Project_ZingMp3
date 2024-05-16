@@ -45,11 +45,13 @@ namespace BE_Music.Services.Type
             string connectionString = _config["AppConfig:ConnectionString"];
             using (DpsConnection cnn = new DpsConnection(connectionString))
             {
+                
                 var img = UploadHelper.UploadImage(type.base64, type.file_name, "HinhAnh", "HinhAnh", true);
                 // Thực hiện truy vấn thêm mới loại nhạc
                 Hashtable val = new Hashtable(); //  Hashtable này dùng để insert dữ liệu vào db
-
-                val.Add("img", img);
+               
+                    val.Add("img", img);
+                
                 val.Add("typename", type.typename);
                 val.Add("type_description", type.type_description);
                 val.Add("created_at", DateTime.Now);
@@ -99,30 +101,35 @@ namespace BE_Music.Services.Type
             }
         }
 
-
-        public object UpdateTypeNew(int typeId, TypeSong updatedType)
+        public object UpdateTypeSong(int typeId, TypeSong type)
         {
             string connectionString = _config["AppConfig:ConnectionString"];
             using (DpsConnection cnn = new DpsConnection(connectionString))
             {
-                // Thực hiện truy vấn thêm mới loại nhạc
                 SqlConditions Conds = new SqlConditions();
+                var img = UploadHelper.UploadImage(type.base64, type.file_name, "HinhAnh", "HinhAnh", true);
+                // Thực hiện truy vấn thêm mới loại nhạc
                 Hashtable val = new Hashtable(); //  Hashtable này dùng để insert dữ liệu vào db
-                Conds.Add("typeId", typeId); // cái này là điều kiện để update
-                val.Add("typename", updatedType.typename);
-                val.Add("type_description", updatedType.type_description);
+              
+                Conds.Add("type_id", typeId);
+                if (img != null)
+                {
+                    val.Add("img", img);
+                }
+                val.Add("typename", type.typename);
+                val.Add("type_description", type.type_description);
                 val.Add("updated_at", DateTime.Now);
-           
-
                 if (cnn.Update(val, Conds, "TypeSong") < 0)
                 {
                     cnn.RollbackTransaction();
                     return JsonResultCommon.ThatBai("Cập nhật thất bại", cnn.LastError);
                 }
                 // Sau khi thêm mới, trả về thông tin loại nhạc đã được thêm
-                return JsonResultCommon.ThanhCong();
+                return JsonResultCommon.ThanhCong(); ;
             }
         }
+
+      
 
 
 

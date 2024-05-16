@@ -7,6 +7,7 @@ import { GroupingState } from 'src/app/models/grouping.model';
 import { PaginatorState } from 'src/app/models/paginator.model';
 import { SortState } from 'src/app/models/sort.model';
 import { AddCategoryComponent } from '../add-category/add-category.component';
+import { UpdateCategoryComponent } from '../update-category/update-category.component';
 
 @Component({
   selector: 'app-category',
@@ -136,20 +137,19 @@ export class CategoryComponent implements OnInit {
   }
   Update(item: any) {
 
-    // const dialogRef = this.dialog.open(UpdateCustomerComponent, {
-    //   height: '600px',
+    const dialogRef = this.dialog.open(UpdateCategoryComponent, {
+      width: '400px',
+      data: { item },
 
-    //   data: { item },
+      // panelClass:'no-padding'
 
-    //   // panelClass:'no-padding'
+    });
+    dialogRef.afterClosed().subscribe(res => {
 
-    // });
-    // dialogRef.afterClosed().subscribe(res => {
-
-    //   if (res) {
-    //     this.LoadAllCustomer()
-    //   }
-    // })
+      if (res) {
+        this.LoadAllTypeSong()
+      }
+    })
 
   }
   listExport: any[] = [];

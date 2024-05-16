@@ -123,7 +123,7 @@ export class ListMusicComponent implements OnInit {
         return;
       }
       else {
-        this.music_serives.deleteType(id).subscribe(res => {
+        this.music_serives.DeleteSong(id).subscribe(res => {
           if (res) {
             this.LoadAllTypeSong();
             this.layoutUtilsService.showActionNotification("Successfully", MessageType.Delete, 4000, true, false, 3000, 'top', 1);

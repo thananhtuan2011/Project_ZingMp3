@@ -19,7 +19,7 @@ export class SidebarComponent implements OnInit {
 
       if (res) {
         this.listPlaylist = res.data
-        console.log("listPlaylist", this.listPlaylist)
+        // console.log("listPlaylist", this.listPlaylist)
         this.chan.detectChanges()
       }
     })

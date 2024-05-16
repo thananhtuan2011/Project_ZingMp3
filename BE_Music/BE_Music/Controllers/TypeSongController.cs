@@ -39,7 +39,43 @@ namespace BE_Music.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+        [Route("GetRanDomTypeSong")]
+        [HttpGet]
+        public BaseModel<object> GetRanDomTypeSong()
+        {
 
+            try
+            {
+
+                string connectionString = _configuration["AppConfig:ConnectionString"];
+                using (DpsConnection cnn = new DpsConnection(connectionString))
+                {
+
+                    DataTable _datatable = cnn.CreateDataTable($@"SELECT TOP 5 *  FROM TypeSong
+ORDER BY NEWID()");
+
+                    var _data = from r in _datatable.AsEnumerable()
+                                select new
+                                {
+                                    img = "https://localhost:5001/" + "HinhAnh/" + r["img"],
+                                    type_id = r["type_id"],
+                                    typename = r["typename"],
+                                    type_description = r["type_description"],
+                                    created_at = r["created_at"],
+                                    updated_at = r["updated_at"],
+
+
+
+                                };
+
+                    return JsonResultCommon.ThanhCong(_data);
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonResultCommon.Exception(ex);
+            }
+        }
         [HttpPost]
         [Route("CreateTypeNew")]
         public IActionResult CreateTypeNew(TypeSong type)
@@ -47,6 +83,21 @@ namespace BE_Music.Controllers
             try
             {
                 var createdType = _typeSongService.CreateTypeNew(type);
+                return Ok(createdType);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpPost]
+        [Route("UpdateTypeSong")]
+        public IActionResult UpdateTypeSong(int type_id,TypeSong type)
+        {
+            try
+            {
+                var createdType = _typeSongService.UpdateTypeSong(type_id, type);
                 return Ok(createdType);
             }
             catch (Exception ex)

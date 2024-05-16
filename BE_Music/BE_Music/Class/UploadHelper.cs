@@ -274,7 +274,7 @@ namespace BE_Music.Classes
             if (string.IsNullOrEmpty(strBase64))
             {
                 error = "Không có file dữ liệu";
-                return false;
+                return null;
             }
             try
             {

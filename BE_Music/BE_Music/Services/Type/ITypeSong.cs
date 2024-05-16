@@ -9,7 +9,7 @@ namespace BE_Music.Services.Type
         TypeSong CreateType(TypeSong type);
         object CreateTypeNew(TypeSong type);
         object DeleteTypeNew(int typeId);
-        object UpdateTypeNew(int typeId, TypeSong updatedType);
+        object UpdateTypeSong(int typeId, TypeSong updatedType);
         // Lấy thông tin của một loại nhạc dựa trên type_id
         TypeSong GetTypeById(int typeId);
 

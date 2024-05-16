@@ -85,6 +85,40 @@ namespace BE_Music.Controllers
 
             return JsonResultCommon.ThanhCong();
         }
+
+        [Route("DeleteSong")]
+        [HttpPost]
+        public async Task<object> DeleteSong(int id_song)
+        {
+
+            try
+            {
+
+                string connectionString = _configuration["AppConfig:ConnectionString"];
+                using (DpsConnection cnn = new DpsConnection(connectionString))
+                {
+                    // Thực hiện truy vấn thêm mới loại nhạc
+                    SqlConditions Conds = new SqlConditions();
+                    Hashtable val = new Hashtable(); //  Hashtable này dùng để insert dữ liệu vào db
+                    Conds.Add("id_song", id_song);
+
+                    if (cnn.Delete(Conds, "Song") < 0)
+                    {
+                        cnn.RollbackTransaction();
+                        return JsonResultCommon.ThatBai("Cập nhật thất bại", cnn.LastError);
+                    }
+                    // Sau khi thêm mới, trả về thông tin loại nhạc đã được thêm
+                    return JsonResultCommon.ThanhCong();
+                }
+            }
+
+            catch (Exception)
+            {
+
+            }
+
+            return JsonResultCommon.ThanhCong();
+        }
         [Route("GetRanDomMusic")]
         [HttpGet]
         public BaseModel<object> GetRanDomMusic()

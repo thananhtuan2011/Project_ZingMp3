@@ -60,8 +60,8 @@
            
             
                <div>
-                 <ng-container >
-                   <div class="d-flex align-items-center flex-grow-1 mb-2 list home-links">
+                 <ng-container  >
+                   <div [routerLink]="['playlist/',item.id_playlist]" class="d-flex align-items-center flex-grow-1 mb-2 list home-links">
                      <div class="symbol symbol-45 bg-transparent flex-shrink-0">
                        <!-- <span class="icon-svg" [inlineSVG]="el.svgPath"></span> -->
                        <!-- <img [src]="el.svgPath" alt="" /> -->

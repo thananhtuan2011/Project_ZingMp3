@@ -56,6 +56,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DeleteEntityDialogComponent } from './components/crud';
 import { MatRadioModule } from '@angular/material/radio';
 import { AddMusicComponent } from './pages/admin/list-music/add-music/add-music.component';
+import { LoadPlaylistComponent } from './pages/user/load-playlist/load-playlist.component';
+import { UpdateCategoryComponent } from './pages/admin/update-category/update-category.component';
+import { KhamphaComponent } from './pages/user/khampha/khampha.component';
+import { DiscoveryCategoryComponent } from './pages/user/discovery-category/discovery-category.component';
 // decorators
 @NgModule({
   declarations: [
@@ -85,6 +89,7 @@ import { AddMusicComponent } from './pages/admin/list-music/add-music/add-music.
     InforUserComponent,
     Top10Component,
     MvComponent,
+    KhamphaComponent,
     CategoryComponent,
     ListUserComponent,
     ListMusicComponent,
@@ -92,6 +97,9 @@ import { AddMusicComponent } from './pages/admin/list-music/add-music/add-music.
     NgPagination,
     AddCategoryComponent,
     AddMusicComponent,
+    LoadPlaylistComponent,
+    UpdateCategoryComponent,
+    DiscoveryCategoryComponent,
 
   ],
   imports: [

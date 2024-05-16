@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-md-4" style="    margin-top: 2%;
+    text-align: center;">
+
+        <img style=" border-radius: 10px;  width: 60%;" src="../../../../assets/icon/playlist_icon.png">
+        <div>
+            <div  *ngIf="Playlistdetail" style="    padding-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;">
+                <h3 style="color: white;">{{Playlistdetail.playlist_name}}</h3>
+                <mat-icon style="color: white;margin-left: 5px;">edit</mat-icon>
+            </div>
+            <div *ngIf="Playlistdetail" style="display: flex;align-items: center;justify-content: center;">
+                <span style="color: rgb(184, 180, 180);">
+                    Tạo bởi :
+                </span> <span style="color: white;"> {{Playlistdetail.acount.full_name}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-7" style="margin-top: 2%;">
+        <div *ngIf="!Playlist_song"  style="border-radius: 10px;
+        background: #cbc7c7;text-align: center
+       ;">
+            <img src="../../../../assets/icon/iconnhac.png">
+            <div style="font-size: 22px;
+            font-weight: bold;
+            padding-bottom: 20px;">
+                <span>Không có bài hát trong playlist của bạn</span>
+
+            </div>
+
+        </div>
+        <div  *ngIf="Playlist_song">
+            <div    [ngStyle]="{ 'max-height': '40vh', position: 'relative' }"
+            class="scroll"
+            [perfectScrollbar]="{wheelPropagation: false}"
+           >
+           
+             <!-- begin search  -->
+             <div  style="display: flex;align-items: center; justify-content: center; cursor: pointer;" >
+           
+            
+           
+             </div>
+             <!-- begin search  -->
+             
+            </div>
+        </div>
+    </div>
+</div>
