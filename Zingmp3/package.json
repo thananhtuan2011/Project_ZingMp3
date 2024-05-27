@@ -34,6 +34,7 @@
     "ngx-avatar": "^4.1.0",
     "ngx-cookie-service": "^17.1.0",
     "ngx-perfect-scrollbar": "^10.1.1",
+    "ngx-scrollbar": "^10.0.1",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.7.10",
     "tslib": "^2.6.2",

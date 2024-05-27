@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PaymentService } from 'src/app/services/payment_.service';
+import { LayoutUtilsService, MessageType } from '../../crud/utils/layout-utils.service';
 
 @Component({
   selector: 'app-add-hoi-vien',
@@ -6,13 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-hoi-vien.component.scss']
 })
 export class AddHoiVienComponent {
-
-  tongtien: number = 100000
-  constructor() {
-
+  amount!: number;
+  user: any;
+  constructor(private payment_services: PaymentService) {
+    this.user = JSON.parse(localStorage.getItem("user")!);
   }
 
   Pay() {
+    this.payment_services.Payment(this.amount).subscribe(res => {
 
+      window.open(res, "_blank")
+    }
+    )
   }
 }

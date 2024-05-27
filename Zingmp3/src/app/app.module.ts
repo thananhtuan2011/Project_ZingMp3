@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Import For
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/user/home/home.component';
+import { MatInputModule } from '@angular/material/input';
 import { SidebarComponent } from './components/user/sidebar/sidebar.component';
 import { SidebarModule } from 'ng-cdbangular';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,7 +20,6 @@ import { DashboardComponent } from './pages/admin/dashboard/dashboard.component'
 import { AdminFooterComponent } from './components/admin/admin-footer/admin-footer.component';
 import { AdminSidebarComponent } from './components/admin/admin-sidebar/admin-sidebar.component';
 import { AdminHeaderComponent } from './components/admin/admin-header/admin-header.component';
-import { AddProductComponent } from './pages/admin/add-product/add-product.component';
 import { EditProductComponent } from './pages/admin/edit-product/edit-product.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -60,6 +59,15 @@ import { LoadPlaylistComponent } from './pages/user/load-playlist/load-playlist.
 import { UpdateCategoryComponent } from './pages/admin/update-category/update-category.component';
 import { KhamphaComponent } from './pages/user/khampha/khampha.component';
 import { DiscoveryCategoryComponent } from './pages/user/discovery-category/discovery-category.component';
+import { AddSongPlaylistComponent } from './pages/user/add-song-playlist/add-song-playlist.component';
+import { NgScrollbarModule } from 'ngx-scrollbar';
+import { DetailPlaySongComponent } from './pages/user/detail-play-song/detail-play-song.component';
+import { UpdateSongComponent } from './pages/admin/list-music/update-song/update-song.component';
+import { HomeComponent } from './pages/user/home/home.component';
+import { SuccessComponent } from './pages/user/success/success.component';
+import { RadioComponent } from './pages/user/radio/radio.component';
+import { LoadRadioComponent } from './pages/admin/load-radio/load-radio.component';
+import { AddRadioComponent } from './pages/admin/add-radio/add-radio.component';
 // decorators
 @NgModule({
   declarations: [
@@ -80,7 +88,6 @@ import { DiscoveryCategoryComponent } from './pages/user/discovery-category/disc
     AdminFooterComponent,
     AdminSidebarComponent,
     AdminHeaderComponent,
-    AddProductComponent,
     EditProductComponent,
     AddplayListComponent,
     AddHoiVienComponent,
@@ -100,12 +107,20 @@ import { DiscoveryCategoryComponent } from './pages/user/discovery-category/disc
     LoadPlaylistComponent,
     UpdateCategoryComponent,
     DiscoveryCategoryComponent,
+    AddSongPlaylistComponent,
+    DetailPlaySongComponent,
+    UpdateSongComponent,
+    SuccessComponent,
+    RadioComponent,
+    LoadRadioComponent,
+    AddRadioComponent,
 
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
+    MatInputModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
@@ -113,6 +128,7 @@ import { DiscoveryCategoryComponent } from './pages/user/discovery-category/disc
     CommonModule,
     MatRadioModule,
     SidebarModule,
+    NgScrollbarModule,
     ReactiveFormsModule,
     MatDialogModule,
     MatButtonModule,

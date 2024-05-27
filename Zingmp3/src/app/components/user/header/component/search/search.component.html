@@ -30,7 +30,7 @@ padding: 20px;"
 >
 
   <!-- begin search  -->
-  <div  style="display: flex;align-items: center;" *ngFor="let item of data">
+  <div  style="display: flex;align-items: center;" *ngFor="let item of music_serives._itemsAllSong$ | async">
 
  
     <div>
@@ -40,21 +40,21 @@ padding: 20px;"
             <!-- <span class="icon-svg" [inlineSVG]="el.svgPath"></span> -->
             <!-- <img [src]="el.svgPath" alt="" /> -->
           </div>
-          <div class="d-flex f ml-3 mt-2 mb-2 li">
+          <div (click)="Router_Action()" class="d-flex f ml-3 mt-2 mb-2 li" [routerLink]="['play/',item.id_song]">
             <div _ngcontent-jcs-c115=""><img style="    width: 50px;
-                border-radius: 10px;" _ngcontent-jcs-c115="" src="../../../assets/img/artists/artist1.jpg" alt=""></div>
+                border-radius: 10px;" _ngcontent-jcs-c115="" src="{{item.image}}" alt=""></div>
            
            <div style="padding-left: 15px;">
 
           
            <div style="color: white;font-weight: bold;" class="font-size-sm  font-weight-bolder text-uppercase ">
-              {{item.NoiDung}}
+              {{item.song_name}}
       </div>
             
             <div class="d-flex">
                 <span (click)="RemoveSearch()" [routerLink]="['/Home/detail',1]"  style="color: #d4cbcb8a !important;
             font-size: 15px;"  class="font-weight-bold text-dark text-hover-primary">
-              {{ item.title }}
+              {{ item.singer_name }}
             </span>
              <div style="    display: flex;
              padding-left: 30px;

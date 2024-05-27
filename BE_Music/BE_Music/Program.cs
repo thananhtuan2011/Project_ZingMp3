@@ -50,6 +50,12 @@ app.UseStaticFiles(new StaticFileOptions
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
+       Path.Combine(Directory.GetCurrentDirectory(), "Radio")),
+    RequestPath = "/Radio"
+});
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
                  Path.Combine(Directory.GetCurrentDirectory(), "HinhAnh")),
     RequestPath = "/HinhAnh"
 });

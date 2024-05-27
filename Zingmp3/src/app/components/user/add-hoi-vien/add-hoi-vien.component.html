@@ -1,21 +1,31 @@
-<div class="p-8" style="    font-size: 20px;font-weight: bold;
+<div *ngIf="user.vip!=true" class="p-8" style="    font-size: 20px;font-weight: bold;
 font-size: 30px;">
+<h3 style="width: 100%;text-align: center;color: white;">Đăng ký tài khoản VIP</h3>
            
     <div class="d-flex align-items-center justify-content-between mb-7" style="    padding: 20px;">
-      <span class="font-weight-bold font-size-sm mr-2" style="font-size: 22px;color: white;">Số tiền nâng cấp hội viên:</span>
-      <span class="font-weight-bolder text-primary text-right">{{tongtien |number}} đ</span>
+      <mat-radio-group  [(ngModel)]="amount" style="color: white;" aria-label="Select an option">
+        <mat-radio-button value="100000"> 1 tháng (100.000 VNĐ) </mat-radio-button>
+        <mat-radio-button value="200000">3 tháng (200.000 VNĐ) </mat-radio-button>
+        <mat-radio-button value="300000">6 tháng (300.000 VNĐ) </mat-radio-button>
+        <mat-radio-button value="500000">12 tháng (500.000 VNĐ) </mat-radio-button>
+      </mat-radio-group>
     </div>
-    <div    style="flex-direction: column;
+    <div    style="justify-content: center;
     display: flex;">
-      <img  (click)="Pay()" style="border-radius: 10px;cursor: pointer;" src="../../../../assets/images/vnpay.png">
+      <!-- <img  (click)="Pay()" style="border-radius: 10px;cursor: pointer;" src="../../../../assets/images/vnpay.png"> -->
       <br>
       <button
+      style="width: 60%;"
         (click)="Pay()"
         type="submit"
         id="kt_login_signup_submit"
         class="btn btn-success font-weight-bolder font-size-h6"
       >
-        VNPay
+        Thanh Toán
       </button>
     </div>
+  </div>
+
+  <div  *ngIf="user.vip==true">
+    <h3 style="color: white;">Bạn đã đăng ký gói VIP</h3>
   </div>

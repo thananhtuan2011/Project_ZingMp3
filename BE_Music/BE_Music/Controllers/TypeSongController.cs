@@ -8,6 +8,7 @@ using DpsLibs.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 
@@ -37,6 +38,46 @@ namespace BE_Music.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [Route("GetTypeSong_ForId")]
+        [HttpGet]
+        public BaseModel<object> GetTypeSong_ForId(int type_id)
+        {
+
+            try
+            {
+
+                string connectionString = _configuration["AppConfig:ConnectionString"];
+                using (DpsConnection cnn = new DpsConnection(connectionString))
+                {
+                    SqlConditions Conds = new SqlConditions();
+
+                    Conds.Add("type_id", type_id);
+                    DataTable _datatable = cnn.CreateDataTable($@"SELECT  *  FROM TypeSong
+where type_id=@type_id", Conds);
+
+                    var _data = (from r in _datatable.AsEnumerable()
+                                 select new
+                                 {
+                                     img = "https://localhost:5001/" + "HinhAnh/" + r["img"],
+                                     type_id = r["type_id"],
+                                     typename = r["typename"],
+                                     type_description = r["type_description"],
+                                     created_at = r["created_at"],
+                                     updated_at = r["updated_at"],
+
+
+
+                                 }).FirstOrDefault() ;
+
+                    return JsonResultCommon.ThanhCong(_data);
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonResultCommon.Exception(ex);
             }
         }
         [Route("GetRanDomTypeSong")]
@@ -76,6 +117,8 @@ ORDER BY NEWID()");
                 return JsonResultCommon.Exception(ex);
             }
         }
+
+      
         [HttpPost]
         [Route("CreateTypeNew")]
         public IActionResult CreateTypeNew(TypeSong type)

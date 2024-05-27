@@ -4,6 +4,7 @@
     padding: 0px;
     // height: 800px;
     height: 100vh;
+    background-image: linear-gradient(to right, #FED9B7, #00AFB9);
     background-color: #411465;
 }
 
@@ -20,13 +21,14 @@
 
 .res {
     // margin-left: 16.1%;
-    margin-left: 250px;
+    background-image: linear-gradient(to right, #FED9B7, #00AFB9);
+    margin-left: 242px;
 }
 
 @media (max-width: 1500px) {
 
     .res {
-        margin-left: 0%;
+        // margin-left: 0%;
     }
 
 

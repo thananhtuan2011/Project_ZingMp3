@@ -1,5 +1,10 @@
+import { LayoutUtilsService, MessageType } from 'src/app/components/crud/utils/layout-utils.service';
 import { MusicService } from 'src/app/services/Music/music.service';
 import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddSongPlaylistComponent } from '../add-song-playlist/add-song-playlist.component';
+import { PlaylistService } from 'src/app/services/playlist.service';
+import { AddplayListComponent } from 'src/app/components/user/addplay-list/addplay-list.component';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +12,26 @@ import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef } from '@an
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  showScrollbar = false;
+  text = "";
+  user: any
+  disabled = false;
+  compact = true;
+  invertX = false;
+  invertY = false;
+  constructor(private music_services: MusicService, private change: ChangeDetectorRef,
+    private matdialog: MatDialog,
+    private layoutUtilsService: LayoutUtilsService,
+    private play_list_services: PlaylistService
 
-  constructor(private music_services: MusicService, private change: ChangeDetectorRef) {
-
+  ) {
+    this.user = JSON.parse(localStorage.getItem("user")!);
   }
-
+  getWidth(): any {
+    let tmp_height = 0;
+    tmp_height = window.innerWidth - 236;
+    return tmp_height + 'px';
+  }
   listMusic: any[] = []
 
   GetRanDomMusic() {
@@ -21,8 +41,20 @@ export class HomeComponent implements OnInit {
       this.change.detectChanges();
     })
   }
+  listPlaylist: any[] = []
+  GetPlayList() {
+    this.play_list_services.GetPlayList().subscribe(res => {
+
+      if (res) {
+        this.listPlaylist = res.data
+        console.log("listPlaylist", this.listPlaylist)
+        this.change.detectChanges()
+      }
+    })
+  }
   ngOnInit(): void {
     this.GetRanDomMusic();
+    this.GetPlayList();
   }
   @ViewChild('audioPlayer', { static: true }) audioPlayer!: ElementRef;
 
@@ -53,6 +85,17 @@ export class HomeComponent implements OnInit {
     const rndInt = this.randomIntFromInterval(1, 4)
     this.toggleSong(rndInt)
   }
+  goToLink(url: string, vip: boolean) {
+
+    if (vip == true && this.user.vip != true) {
+      this.layoutUtilsService.showActionNotification("Vui lòng nâng cấp tài khoản VIP để tải", MessageType.Delete, 4000, true, false, 3000, 'top', 0);
+
+    }
+    else {
+      window.open(url, "_blank");
+    }
+
+  }
   toggleSong(songId: number) {
     console.log("indexxx", songId)
 
@@ -80,12 +123,21 @@ export class HomeComponent implements OnInit {
       showplay.classList.remove("pauseloading")
       audioPlayer.load()
       audioPlayer.play();
+      audioPlayer.addEventListener('ended', () => {
+        // this.setSongPlaying(songId, false);
+        audioPlayer.load()
+        audioPlayer.play();
+        // alert("The audio has ended");
+      })
+
       this.setSongPlaying(songId, true);
     } else {
       showplay.classList.add("pauseloading")
       audioPlayer.pause();
       this.setSongPlaying(songId, false);
     }
+
+    this.music_services.UpdateCountPlay(this.listMusic[songId].id_song).subscribe()
   }
 
   setSongPlaying(songId: number, playing: boolean) {
@@ -102,6 +154,60 @@ export class HomeComponent implements OnInit {
       play.classList.add("bi-play");
     }
 
+  }
+  CreatedPlayList() {
+    const dialogRef = this.matdialog.open(AddplayListComponent, {
+      width: '300px',
+      height: '200px',
+      // data: {  },
+      // with:'500px',
+      // panelClass: 'dialogcss'
+
+    });
+    dialogRef.afterClosed().subscribe((res: any) => {
+
+      if (res) {
+        this.GetPlayList()
+      }
+    })
+  }
+  AddLike(id_song: number) {
+
+    let index = this.listMusic.findIndex(x => x.id_song == id_song)
+    if (index >= 0) {
+      if (this.listMusic[index].like_song == null) {
+        this.listMusic[index].like_song = {
+          id_song: id_song
+        }
+
+      }
+      else {
+        this.listMusic[index].like_song = null
+
+      }
+
+      this.music_services.AddLike(id_song, this.user.account_id).subscribe(res => {
+
+      }
+      )
+      this.change.detectChanges();
+    }
+
+  }
+  AddPlaylist(item: any) {
+    const dialogRef = this.matdialog.open(AddSongPlaylistComponent, {
+      width: '600px',
+      data: item,
+      // with:'500px',
+
+      // panelClass:'no-padding'
+
+    });
+
+    dialogRef.afterClosed().subscribe(res => {
+
+    }
+    )
   }
 
   updateSongDuration(songId: string) {

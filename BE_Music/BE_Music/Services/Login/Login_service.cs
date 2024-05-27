@@ -99,6 +99,7 @@ namespace BE_Music.Services.Login
                                          {
                                              account_id = user["account_id"],
                                              email = user["email"],
+                                             vip = user["vip"],
                                              full_name = user["full_name"],
                                              phone = user["phone"],
                                              role_code = user["role_code"],
@@ -156,5 +157,82 @@ namespace BE_Music.Services.Login
 
             }
         }
+        
+    public async Task<object> Gentoken_withGoogle(string email)
+    {
+        string ConnectionString = _config["AppConfig:ConnectionString"];
+        using (DpsConnection cnn = new DpsConnection(ConnectionString))
+        {
+            DataTable dt = new DataTable();
+            SqlConditions Conds = new SqlConditions();
+            Conds.Add("email", email);
+
+            dt = cnn.CreateDataTable(@"select * from Acount where email=@email and isGoogle=1 ", Conds);
+
+            if (dt.Rows.Count == 0) return null;
+
+            var data =
+                                     from user in dt.AsEnumerable()
+                                     select new
+                                     {
+                                         account_id = user["account_id"],
+                                         email = user["email"],
+                                         vip = user["vip"],
+                                         full_name = user["full_name"],
+                                         phone = user["phone"],
+                                         role_code = user["role_code"],
+                                         address = user["address"],
+
+                                     };
+            var infor = data.FirstOrDefault();
+
+
+            var claims = new[]
+            {
+                 new Claim("address",infor.address.ToString()),
+                 new Claim("role_code" ,infor.role_code.ToString() ),
+                 new Claim("full_name",infor.full_name.ToString()),
+                  new Claim("phone",infor.phone.ToString() ),
+                     new Claim("account_id",infor.account_id.ToString()),
+                     new Claim("email",infor.email.ToString())
+
+            };
+
+            string key = _config["TokenKey"];
+            var _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"]));
+            var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
+
+            var token = new JwtSecurityToken
+            (
+                  issuer: "https://localhost:5001",
+                audience: "https://localhost:5001",
+                claims,
+                expires: DateTime.Now.AddDays(200),
+                signingCredentials: creds
+
+            );
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            var claims_refresh = new[]
+           {
+                new Claim("email",email),
+
+                     new Claim("account_id",infor.account_id.ToString()),
+
+            };
+            // var token = tokenHandler.CreateToken(tokenDescriptor);
+            var dt_token = new
+            {
+                accessToken = tokenHandler.WriteToken(token),
+                refreshToken = CreateRefreshToken(claims_refresh),
+                role = infor.role_code.ToString(),
+                User = infor
+            };
+
+
+            return dt_token;
+
         }
+    }
+}
     }

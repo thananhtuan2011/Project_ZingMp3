@@ -21,12 +21,50 @@
             </div>
         </div>
     </div>
+<div  class="playlist_all playlist_all_repson" >
+
+    <div (click)="CreatedPlayList()" class="content" style="width: 100px;
+    color: white;
+    cursor: pointer;
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;" *ngIf="listPlaylist.length>0">
+        <h3 style="padding-right: 10px;">PlayList</h3>   <i class="bi bi-plus-lg"></i>
+         
+    </div>
+    <div >
+
+    
+    <div *ngFor="let pl of listPlaylist" style="margin-bottom: 15px;
+    display: flex;cursor: pointer;
+    overflow: auto;">
+      <div routerLink="/playlist/{{pl.id_playlist}}" style="width: 100%;margin-right: 10px;">
+
+        <img style=" border-radius: 10px;  width:120px;" src="../../../../assets/icon/playlist_icon.png">
+        <div>
+            <div   style="padding-top: 10px;
+           ">
+                <h4 style="color: white;">{{pl.playlist_name}}</h4>
+            </div>
+       
+            <div  >
+                 <span style="font-size: 13px;
+               "> {{pl.acount.full_name}}</span>
+            </div>
+      </div>
+
+        </div>
+         
+    </div>
+</div>
+</div>
+
     <div class="grid container_tab tab-home active">
         <div class="content_container">
             <div class="container_control row">
 
                 <div style="display: flex;" class="col l-12 m-12 c-12 ">
-                    <div class="hidenon_mobile" style="background-color: #411465;width: 30%;padding: 30px;">
+                    <div class="hidenon_mobile" style="background-color: #411465;width: 30%;padding: 30px;background-image: linear-gradient(to right, #FED9B7, #00AFB9);">
                         <img style="width: 100%;" src="../../../../assets/img/slides/slide1.jpg" alt="">
                     </div>
 
@@ -68,8 +106,24 @@
                                     <!-- <i style="font-size: 25px;" class="bi bi-pause icon-pause bi bi-mic-fill"
                                         [ngClass]="{ 'icon-pause': songPlaying{{i}}, 'bi-play': !songPlaying{{i}} }"
                                         (click)="toggleSong(i)" data-song=i></i> -->
-                                    <i class="btn--icon song__icon icon--heart bi bi-heart"></i>
-                                    <i class="btn--icon bi bi-three-dots"></i>
+                                        <i *ngIf="item.like_song" (click)="AddLike(item.id_song)" style="color: red;" class="btn--icon song__icon icon--heart bi bi-heart"></i>
+
+                                    <i *ngIf="!item.like_song" (click)="AddLike(item.id_song)" class="btn--icon song__icon icon--heart bi bi-heart"></i>
+                                 
+
+                                        <i [matMenuTriggerFor]="menu" class="btn--icon bi bi-three-dots"></i>
+                                      <mat-menu style="background-color: red;" #menu="matMenu">
+                                        <button (click)="AddPlaylist(item)" mat-menu-item  >
+                                          <mat-icon>playlist_add</mat-icon>
+                                          <span>Thêm vào Playlist</span>
+                                        
+                                        </button>
+                                        <button mat-menu-item (click)="goToLink(item.url_song,item.vip)" >
+                                          <mat-icon>cloud_download</mat-icon>
+                                          <span>Tải xuống</span>
+                                        </button>
+          
+                                      </mat-menu>
                                     <audio id="audioPlayer{{i}}"
                                         src="{{item.url_song}}"></audio>
                                     <!-- <span>{{ song1Duration }}</span> Thời gian bài hát 1 -->

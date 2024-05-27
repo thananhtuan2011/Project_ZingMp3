@@ -25,6 +25,7 @@ export abstract class TableService<T> {
   public _itemsacount$ = new BehaviorSubject<T[]>([]);
   public _itemsTypeSong$ = new BehaviorSubject<T[]>([]);
   public _itemsAllSong$ = new BehaviorSubject<T[]>([]);
+  public _itemsAllRadio$ = new BehaviorSubject<T[]>([]);
   public _itemsThu$ = new BehaviorSubject<T[]>([]);
   public _itemsThuChi$ = new BehaviorSubject<T[]>([]);
   public _itemsBill$ = new BehaviorSubject<T[]>([]);
@@ -116,6 +117,10 @@ export abstract class TableService<T> {
   public patchStateAllSong(patch: Partial<ITableState>, apiRoute: string = '') {
     this.patchStateWithoutFetch(patch);
     this.fetch_AllSong(apiRoute, "");
+  }
+  public patchStateAllRadio(patch: Partial<ITableState>, apiRoute: string = '') {
+    this.patchStateWithoutFetch(patch);
+    this.fetch_AllRadio(apiRoute, "");
   }
   public patchStateAllTypeSong(patch: Partial<ITableState>, apiRoute: string = '') {
     this.patchStateWithoutFetch(patch);
@@ -611,6 +616,52 @@ export abstract class TableService<T> {
       .subscribe();
     this._subscriptions.push(request);
   }
+  public fetch_AllRadio(apiRoute: string = '', nameKey: string = 'id') {
+    var resItems: any = [];
+    var resTotalRow: number = 0;
+    this._isLoading$.next(true);
+    this._errorMessage.next('');
+    const request = this.find_AllSong(this._tableState$.value, apiRoute)
+      .pipe(
+        tap((res: any) => {
+          if (res) {
+            resItems = res.data;
+            resTotalRow = res.panigator.total;
+          }
+          console.log("resItems radio", resItems)
+          this._itemsAllRadio$.next(resItems);
+          this.__responseData$.next(res);
+          this.patchStateWithoutFetch({
+            paginator: this._tableState$.value.paginator.recalculatePaginator(
+              resTotalRow
+            ),
+          });
+
+        }),
+        catchError((err) => {
+          this._errorMessage.next(err);
+          return of({
+            status: 0,
+            data: [],
+            panigator: null,
+            error: null,
+          });
+        }),
+        finalize(() => {
+          this._isLoading$.next(false);
+          const itemIds = this._itemsacount$.value.map((el: T) => {
+            const item: any = (el as unknown) as BaseModel;
+            return item[nameKey];
+          });
+          this.patchStateWithoutFetch({
+            grouping: this._tableState$.value.grouping.clearRows(itemIds),
+          });
+        })
+      )
+      .subscribe();
+    this._subscriptions.push(request);
+  }
+
   find_AllSup(tableState: ITableState, routeFind: string = '',): Observable<any> {
     const url = routeFind;
     const httpHeader = this.getHttpHeaders();

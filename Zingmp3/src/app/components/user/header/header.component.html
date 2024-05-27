@@ -6,7 +6,12 @@
   integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
 <header class="header_grid header_grid_mobile">
-
+  <!-- <div href="#" class="sidebar_logo">
+    <a style="position: fixed;" class="sidebar_logo-link">
+        <img style="cursor: pointer;" routerLink="home" src="../../../assets/images/main-logo.svg" alt="">
+    </a>
+</div> -->
+<img style="cursor: pointer;width: 150px;margin-right: 5%;" routerLink="home" src="../../../assets/images/main-logo.svg" alt="">
   <div class="header__with-search">
     <img src="../../../../assets/" alt="">
     <button  class="header__button ">
@@ -19,7 +24,7 @@
         <i class="bi bi-search header__search-icon"></i>
       </div>
       <div *ngIf="myVal" class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg" ngbDropdownMenu>
-        <app-search [myValProp]="myVal" ></app-search>
+        <app-search (Router_song)="Remove_Search($event)" [myValProp]="myVal" ></app-search>
       </div>
     </div>
 

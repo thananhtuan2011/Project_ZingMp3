@@ -24,13 +24,25 @@ export class AuthService {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result: any) => {
-        this.LoginWithGoogle(result.additionalUserInfo?.profile?.email, result.additionalUserInfo?.profile.name).subscribe(res => {
-
-          localStorage.setItem("user", JSON.stringify(res.data));
+        this.Gentoken_withGoogle(result.additionalUserInfo?.profile?.email).subscribe(res => {
+          this.cookie_services.set("accessToken", res.accessToken, 365, '/', DOMAIN);
+          this.cookie_services.set("refreshToken", res.refreshToken, 365, '/', DOMAIN);
+          localStorage.setItem("user", JSON.stringify(res.user));
+          this.router.navigateByUrl('/home');
         }
         )
-        this.cookie_services.set("accessToken", result.credential.idToken, 365, '/', DOMAIN);
-        this.router.navigateByUrl('/home');
+        // this.Gentoken_withGoogle
+        // this.LoginWithGoogle(result.additionalUserInfo?.profile?.email, result.additionalUserInfo?.profile.name).subscribe(res => {
+
+        //   localStorage.setItem("user", JSON.stringify(res.data));
+
+
+        // }
+        // )
+
+
+        // this.cookie_services.set("accessToken", result.credential.idToken, 365, '/', DOMAIN);
+
         console.log('You have been successfully logged in!', result);
       })
       .catch((error) => {
@@ -52,6 +64,11 @@ export class AuthService {
     const httpHeader = this.getHttpHeaders();
     return this.http.get<any>(HOST_API + `/api/acount/Login?username=${username}&pass=${pass}`, { headers: httpHeader })
   }
+  Gentoken_withGoogle(email: string): Observable<any> {
+    const httpHeader = this.getHttpHeaders();
+    return this.http.get<any>(HOST_API + `/api/acount/Gentoken_withGoogle?email=${email}`, { headers: httpHeader })
+  }
+
   Register(fullname: string, username: string, pass: string): Observable<any> {
     const httpHeader = this.getHttpHeaders();
     return this.http.get<any>(HOST_API + `/api/acount/Register?fullname=${fullname}&username=${username}&pass=${pass}`, { headers: httpHeader })

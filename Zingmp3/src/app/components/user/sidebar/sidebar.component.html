@@ -1,10 +1,6 @@
 <header>
 
-    <div href="#" class="sidebar_logo">
-        <a style="position: fixed;" class="sidebar_logo-link">
-            <img style="cursor: pointer;" routerLink="home" src="../../../assets/images/main-logo.svg" alt="">
-        </a>
-    </div>
+
  
     <ul class="list-unstyled app_sidebar sidebar_nav-list--separate ">
         <div class="sidebar-nav">
@@ -15,7 +11,7 @@
                             class="bi bi-vinyl"></i> <span>Khám Phá</span></a></li>
                 <li routerLink="zingchart"    routerLinkActive="item-active" class="sidebar_nav-item"><a  class="sidebar_item-link"><i
                             class="bi bi-music-note-list"></i> <span>#Zingchart</span></a></li>
-                <li class="sidebar_nav-item"><a routerLink="radio" class="sidebar_item-link"><i
+                <li class="sidebar_nav-item"  routerLinkActive="item-active" routerLink="radio"><a  class="sidebar_item-link"><i
                             class="bi bi-soundwave"></i> <span>Radio</span><input class="bt-live" type="button"
                             value="LIVE"></a></li>
                 <!-- <li class="sidebar_nav-item"><a routerLink="theodoi" class="sidebar_item-link"><i
@@ -37,9 +33,9 @@
                 <li class="sidebar_nav-item subnav-item"><a  routerLink="mv" class="sidebar_item-link"><i
                             class="bi bi-camera-video"></i> <span>Mv</span></a></li>
             </ul>
-            <div class="sidebar_login">
-                <p (click)="showAlert()" class="sidebar_login-description">Nghe nhạc không quảng cáo cùng kho nhạc VIP</p>
-                <a (click)="showAlert()" class="sidebar_login-btn button is-small button-gold them">MUA VIP</a>
+            <div style="cursor: pointer;" (click)="AddHoiVien()" class="sidebar_login">
+                <p class="sidebar_login-description">Nghe nhạc,tải nhạc không quảng cáo cùng kho nhạc VIP</p>
+                <a  class="sidebar_login-btn button is-small button-gold them">MUA VIP</a>
             </div>
 
         </div>

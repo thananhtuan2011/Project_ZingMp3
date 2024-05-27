@@ -20,4 +20,10 @@ namespace BE_Music.Model.Acount
         public DateTime deleted_at { get; set; }
         public bool active { get; set; }
     }
+
+    public class UserJWT
+    {
+        public int  acount_id { get; set; }
+    }
+
 }

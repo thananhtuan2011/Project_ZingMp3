@@ -24,32 +24,35 @@
             <div class="content_container">
                 <div class="container_control row">
     
-                    <div style="display: flex;flex-direction: column;" class="col l-12 m-12 c-12 ">
+                    <div style="display: flex;flex-direction: column;padding: 0px;" class="col l-12 m-12 c-12 ">
                         <!-- <div class="hidenon_mobile" style="background-color: #411465;width: 30%;padding: 30px;">
                             <img style="width: 100%;" src="../../../../assets/img/slides/slide1.jpg" alt="">
                         </div> -->
     
                         <div class="container">
                     
-                            <div class="layout">
+                            <div class="layout" *ngFor="let item of ListTop3 ;let i=index">
 
                                 <div class="linemusic">
                                   
                                     <div class="left title_home" >
                                           <div style="    margin-right: 20px;" class="song-prefix mar-r-15">
-                                            <span class="number is-top-1 is-center mar-r-5">1</span>
+                                            
+                                            <span *ngIf="i==0" class="number is-top-1 is-center mar-r-5">{{i+1}}</span>
+                                            <span *ngIf="i==1" class="number is-top-2 is-center mar-r-5">{{i+1}}</span>
+                                            <span *ngIf="i==2" class="number is-top-3 is-center mar-r-5">{{i+1}}</span>
                                             <span class="number_line">-</span>
                                        
                                     </div>
                                         <div>
                                             
-                                            <img src="../../../assets/img/artists/artist1.jpg" alt="">
+                                            <img src="{{item.image}}" alt="">
                                          
                                                   
                                         </div>
                                         <div class="author">
-                                            <span class="title_home">Hẹn em ở lần yêu thứ 2</span>
-                                            <span style="font-size: 10px;color: grey;">Hương Ly</span>
+                                            <span class="title_home">{{item.song_name}}</span>
+                                            <span style="font-size: 10px;color: grey;">{{item.singer_name}}</span>
                                         </div>
                                     </div>
                                     <div  class="pauseloading" id="showplay1">
@@ -59,13 +62,12 @@
                                     </div>
     
                                     <div class="right">
-                                        <i style="font-size: 25px;" class="bi bi-pause icon-pause bi bi-mic-fill"
-                                            [ngClass]="{ 'icon-pause': song1Playing, 'bi-play': !song1Playing }"
-                                            (click)="toggleSong('1')" data-song="1"></i>
+                                        <i style="font-size: 25px;" id="songPlaying1" style="font-size: 25px;" class="bi bi-play bi-pause icon-pause bi bi-mic-fill"
+                                        (click)="toggleSong(1)" data-song="1"></i>
                                         <i class="btn--icon song__icon icon--heart bi bi-heart"></i>
                                         <i class="btn--icon bi bi-three-dots"></i>
                                         <audio id="audioPlayer1"
-                                            src="../../../assets/music/HenEmOLanYeuThu2-NguyennDangTuanVu-8865500.mp3"></audio>
+                                            src="{{item.url_song}}"></audio>
                                         <!-- <span>{{ song1Duration }}</span> Thời gian bài hát 1 -->
                                     </div>
                                 </div>
@@ -74,73 +76,7 @@
                             </div>
     
     
-                            <div class="layout">
-                                <div class="linemusic">
-                                    <div class="left title_home"   >
-                                        <div style="    margin-right: 20px;" class="song-prefix mar-r-15">
-                                            <span class="number is-top-2 is-center mar-r-5">2</span>
-                                            <span class="number_line">-</span>
-                                       
-                                    </div>
-                                        <div><img src="../../../assets/img/artists/artist2.jpg" alt=""></div>
-                                        <div class="author">
-                                            <span  >Yêu Là Cưới</span>
-                                            <span style="font-size: 10px;color: grey;">Phát Hồ, X2X,</span>
-                                        </div>
-                                    </div>
-                                    <div  class="pauseloading" id="showplay2">
-                                        <img style="height: 60px;
-                                        width: 100% !important;
-                                    " src="../../../../assets/gif/playgif.gif">
-                                    </div>
-    
-    
-                                    <div class="right">
-                                        <i style="font-size: 25px;" class="bi bi-pause icon-pause bi bi-mic-fill"
-                                            [ngClass]="{ 'icon-pause': song2Playing, 'bi-play': !song2Playing }"
-                                            (click)="toggleSong('2')" data-song="2"></i>
-                                        <i class="btn--icon song__icon icon--heart bi bi-heart"></i>
-                                        <i class="btn--icon bi bi-three-dots"></i>
-                                        <audio id="audioPlayer2" src="../../../assets/music/listSong1/song1.mp3"></audio>
-                                    </div>
-                                </div>
-    
-                                <div class="hr"></div>
-                            </div>
-    
-                            <div class="layout">
-                                <div class="linemusic">
-                                    <div class="left title_home"  >
-                                        <div style="    margin-right: 20px;" class="song-prefix mar-r-15">
-                                            <span class="number is-top-1 is-center mar-r-5">3</span>
-                                            <span class="number_line">-</span>
-                                       
-                                    </div>
-                                        <div><img src="../../../assets/img/artists/artist3.jpg" alt=""></div>
-                                        <div class="author">
-                                            <span >Em Là Con Thuyền Cô Đơn</span>
-                                            <span style="font-size: 10px;color: grey;">Thái Học</span>
-                                        </div>
-                                    </div>
-                                    <div class="pauseloading" id="showplay3">
-                                        <img style="height: 60px;
-                                        width: 100% !important;
-                                    " src="../../../../assets/gif/playgif.gif">
-                                    </div>
-    
-    
-                                    <div class="right">
-                                        <i style="font-size: 25px;" class="bi bi-pause icon-pause bi bi-mic-fill"
-                                            [ngClass]="{ 'icon-pause': song3Playing, 'bi-play': !song3Playing }"
-                                            (click)="toggleSong('3')" data-song="3"></i>
-                                        <i class="btn--icon song__icon icon--heart bi bi-heart"></i>
-                                        <i class="btn--icon bi bi-three-dots"></i>
-                                        <audio id="audioPlayer3" src="../../../assets/music/listSong1/song2.mp3"></audio>
-                                    </div>
-                                </div>
-    
-                                <div class="hr"></div>
-                            </div>
+                      
     
     
                             <!-- <div class="layout">
@@ -178,11 +114,13 @@
 
                         <div style="    height: 120px;
                         background-color: #411465;
+                        background-image: linear-gradient(to right, #FED9B7, #00AFB9);
                         padding: 2%;
                         text-align: center;">
-                            <button style="    color: white;
+                            <button routerLink="/top10" style="    color: white;
                             background: #ab5bea;
                             padding: 10px;
+                            border: none;
                             border-radius: 10px;
                             font-size: 16px;
                         ">Xem top 10</button>

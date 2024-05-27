@@ -19,7 +19,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  Remove_Search(envet: any) {
+    if (envet) {
+      this.myVal = "";
+    }
 
+  }
   Infor() {
     const dialogRef = this.dialog.open(InforUserComponent, {
       // width: '300px',

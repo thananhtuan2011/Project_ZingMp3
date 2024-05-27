@@ -2,6 +2,7 @@
     width: 100%;
     height: auto;
     padding: 0px;
+    background-image: linear-gradient(to right, #FED9B7, #00AFB9);
     margin: 0px auto;
     background-color: #411465;
 }
@@ -605,6 +606,46 @@ p {
 
 .number.is-top-1 {
     -webkit-text-stroke: 1px #4a90e2;
+    opacity: 1;
+}
+
+.number.is-top-3 {
+    -webkit-text-stroke: 1px #15c071;
+    opacity: 1;
+}
+
+.number.is-top-4 {
+    -webkit-text-stroke: 1px #d71364;
+    opacity: 1;
+}
+
+.number.is-top-5 {
+    -webkit-text-stroke: 1px #0d84a5;
+    opacity: 1;
+}
+
+.number.is-top-6 {
+    -webkit-text-stroke: 1px #6613eb;
+    opacity: 1;
+}
+
+.number.is-top-8 {
+    -webkit-text-stroke: 1px #92990f;
+    opacity: 1;
+}
+
+.number.is-top-9 {
+    -webkit-text-stroke: 1px #077e19;
+    opacity: 1;
+}
+
+.number.is-top-10 {
+    -webkit-text-stroke: 1px #a90b9c;
+    opacity: 1;
+}
+
+.number.is-top-7 {
+    -webkit-text-stroke: 1px #e96913;
     opacity: 1;
 }
 

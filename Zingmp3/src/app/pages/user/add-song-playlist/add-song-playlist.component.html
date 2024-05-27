@@ -1,0 +1,17 @@
+
+<div>
+        <h2 style="color: white;">Vui lòng chọn playlist bạn muốn thêm </h2>
+<div class="col-lg-12">
+    <select   placeholder="Type Song"  [(ngModel)]="selectedcode" class="form-control form-control-lg form-control-solid" 
+   >
+      <option *ngFor="let item  of listAllPlayList"  [value]="item.id_playlist">{{item.playlist_name}}</option>
+    </select>
+
+    <div style="text-align: center;display: flex;justify-content: space-around; margin-top: 15px;">
+        <button (click)="Save()"  mat-raised-button color="primary"><span style="color: aliceblue;">Save</span></button>
+        <button (click)="_Back()" mat-raised-button >Cancel</button>
+    </div>
+    
+ 
+  </div>
+</div>

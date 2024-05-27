@@ -1,0 +1,14 @@
+<div class="container">
+    <h2 *ngIf="list_radio.length==0" style=" text-align: center;color: white;">Không có radio nào được phát</h2>
+    
+<h2 *ngIf="list_radio.length>0" style=" text-align: center;color: white;">Danh sách radio</h2>
+    
+    <div class="listbanner">
+        <div  class="list-in" *ngFor="let item of list_radio" style="cursor: pointer;display: flex;flex-direction: column;">
+            <video style="width: 300px;" src="{{item.url}}" controls></video>
+            <span class="title_main">{{item.cast_name}}</span> 
+            <span class="des">{{item.radio_name}}</span>
+        </div>
+      
+    </div>
+</div>

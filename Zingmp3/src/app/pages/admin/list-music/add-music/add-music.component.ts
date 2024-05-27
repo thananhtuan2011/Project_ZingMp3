@@ -32,6 +32,7 @@ export class AddMusicComponent implements OnInit {
   selectedpay: any = "Tiền mặt";
   selectedplan: any;;
   customer: any;
+  lyrics!: string;
   user: any;
   listAllCategory: any[] = [];
   listStatus: any[] = [];
@@ -98,7 +99,7 @@ export class AddMusicComponent implements OnInit {
       formData.append("file_name_image", this.filename_image);
       formData.append("type_id", this.selectedcode);
       formData.append("vip", this.radioSelected);
-
+      formData.append("lyrics", this.lyrics);
       formData.append("song_name", this.list_music[0]);
       // this._thuchi_services.UploadFile(formData).subscribe(res => {
 

@@ -1,0 +1,71 @@
+<div class="modal-content">
+
+    <div class="overlay overlay-block cursor-default modal-body" >
+   
+  
+      <ng-container>
+        <div >
+  
+            <div style="text-align: center;">
+                <span style="color: aliceblue;font-size: 22px;">Create Radio </span>
+            </div>
+            <div style="padding-top: 20px;padding-bottom: 20px;">
+              <label style="color: white;">Cast Name</label>
+                <input  [(ngModel)]="castname" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name Singer">
+            </div>
+          
+              <div style="display: flex;justify-content: space-around;">
+
+              
+      
+<div>
+
+          <button 
+          (click)="hiddenfileinput_music.click()" 
+        matTooltip="Hỉnh ảnh" mat-icon-button aria-label="Example icon button with a home icon">
+        <mat-icon style="color: white;">cloud_upload</mat-icon>
+      </button>
+      
+      <input type='file'accept="video/mp4,video/x-m4v,video/*"
+      id="PDFInpdd" #hiddenfileinput_music (change)="onSelectFile_PDF($event)" 
+      style="display: none;">
+    
+        <div style="color: white;" *ngIf="list_music.length>0">
+            <hr>
+        </div>
+        
+        <!-- <div *ngFor="let mu of list_music">
+            <div style="display: flex;align-items: center;">
+              <mat-icon style="color: white;">video_library</mat-icon>
+               <span style="padding-left: 5px;color: white;"> {{mu}}</span>
+            </div>
+      </div> -->
+      <div *ngIf="myFilesVideo.length">
+        <div *ngFor="let video of myFilesVideo;let indexvd=index">
+
+
+          <div style="width: 20px;">
+          
+          </div>
+          <video [src]="video" height="200" controls></video>
+
+        </div>
+      </div>
+</div>
+</div>
+<div style="color: white;" >
+    <hr>
+</div>
+      <div style="display: flex;justify-content: space-between; margin-top: 20px;">
+        <button (click)="Save()" [disabled]="castname!==''?false:true" mat-raised-button color="primary"><span style="color: aliceblue;">Save</span></button>
+        <button (click)="_Back()" mat-raised-button >Cancel</button>
+      </div>
+
+    
+  </div>
+      </ng-container>
+    </div>
+
+  
+
+  </div>

@@ -14,6 +14,12 @@ export class PlaylistService extends TableService<any> {
     super(http, cookie_servics);
   }
 
+
+
+  AddSongInPlaylist(id_song: any, id_playlist: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl + `/AddSongInPlaylist?id_song=${id_song}&id_playlist=${id_playlist}`, null)
+  }
+
   AddPlaylist(body: any): Observable<any> {
     return this.http.post<any>(this.baseUrl + `/AddPlaylist`, body)
   }

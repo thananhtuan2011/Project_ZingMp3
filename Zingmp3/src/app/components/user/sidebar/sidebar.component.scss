@@ -14,6 +14,7 @@ ul li a {
 }
 
 .app_sidebar {
+    background-image: linear-gradient(to right, #FED9B7, #00AFB9);
     background-color: #2C064A;
     position: fixed;
     // top: 70px;
@@ -26,13 +27,14 @@ ul li a {
     width: 100px;
     height: 80px;
     position: fixed;
-
+    background-image: linear-gradient(to right, #FED9B7, #00AFB9);
     display: flex;
     align-items: center;
 }
 
 .sidebar_logo-link {
     width: 100%;
+    background-image: linear-gradient(to right, #FED9B7, #00AFB9);
     height: 35px;
     display: flex;
     overflow: visible;
@@ -151,6 +153,7 @@ ul li a {
 .bt-live {
     background-color: #FF0000;
     border-radius: 10px;
+    border: none;
     width: 40px;
     margin-left: 5px;
     color: white;

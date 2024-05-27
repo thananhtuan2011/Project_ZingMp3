@@ -20,6 +20,10 @@ export class CategoryService extends TableService<any> {
   GetRanDomTypeSong(): Observable<any> {
     return this.http.get<any>(this.baseUrl + `/GetRanDomTypeSong`)
   }
+  GetTypeSong_ForId(type_id: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + `/GetTypeSong_ForId?type_id=${type_id}`)
+  }
+
 
   UpdateType(type_id: number, body: any): Observable<any> {
     return this.http.post<any>(this.baseUrl + `/UpdateTypeSong?type_id=${type_id}`, body)

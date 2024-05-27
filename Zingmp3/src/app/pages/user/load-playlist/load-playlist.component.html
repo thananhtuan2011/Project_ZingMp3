@@ -1,15 +1,32 @@
-<div class="row">
+<div class="row" style="margin: 0px  !important;">
     <div class="col-md-4" style="    margin-top: 2%;
     text-align: center;">
 
         <img style=" border-radius: 10px;  width: 60%;" src="../../../../assets/icon/playlist_icon.png">
         <div>
-            <div  *ngIf="Playlistdetail" style="    padding-top: 10px;
+            <div  *ngIf="Playlistdetail&&!showedit" style="    padding-top: 10px;
             display: flex;
             align-items: center;
             justify-content: center;">
                 <h3 style="color: white;">{{Playlistdetail.playlist_name}}</h3>
-                <mat-icon style="color: white;margin-left: 5px;">edit</mat-icon>
+                <mat-icon (click)="edit()" style="color: white;margin-left: 5px;">edit</mat-icon>
+            </div>
+            <div *ngIf="showedit">
+                <div style="color: white;" >
+  
+                   
+                    <div style="padding-top: 20px;padding-bottom: 20px;display: flex;justify-content: center;">
+                        <input  style="width: 200px"  [(ngModel)]="nameplaylist" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Playlist name">
+                    </div>
+                    <div style="text-align: center;display: flex;justify-content: space-around;margin-bottom: 5px;">
+                        <button (click)="Save()" [disabled]="nameplaylist!==''?false:true" mat-raised-button color="primary"><span style="color: aliceblue;">Save</span></button>
+                        <button (click)="_Back()" mat-raised-button >Cancel</button>
+                    </div>
+                    
+                
+                </div>
+                
+
             </div>
             <div *ngIf="Playlistdetail" style="display: flex;align-items: center;justify-content: center;">
                 <span style="color: rgb(184, 180, 180);">
@@ -17,6 +34,10 @@
                 </span> <span style="color: white;"> {{Playlistdetail.acount.full_name}}</span>
             </div>
         </div>
+
+        <!-- <div>
+            <img src="../../../../assets/gif/runplaylist.gif">
+        </div> -->
     </div>
 
     <div class="col-md-7" style="margin-top: 2%;">
@@ -33,20 +54,180 @@
 
         </div>
         <div  *ngIf="Playlist_song">
-            <div    [ngStyle]="{ 'max-height': '40vh', position: 'relative' }"
-            class="scroll"
-            [perfectScrollbar]="{wheelPropagation: false}"
-           >
-           
-             <!-- begin search  -->
-             <div  style="display: flex;align-items: center; justify-content: center; cursor: pointer;" >
-           
-            
-           
-             </div>
-             <!-- begin search  -->
-             
+            <div class="table-responsive angular-bootstrap-table"  style="max-height: 400px;" >
+                <table class="table table-head-custom table-vertical-center overflow-hidden">
+                  <thead>
+                    <th >
+                      <span class="titile">Bài Hát</span>
+                     
+                    </th>
+                    <th>
+                      <span class="titile">Thể Loại</span>
+                     
+                    </th>
+                  
+                  
+                    <th style="text-align: center;"  >
+                      <span class="titile">Action</span>
+                     
+                    </th>
+                   
+                  </thead>
+                  <div stle="height: 20px;"></div>
+                  <tbody>
+                   
+                  <tr *ngFor="let r of Playlist_song; let i=index" style="color: white;">
+                     
+                      <td>
+                        <div>
+                            
+                            <img style="width: 30px; padding-right: 5px;" src="{{r.image}}">
+                          
+                          <span class="cssusername">{{ r.song_name }}</span>
+                          <img  class="pauseloading" id="showplay2{{i}}" style="height: 40px;
+                          width: 20% !important;
+                      " src="../../../../assets/gif/playnhac.gif">
+                        </div>
+                      </td>
+                      <td>
+                        <div>
+                          <span class="cssDepartment">{{ r.type_song.typename  }} </span>
+                        </div>
+                      </td>
+                      <td>
+                     
+                      </td>
+                      <td>
+                        <div style="display: flex;align-items: center;">
+
+                       
+                      
+
+                        <div class="right">
+                               <i id="songPlaying2{{i}}" style="font-size: 25px;" class="bi bi-play bi-pause icon-pause bi bi-mic-fill"
+                               
+                                (click)="toggleSong2(i)" data-song=i></i>
+                            <!-- <i style="font-size: 25px;" class="bi bi-pause icon-pause bi bi-mic-fill"
+                                [ngClass]="{ 'icon-pause': songPlaying{{i}}, 'bi-play': !songPlaying{{i}} }"
+                                (click)="toggleSong(i)" data-song=i></i> -->
+                            <audio id="audioPlayer2{{i}}"
+                                src="{{r.url_song}}"></audio>
+                            <!-- <span>{{ song1Duration }}</span> Thời gian bài hát 1 -->
+                        </div>
+                    </div>
+                      </td>
+                      <!-- <td>
+                        <div style="display:  flex;align-items: center;">
+                          <img style="width: 30px; padding-right: 5px;" src="../../../../../assets/icon/iconnhac.png">
+                          <span class="cssDepartment">{{ r.song_name  }} </span>
+                        </div>
+                      </td>
+                   
+                      <td>
+                        <div>
+                          <img style="    width: 50px;
+                          height: 50px;
+                          border-radius: 10px;" src="{{ r.image }}">
+                        </div>
+                      </td>
+                      <td>
+                        <div>
+                          <span class="cssDepartment">{{ r.category.typename  }} </span>
+                        </div>
+                      </td>
+                      <td>
+                        <span class="cssJobtitle">{{ r.created_at  | date : 'dd/M/yyyy – hh:mm ' }}</span>
+                      </td>
+                      <td>
+                        <span *ngIf=" (r.updated_at | json) != '{}'" class="cssJobtitle">{{ r.updated_at  | date : 'dd/mM/yyyy – hh:mm' }}</span>
+                      </td>
+         -->
+                      <!-- <td  style="text-align: center">
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                            <mat-icon>settings</mat-icon>
+                          </button>
+                          <mat-menu #menu="matMenu">
+                            <button  mat-menu-item>
+                              <mat-icon>clear</mat-icon>
+                              <span>Remove</span>
+                            </button>
+                           
+                           
+                          </mat-menu>
+                            
+                        </td> -->
+                  
+                      
+                      
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+        </div>
+
+        <div>
+            <div style="display: flex;align-items: center;justify-content: space-between;color: white;">
+                <h3>Bài Hát Gợi Ý</h3>
+                <button style="font-weight: bold;
+                color: white;
+                width: 120px;
+                border: none;
+                border-radius: 20px;
+                background-color: blueviolet;
+                padding: 5px;">Làm mới</button>
             </div>
+
+            <div class="layout"  *ngFor="let item of ListSong10;let i=index">
+                <div class="linemusic">
+                    <div class="left title_home" >
+                        <div>
+                            
+                            <img src="{{item.image}}" alt="">
+                         
+                                  
+                        </div>
+                        <div class="author">
+                            <span class="title_home">{{item.song_name}}</span>
+                            <span style="font-size: 14px;color: grey;">{{item.singer_name}}</span>
+                        </div>
+                    </div>
+                    <div  class="pauseloading" id="showplay{{i}}">
+                        <img style="height: 60px;
+                        width: 100% !important;
+                    " src="../../../../assets/gif/playgif.gif">
+                    </div>
+
+                    <div class="right">
+                           <i id="songPlaying{{i}}" style="font-size: 25px;" class="bi bi-play bi-pause icon-pause bi bi-mic-fill"
+                           
+                            (click)="toggleSong(i)" data-song=i></i>
+                        <!-- <i style="font-size: 25px;" class="bi bi-pause icon-pause bi bi-mic-fill"
+                            [ngClass]="{ 'icon-pause': songPlaying{{i}}, 'bi-play': !songPlaying{{i}} }"
+                            (click)="toggleSong(i)" data-song=i></i> -->
+                        <i class="btn--icon song__icon icon--heart bi bi-heart"></i>
+                     
+
+                            <i [matMenuTriggerFor]="menu" class="btn--icon bi bi-three-dots"></i>
+                          <mat-menu style="background-color: red;" #menu="matMenu">
+                            <button  mat-menu-item  >
+                              <mat-icon>playlist_add</mat-icon>
+                              <span>Thêm vào Playlist</span>
+                            
+                            </button>
+                            <button mat-menu-item >
+                              <mat-icon>cloud_download</mat-icon>
+                              <span>Tải xuống</span>
+                            </button>
+
+                          </mat-menu>
+                        <audio id="audioPlayer{{i}}"
+                            src="{{item.url_song}}"></audio>
+                        <!-- <span>{{ song1Duration }}</span> Thời gian bài hát 1 -->
+                    </div>
+                </div>
+
+            </div>
+           
         </div>
     </div>
 </div>

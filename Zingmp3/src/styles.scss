@@ -10,9 +10,19 @@
     border-color: white !important
 }
 
+.mdc-form-field>label {
+    color: white !important;
+}
+
+.mat-mdc-menu-content {
+    padding: 10px !important;
+}
+
 .mat-mdc-snack-bar-container .mdc-snackbar__surface {
     background: #3e1169 !important;
 }
+
+
 
 .mat-mdc-dialog-container .mdc-dialog__surface {
     background-color: #411465 !important;

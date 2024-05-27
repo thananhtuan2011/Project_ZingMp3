@@ -1,17 +1,34 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Product } from 'src/app/interfaces/Product';
 import { HttpClient } from '@angular/common/http';
+import { MusicService } from 'src/app/services/Music/music.service';
 
 @Component({
   selector: 'app-zingchart',
   templateUrl: './zingchart.component.html',
   styleUrls: ['./zingchart.component.scss']
 })
-export class ZingchartComponent {
-  products: Product[] = [];
+export class ZingchartComponent implements OnInit {
 
-  constructor(private http: HttpClient) {
+  ListTop3: any[] = []
+  constructor(private music_services: MusicService, private change: ChangeDetectorRef) {
     // this.getProducts();
+  }
+
+  GetTop3() {
+    this.music_services.GetTop3Music().subscribe(res => {
+      this.ListTop3 = res.data;
+      console.log("ListTop3", this.ListTop3)
+      this.change.detectChanges();
+    }
+    )
+  }
+
+
+  ngOnInit(): void {
+
+    this.GetTop3();
+
   }
   @ViewChild('audioPlayer', { static: true }) audioPlayer!: ElementRef;
 
@@ -30,16 +47,16 @@ export class ZingchartComponent {
 
 
 
-  RandomMusic() {
-    const rndInt = this.randomIntFromInterval(1, 4)
-    this.toggleSong(rndInt.toString())
-  }
-  toggleSong(songId: string) {
+  // RandomMusic() {
+  //   const rndInt = this.randomIntFromInterval(1, 4)
+  //   this.toggleSong(rndInt.toString())
+  // }
+  toggleSong(songId: number) {
 
-    for (let i = 1; i <= 4; i++) {
-      if (i.toString() !== songId) {
+    for (let i = 1; i <= 3; i++) {
+      if (i.toString() !== songId.toString()) {
 
-        // this.setSongPlaying(i.toString())
+        this.setSongPlaying(i, false);
         const audioPlayer_close_all = document.getElementById(`audioPlayer${i}`) as HTMLAudioElement;
         var showplay_check = document.getElementById(`showplay${i}`) as HTMLElement
         if (audioPlayer_close_all.played) {
@@ -47,7 +64,7 @@ export class ZingchartComponent {
           audioPlayer_close_all.pause()
         }
         else {
-          // this.setSongPlaying(songId, false);
+          this.setSongPlaying(songId, false);
         }
       }
 
@@ -60,32 +77,29 @@ export class ZingchartComponent {
       showplay.classList.remove("pauseloading")
       audioPlayer.load()
       audioPlayer.play();
-      // this.setSongPlaying(songId);
+      this.setSongPlaying(songId, true);
     } else {
       showplay.classList.add("pauseloading")
       audioPlayer.pause();
-      // this.setSongPlaying(songId, false);
+      this.setSongPlaying(songId, false);
     }
   }
 
-  // setSongPlaying(songId: string, playing: boolean) {
-  //   switch (songId) {
-  //     case '1':
-  //       this.song1Playing = playing;
-  //       break;
-  //     case '2':
-  //       this.song2Playing = playing;
-  //       break;
-  //     case '3':
-  //       this.song3Playing = playing;
-  //       break;
-  //     case '4':
-  //       this.song4Playing = playing;
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // }
+  setSongPlaying(songId: number, playing: boolean) {
+    if (playing == true) {
+      console.log("playing", playing)
+      const play = document.getElementById(`songPlaying${songId}`) as HTMLElement
+      play.classList.add("icon-pause");
+      play.classList.remove("bi-play");
+
+    }
+    else {
+      console.log("playing ffff", playing)
+      const play = document.getElementById(`songPlaying${songId}`) as HTMLElement
+      play.classList.add("bi-play");
+    }
+
+  }
 
   updateSongDuration(songId: string) {
     const audioPlayer = document.getElementById(`audioPlayer${songId}`) as HTMLAudioElement;

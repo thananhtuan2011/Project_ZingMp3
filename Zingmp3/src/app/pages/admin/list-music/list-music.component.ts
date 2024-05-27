@@ -7,6 +7,7 @@ import { GroupingState } from 'src/app/models/grouping.model';
 import { MatDialog } from '@angular/material/dialog';
 import { MusicService } from 'src/app/services/Music/music.service';
 import { AddMusicComponent } from './add-music/add-music.component';
+import { UpdateSongComponent } from './update-song/update-song.component';
 
 @Component({
   selector: 'app-list-music',
@@ -136,20 +137,19 @@ export class ListMusicComponent implements OnInit {
   }
   Update(item: any) {
 
-    // const dialogRef = this.dialog.open(UpdateCustomerComponent, {
-    //   height: '600px',
+    const dialogRef = this.dialog.open(UpdateSongComponent, {
+      width: '600px',
+      data: { item },
 
-    //   data: { item },
+      // panelClass:'no-padding'
 
-    //   // panelClass:'no-padding'
+    });
+    dialogRef.afterClosed().subscribe(res => {
 
-    // });
-    // dialogRef.afterClosed().subscribe(res => {
-
-    //   if (res) {
-    //     this.LoadAllCustomer()
-    //   }
-    // })
+      if (res) {
+        this.LoadAllTypeSong()
+      }
+    })
 
   }
   listExport: any[] = [];

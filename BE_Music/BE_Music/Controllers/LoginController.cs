@@ -151,6 +151,19 @@ namespace BE_Music.Controllers
             }
         }
         [HttpGet]
+        [Route("Gentoken_withGoogle")]
+        public async Task<object> Gentoken_withGoogle(string email)
+        {
+            var data = await _login.Gentoken_withGoogle(email);
+            if (data == null)
+            {
+                return null;
+            }
+            return data;
+
+
+        }
+        [HttpGet]
         [Route("Login")]
         public async Task<object> Login(string username, string pass)
         {
@@ -163,6 +176,54 @@ namespace BE_Music.Controllers
 
 
         }
+        
+        [HttpGet]
+        [Route("UpdateVip")]
+        public async Task<object> UpdateVip(int account_id)
+        {
+
+
+            string ConnectionString = _configuration["AppConfig:ConnectionString"];
+            using (DpsConnection cnn = new DpsConnection(ConnectionString))
+            {
+                SqlConditions Conds = new SqlConditions();
+                Conds.Add("account_id", account_id);
+
+                DataTable checktbl = new DataTable();
+                checktbl = cnn.CreateDataTable(@" select * from  Acount where account_id=@account_id", Conds);
+             
+
+                    Hashtable val = new Hashtable();
+
+                    val.Add("vip", true);
+                val.Add("date_vip_start", DateTime.Now);
+
+                if (cnn.Update(val,Conds, "Acount") < 0)
+                    {
+                        cnn.RollbackTransaction();
+                        return JsonResultCommon.ThatBai("Cập nhật thất bại", cnn.LastError);
+                    }
+
+                var data =
+                             (from user in checktbl.AsEnumerable()
+                              select new
+                              {
+                                  account_id = user["account_id"],
+                                  email = user["email"],
+                                  vip = user["vip"],
+                                  full_name = user["full_name"],
+                                  phone = user["phone"],
+                                  role_code = user["role_code"],
+                                  address = user["address"],
+
+                              }).FirstOrDefault() ;
+
+
+            return JsonResultCommon.ThanhCong(data);
+            }
+
+        }
+
 
         [HttpGet]
         [Route("Register")]
@@ -250,13 +311,14 @@ namespace BE_Music.Controllers
                 return JsonResultCommon.ThatBai("Cập nhật thất bại", cnn.LastError);
             }
 
-                     _datatable = cnn.CreateDataTable($@"select  email,account_id,role_code,full_name from  Acount where email=@email and isGoogle=@isGoogle", Conds);
+                     _datatable = cnn.CreateDataTable($@"select  vip, email,account_id,role_code,full_name from  Acount where email=@email and isGoogle=@isGoogle", Conds);
                     var data =
                                         (from user in _datatable.AsEnumerable()
                                         select new
                                         {
                                             account_id = user["account_id"],
                                             email = user["email"],
+                                            vip = user["vip"],
                                             full_name = user["full_name"],
                                             role_code = user["role_code"],
 
@@ -267,13 +329,14 @@ namespace BE_Music.Controllers
             else
                 {
 
-                    _datatable2 = cnn.CreateDataTable($@"select email, account_id,role_code,full_name from  Acount where email=@email and isGoogle=@isGoogle", Conds);
+                    _datatable2 = cnn.CreateDataTable($@"select vip, email, account_id,role_code,full_name from  Acount where email=@email and isGoogle=@isGoogle", Conds);
                     var data2 =
                                        (from user in _datatable2.AsEnumerable()
                                          select new
                                          {
                                              account_id = user["account_id"],
                                              email = user["email"],
+                                             vip = user["vip"],
                                              full_name = user["full_name"],
                                              role_code = user["role_code"],
 
