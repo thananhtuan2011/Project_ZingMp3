@@ -1,10 +1,12 @@
 ﻿using BE_Music.Classes;
 using BE_Music.Common;
+using BE_Music.Model.Acount;
 using BE_Music.Model.Playlist;
 using BE_Music.Models;
 using DpsLibs.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using System.Collections;
 using System.Data;
 
@@ -27,13 +29,17 @@ namespace BE_Music.Controllers
 
             try
             {
+                string token = RequestJwt.GetHeader(Request);
+                UserJWT loginData = RequestJwt._GetInfoUser(token);
 
                 string connectionString = _configuration["AppConfig:ConnectionString"];
                 using (DpsConnection cnn = new DpsConnection(connectionString))
+                   
                 {
-
-                    DataTable _datatable = cnn.CreateDataTable($@"SELECT *  FROM Playlist
-");
+                    SqlConditions conds = new SqlConditions();
+                    conds.Add("account_id", loginData.acount_id);
+                    DataTable _datatable = cnn.CreateDataTable($@"SELECT *  FROM Playlist where account_id=@account_id
+",conds);
                     DataTable _datatable_acount = cnn.CreateDataTable($@"SELECT *  FROM Acount
 
 ");
@@ -99,15 +105,18 @@ namespace BE_Music.Controllers
 
             try
             {
+                string token = RequestJwt.GetHeader(Request);
+                UserJWT loginData = RequestJwt._GetInfoUser(token);
 
                 string connectionString = _configuration["AppConfig:ConnectionString"];
                 using (DpsConnection cnn = new DpsConnection(connectionString))
                 {
 
                     SqlConditions conds = new SqlConditions();
-                    conds.Add("id_playlist", play_id)
+                    conds.Add("id_playlist", play_id);
+                    conds.Add("account_id", loginData.acount_id);
 ; DataTable _datatable = cnn.CreateDataTable($@"SELECT *  FROM PlayList_Song
-where id_playlist=@id_playlist
+where id_playlist=@id_playlist and account_id=@account_id
 ", conds);
                     DataTable _datatable_song = cnn.CreateDataTable($@"SELECT *  FROM Song
 
@@ -170,15 +179,18 @@ where id_playlist=@id_playlist
 
             try
             {
+                string token = RequestJwt.GetHeader(Request);
+                UserJWT loginData = RequestJwt._GetInfoUser(token);
 
                 string connectionString = _configuration["AppConfig:ConnectionString"];
                 using (DpsConnection cnn = new DpsConnection(connectionString))
                 {
 
                     SqlConditions conds = new SqlConditions();
-                    conds.Add("id_playlist", play_id)
-;                    DataTable _datatable = cnn.CreateDataTable($@"SELECT *  FROM Playlist
-where id_playlist=@id_playlist
+                    conds.Add("id_playlist", play_id);
+                         conds.Add("account_id", loginData.acount_id);
+                    ;                    DataTable _datatable = cnn.CreateDataTable($@"SELECT *  FROM Playlist
+where id_playlist=@id_playlist and account_id=@account_id
 ", conds);
                     DataTable _datatable_acount = cnn.CreateDataTable($@"SELECT *  FROM Acount
 

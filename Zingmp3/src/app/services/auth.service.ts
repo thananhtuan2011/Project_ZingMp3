@@ -24,11 +24,17 @@ export class AuthService {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result: any) => {
-        this.Gentoken_withGoogle(result.additionalUserInfo?.profile?.email).subscribe(res => {
-          this.cookie_services.set("accessToken", res.accessToken, 365, '/', DOMAIN);
-          this.cookie_services.set("refreshToken", res.refreshToken, 365, '/', DOMAIN);
-          localStorage.setItem("user", JSON.stringify(res.user));
-          this.router.navigateByUrl('/home');
+        this.LoginWithGoogle(result.additionalUserInfo?.profile?.email, result.additionalUserInfo?.profile.name).subscribe(res => {
+          setTimeout(() => {
+            this.Gentoken_withGoogle(result.additionalUserInfo?.profile?.email).subscribe(res => {
+              this.cookie_services.set("accessToken", res.accessToken, 365, '/', DOMAIN);
+              this.cookie_services.set("refreshToken", res.refreshToken, 365, '/', DOMAIN);
+              localStorage.setItem("user", JSON.stringify(res.user));
+              this.router.navigateByUrl('/home');
+            }
+            )
+          }, 100);
+
         }
         )
         // this.Gentoken_withGoogle
