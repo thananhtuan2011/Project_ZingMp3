@@ -8,8 +8,8 @@
             display: flex;
             align-items: center;
             justify-content: center;">
-                <h3 style="color: white;">{{Playlistdetail.playlist_name}}</h3>
-                <mat-icon (click)="edit()" style="color: white;margin-left: 5px;">edit</mat-icon>
+                <h3 style="color: black;">{{Playlistdetail.playlist_name}}</h3>
+                <mat-icon (click)="edit()" style="color: black;margin-left: 5px;">edit</mat-icon>
             </div>
             <div *ngIf="showedit">
                 <div style="color: white;" >
@@ -31,7 +31,7 @@
             <div *ngIf="Playlistdetail" style="display: flex;align-items: center;justify-content: center;">
                 <span style="color: rgb(184, 180, 180);">
                     Tạo bởi :
-                </span> <span style="color: white;"> {{Playlistdetail.acount.full_name}}</span>
+                </span> <span style="color: black;"> {{Playlistdetail.acount.full_name}}</span>
             </div>
         </div>
 
@@ -94,9 +94,7 @@
                           <span class="cssDepartment">{{ r.type_song.typename  }} </span>
                         </div>
                       </td>
-                      <td>
                      
-                      </td>
                       <td>
                         <div style="display: flex;align-items: center;">
 
@@ -114,49 +112,10 @@
                                 src="{{r.url_song}}"></audio>
                             <!-- <span>{{ song1Duration }}</span> Thời gian bài hát 1 -->
                         </div>
+                        <mat-icon style="margin-left: 20px;">clear</mat-icon>
                     </div>
                       </td>
-                      <!-- <td>
-                        <div style="display:  flex;align-items: center;">
-                          <img style="width: 30px; padding-right: 5px;" src="../../../../../assets/icon/iconnhac.png">
-                          <span class="cssDepartment">{{ r.song_name  }} </span>
-                        </div>
-                      </td>
-                   
-                      <td>
-                        <div>
-                          <img style="    width: 50px;
-                          height: 50px;
-                          border-radius: 10px;" src="{{ r.image }}">
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          <span class="cssDepartment">{{ r.category.typename  }} </span>
-                        </div>
-                      </td>
-                      <td>
-                        <span class="cssJobtitle">{{ r.created_at  | date : 'dd/M/yyyy – hh:mm ' }}</span>
-                      </td>
-                      <td>
-                        <span *ngIf=" (r.updated_at | json) != '{}'" class="cssJobtitle">{{ r.updated_at  | date : 'dd/mM/yyyy – hh:mm' }}</span>
-                      </td>
-         -->
-                      <!-- <td  style="text-align: center">
-                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-                            <mat-icon>settings</mat-icon>
-                          </button>
-                          <mat-menu #menu="matMenu">
-                            <button  mat-menu-item>
-                              <mat-icon>clear</mat-icon>
-                              <span>Remove</span>
-                            </button>
-                           
-                           
-                          </mat-menu>
-                            
-                        </td> -->
-                  
+              
                       
                       
                     </tr>

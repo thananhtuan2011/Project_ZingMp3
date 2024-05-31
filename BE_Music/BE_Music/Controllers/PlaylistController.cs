@@ -116,7 +116,7 @@ namespace BE_Music.Controllers
                     conds.Add("id_playlist", play_id);
                     conds.Add("account_id", loginData.acount_id);
 ; DataTable _datatable = cnn.CreateDataTable($@"SELECT *  FROM PlayList_Song
-where id_playlist=@id_playlist and account_id=@account_id
+where id_playlist=@id_playlist 
 ", conds);
                     DataTable _datatable_song = cnn.CreateDataTable($@"SELECT *  FROM Song
 
