@@ -53,7 +53,7 @@ export class ZingchartComponent implements OnInit {
   // }
   toggleSong(songId: number) {
 
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 0; i <= 2; i++) {
       if (i.toString() !== songId.toString()) {
 
         this.setSongPlaying(i, false);

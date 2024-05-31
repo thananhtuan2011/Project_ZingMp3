@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LayoutUtilsService, MessageType } from 'src/app/components/crud/utils/layout-utils.service';
 import { MusicService } from 'src/app/services/Music/music.service';
 import { PlaylistService } from 'src/app/services/playlist.service';
 
@@ -13,6 +14,7 @@ export class LoadPlaylistComponent implements OnInit {
   showedit: boolean = false
   constructor(
     private _music_services: MusicService,
+    private layoutUtilsService: LayoutUtilsService,
     private route: ActivatedRoute, private chane: ChangeDetectorRef, private play_services: PlaylistService) {
 
   }
@@ -98,11 +100,14 @@ export class LoadPlaylistComponent implements OnInit {
   GetPlayListSong(id: number) {
     this.play_services.GetPlayListSong(id).subscribe(res => {
       console.log("res", res)
-      if (res) {
+      if (res && res.data) {
 
         this.Playlist_song = res.data.song;
         console.log("Playlist_song", this.Playlist_song)
         this.chane.detectChanges();
+      }
+      else {
+        this.Playlist_song = []
       }
     }
     )
@@ -116,6 +121,15 @@ export class LoadPlaylistComponent implements OnInit {
 
 
     })
+  }
+
+  RemoveSong_InPlayList(id_song: number) {
+    this.play_services.RemoveSong_InPlayList(id_song, this.playlist_id).subscribe(res => {
+      this.layoutUtilsService.showActionNotification("Successfully", MessageType.Delete, 4000, true, false, 3000, 'top', 1);
+      this.LoadDetailPlay(this.playlist_id)
+      this.GetPlayListSong(this.playlist_id)
+    }
+    )
   }
 
 

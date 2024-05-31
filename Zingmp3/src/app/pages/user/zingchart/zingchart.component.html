@@ -55,18 +55,18 @@
                                             <span style="font-size: 10px;color: grey;">{{item.singer_name}}</span>
                                         </div>
                                     </div>
-                                    <div  class="pauseloading" id="showplay1">
+                                    <div  class="pauseloading" id="showplay{{i}}">
                                         <img style="height: 60px;
                                         width: 100% !important;
                                     " src="../../../../assets/gif/playgif.gif">
                                     </div>
     
                                     <div class="right">
-                                        <i style="font-size: 25px;" id="songPlaying1" style="font-size: 25px;" class="bi bi-play bi-pause icon-pause bi bi-mic-fill"
-                                        (click)="toggleSong(1)" data-song="1"></i>
+                                        <i style="font-size: 25px;" id="songPlaying{{i}}" style="font-size: 25px;" class="bi bi-play bi-pause icon-pause bi bi-mic-fill"
+                                        (click)="toggleSong(i)" data-song="i"></i>
                                         <i class="btn--icon song__icon icon--heart bi bi-heart"></i>
                                         <i class="btn--icon bi bi-three-dots"></i>
-                                        <audio id="audioPlayer1"
+                                        <audio id="audioPlayer{{i}}"
                                             src="{{item.url_song}}"></audio>
                                         <!-- <span>{{ song1Duration }}</span> Thời gian bài hát 1 -->
                                     </div>

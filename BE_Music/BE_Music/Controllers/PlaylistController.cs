@@ -98,6 +98,34 @@ namespace BE_Music.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+        [HttpPost]
+        [Route("RemoveSong_InPlayList")]
+        public IActionResult RemoveSong_InPlayList(int id_song, int id_playlist)
+        {
+            try
+            {
+                string connectionString = _configuration["AppConfig:ConnectionString"];
+                using (DpsConnection cnn = new DpsConnection(connectionString))
+                {
+                    SqlConditions Conds = new SqlConditions();
+
+                    Conds.Add("id_song", id_song);
+                    Conds.Add("id_playlist", id_playlist);
+                    if (cnn.Delete(Conds, "PlayList_Song") < 0)
+                    {
+                        cnn.RollbackTransaction();
+                        return BadRequest();
+                    }
+                }
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
         [Route("GetPlayListSong")]
         [HttpGet]
         public BaseModel<object> GetPlayListSong(int play_id)

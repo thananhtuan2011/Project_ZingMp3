@@ -96,7 +96,7 @@
                       </td>
                      
                       <td>
-                        <div style="display: flex;align-items: center;">
+                        <div style="display: flex;align-items: center;justify-content: center;">
 
                        
                       
@@ -112,7 +112,7 @@
                                 src="{{r.url_song}}"></audio>
                             <!-- <span>{{ song1Duration }}</span> Thời gian bài hát 1 -->
                         </div>
-                        <mat-icon style="margin-left: 20px;">clear</mat-icon>
+                        <mat-icon (click)="RemoveSong_InPlayList(r.id_song)" style="margin-left: 20px;cursor: pointer;">clear</mat-icon>
                     </div>
                       </td>
               
