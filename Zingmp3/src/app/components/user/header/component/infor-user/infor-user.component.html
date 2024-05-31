@@ -1,3 +1,115 @@
-<div style="color: white;">
-    <p>infor-user works!</p>
-</div>
+<ng-container *ngIf="user">
+    <div  class="card card-custom card-stretch" style="background-color: #cfb9e1 !important;" >
+      <!-- begin::Loading -->
+      <!-- <ng-container *ngIf="isLoading$ | async">
+        <div class="progress progress-modal">
+          <div
+            class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+            role="progressbar"
+            style="width: 100%"
+            aria-valuenow="100"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
+      </ng-container> -->
+      <!-- end::Loading -->
+      <!--begin::Header-->
+      <div class="card-header py-3">
+        <div class="card-title align-items-start flex-column">
+          <h3 class="card-label font-weight-bolder text-dark" style="text-align: center;">Personal Information</h3>
+        </div>
+      
+      </div>
+      <!--end::Header-->
+      <!--begin::Form-->
+      <div  class="d-flex align-items-center" style="justify-content: center;margin-top: 20px;cursor: pointer;">
+        <div *ngIf="list_image.length==0" class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
+          <div *ngIf="!user.avatar" class="symbol-label" ></div>
+          <img *ngIf="user.avatar" [src]="user.avatar">
+          <i class="symbol-badge bg-success"></i>
+        </div>
+        <!-- <div *ngIf="list_image.length>0">
+          <img [src]="list_image[0]">
+        </div> -->
+      
+        
+  
+  
+        <!-- <div>
+          <a class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary cursor-pointer">
+            {{user.firstname}} {{user.lastname}}
+          </a>
+          <div class="text-muted">
+            {{user.ocupation}}
+          </div>
+      
+        </div> -->
+      </div>
+      
+      <input type='file' accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .heic, .heif, .tiff|image/*"
+      id="PDFInpdd" #hiddenfileinput_image (change)="onSelectFile_PDF($event)" multiple
+      style="display: none;">
+      <div style="display: flex;justify-content: center;" *ngFor="let img of list_image">
+        <img style="border-radius: 10px;
+        width: 100px;" [src]="img">
+    </div>
+    <div style="width: 100%;text-align: center;padding: 20px;">
+      <mat-icon (click)="hiddenfileinput_image.click()" style="cursor: pointer;">camera_alt</mat-icon>
+    </div>
+      <div class="form">
+        <!--begin::Body-->
+        <div class="card-body">
+        
+            <div class="form-group row" >
+                <label style="text-align: center;" class="col-xl-3 col-lg-3 col-form-label"> UserName</label>
+                <div class="col-lg-9 col-xl-6">
+                  <input class="form-control form-control-lg form-control-solid"
+                    type="text"
+                    [(ngModel)]="username"
+                  />
+                </div>
+               
+              
+              </div>
+          <div class="form-group row"  style="margin-top: 10px;">
+            <label style="text-align: center;" class="col-xl-3 col-lg-3 col-form-label"> Name</label>
+            <div class="col-lg-9 col-xl-6">
+              <input class="form-control form-control-lg form-control-solid"
+                type="text"
+                [(ngModel)]="name"
+              />
+            </div>
+           
+          
+          </div>
+          <div class="form-group row" style="margin-top: 10px;" >
+            <label  style="text-align: center;" class="col-xl-3 col-lg-3 col-form-label">Phone</label>
+            <div class="col-lg-9 col-xl-6">
+              <input class="form-control form-control-lg form-control-solid"
+                type="number"
+                [(ngModel)]="phone"
+              />
+            </div>
+          </div>
+          <div class="form-group row" style="margin-top: 10px;" >
+            <label  style="text-align: center;" class="col-xl-3 col-lg-3 col-form-label">Address</label>
+            <div class="col-lg-9 col-xl-6">
+              <input class="form-control form-control-lg form-control-solid"
+                type="text"
+                [(ngModel)]="address"
+              />
+            </div>
+          </div>
+        
+         
+        </div>
+        <!--end::Body-->
+      </div>
+        <div style="display: flex;justify-content: space-around;padding: 20px;">
+          <button style="background: seagreen;color: white;padding: 10px;"  (click)="save()">Save Changes</button>
+          <button style="background: rgb(96, 111, 103);color: white;padding: 10px;"   (click)="cancel()">Cancel</button>
+        </div>
+      <!--end::Form-->
+    </div>
+  </ng-container>

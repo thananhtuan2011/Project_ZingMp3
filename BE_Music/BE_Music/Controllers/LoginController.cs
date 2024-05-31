@@ -15,6 +15,9 @@ using BE_Music.Common;
 using BE_Music.Interface_Service;
 using DpsLibs.Data;
 using Microsoft.Extensions.Configuration;
+using BE_Music.Model.Acount;
+using System.Numerics;
+using System.Net;
 
 namespace BE_Music.Controllers
 {
@@ -221,6 +224,82 @@ namespace BE_Music.Controllers
 
             return JsonResultCommon.ThanhCong(data);
             }
+
+        }
+        [HttpGet]
+        [Route("GetInforUser")]
+        public async Task<object> GetInforUser()
+        {
+            string token = RequestJwt.GetHeader(Request);
+            UserJWT loginData = RequestJwt._GetInfoUser(token);
+
+            string ConnectionString = _configuration["AppConfig:ConnectionString"];
+            using (DpsConnection cnn = new DpsConnection(ConnectionString))
+            {
+                SqlConditions Conds = new SqlConditions();
+                Conds.Add("account_id", loginData.acount_id);
+
+                DataTable checktbl = new DataTable();
+                checktbl = cnn.CreateDataTable(@" select * from  Acount where account_id=@account_id", Conds);
+                var data =
+                                      (from user in checktbl.AsEnumerable()
+                                       select new
+                                       {
+                                           account_id = user["account_id"],
+                                           email = user["email"],
+                                           avatar = user["avatar"],
+                                           address = user["address"],
+                                           phone = user["phone"],
+                                           isGoogle = user["isGoogle"],
+                                           user_name = user["user_name"],
+                                           vip = user["vip"],
+                                           full_name = user["full_name"],
+                                           role_code = user["role_code"],
+
+                                       }).FirstOrDefault();
+
+                return JsonResultCommon.ThanhCong(data);
+            }
+
+
+        }
+        [HttpPost]
+        [Route("ChangePass")]
+        public async Task<object> ChangePass(string pass_old, string passnew)
+        {
+            string token = RequestJwt.GetHeader(Request);
+            UserJWT loginData = RequestJwt._GetInfoUser(token);
+
+            string ConnectionString = _configuration["AppConfig:ConnectionString"];
+            using (DpsConnection cnn = new DpsConnection(ConnectionString))
+            {
+                SqlConditions Conds = new SqlConditions();
+                Conds.Add("acount_id", loginData.acount_id);
+                Conds.Add("password", pass_old);
+               
+                DataTable checktbl = new DataTable();
+                checktbl = cnn.CreateDataTable(@" select * from  Acount where password=@password", Conds);
+                if (checktbl.Rows.Count == 0)
+                {
+                    return JsonResultCommon.ThatBai("Mật khẩu cũ không chính xác");
+
+                  
+                }
+                else
+                {
+                    Hashtable val = new Hashtable();
+
+                    val.Add("password", passnew);
+
+                    if (cnn.Update(val,Conds, "Acount") < 0)
+                    {
+                        cnn.RollbackTransaction();
+                        return JsonResultCommon.ThatBai("Cập nhật thất bại", cnn.LastError);
+                    }
+                }
+            }
+
+            return JsonResultCommon.ThanhCong();
 
         }
 

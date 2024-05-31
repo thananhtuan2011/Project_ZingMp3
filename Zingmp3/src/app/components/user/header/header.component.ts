@@ -5,6 +5,7 @@ import { GioithieuComponent } from '../gioithieu/gioithieu.component';
 import { InforUserComponent } from './component/infor-user/infor-user.component';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { ChangePassComponent } from './component/change-pass/change-pass.component';
 
 @Component({
   selector: 'app-header',
@@ -25,9 +26,25 @@ export class HeaderComponent implements OnInit {
     }
 
   }
+  ChangePass() {
+    const dialogRef = this.dialog.open(ChangePassComponent, {
+      width: '400px',
+      // height: '200px',
+      // data: {  },
+      // with:'500px',
+      // panelClass: 'dialogcss'
+
+    });
+    dialogRef.afterClosed().subscribe(res => {
+
+      if (res) {
+        // this.LoadAllCustomer()
+      }
+    })
+  }
   Infor() {
     const dialogRef = this.dialog.open(InforUserComponent, {
-      // width: '300px',
+      width: '600px',
       // height: '200px',
       // data: {  },
       // with:'500px',
