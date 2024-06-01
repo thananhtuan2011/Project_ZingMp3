@@ -1,8 +1,9 @@
-import { LayoutUtilsService } from 'src/app/components/crud/utils/layout-utils.service';
+import { LayoutUtilsService, MessageType } from 'src/app/components/crud/utils/layout-utils.service';
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { AcountService } from 'src/app/services/Acount/acount.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-infor-user',
@@ -12,10 +13,11 @@ import { AcountService } from 'src/app/services/Acount/acount.service';
 export class InforUserComponent implements OnInit, OnDestroy {
   formGroup!: FormGroup;
   user: any;
-  username!: string;
+  email!: string;
+  base64!: string;
   InforUser: any;
   name!: string;
-  phone!: string;
+  phone!: number;
   address!: string;
   files: File[] = [];
   firstUserState: any;
@@ -24,6 +26,7 @@ export class InforUserComponent implements OnInit, OnDestroy {
 
   constructor(private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
+    private dialogRef: MatDialogRef<InforUserComponent>,
     private _acount_services: AcountService,
     private layoutUtilsService: LayoutUtilsService,
   ) {
@@ -48,8 +51,7 @@ export class InforUserComponent implements OnInit, OnDestroy {
         formData.append("files", file, file.name);
       });
 
-      // this._thuchi_services.UploadFile(formData).subscribe(res => {
-
+      // this._thuchi_services.UploadFile(formData).subscribe(res =
       // })
 
 
@@ -63,9 +65,14 @@ export class InforUserComponent implements OnInit, OnDestroy {
     let cat: any;
     var file_name = event.target.files;
     this.filename = file_name[0].name;
+    let base64Str: any;
     if (files) {
       reader.onload = (event: any) => {
         this.list_image.push(event.target.result);
+        this.list_image.push(event.target.result);
+        var metaIdx1 = event.target.result.toString().indexOf(';base64,');
+        base64Str = event.target.result.toString().substr(metaIdx1 + 8);
+        this.base64 = base64Str;
         this.cdr.detectChanges();
 
 
@@ -86,7 +93,7 @@ export class InforUserComponent implements OnInit, OnDestroy {
         this.address = Object.keys(this.InforUser.address).length == 0 ? "" : this.InforUser.address
         this.phone = Object.keys(this.InforUser.phone).length == 0 ? "" : this.InforUser.phone
         this.name = this.InforUser.full_name
-        this.username = this.InforUser.user_name
+        this.email = Object.keys(this.InforUser.email).length == 0 ? "" : this.InforUser.email
         console.log("InforUser", this.InforUser)
       }
     }
@@ -111,39 +118,24 @@ export class InforUserComponent implements OnInit, OnDestroy {
   }
 
   save() {
-    this.formGroup.markAllAsTouched();
-    if (!this.formGroup.valid) {
-      return;
+
+    let item = {
+      full_name: this.name,
+      phone: this.phone,
+      email: this.email,
+      address: this.address,
+      filename: this.filename == undefined ? "" : this.filename,
+      base64: this.base64 == undefined ? "" : this.base64
     }
+    console.log("itemitem", item)
+    this._acount_services.UpdateInforUser(item).subscribe(res => {
 
-    const formValues = this.formGroup.value;
-    this.user = Object.assign(this.user, formValues);
+      this.dialogRef.close();
+      this.layoutUtilsService.showActionNotification("Thành công !", MessageType.Delete, 4000, true, false, 3000, 'top', 1);
+      window.location.reload();
+    }
+    )
 
-    // Do request to your server for user update, we just imitate user update there
-    // setTimeout(() => {
-    //   // update
-    //   let item = {
-    //     email: this.formGroup.controls['email'].value,
-    //     fullname: this.formGroup.controls['fullname'].value,
-    //     phone: this.formGroup.controls['phone'].value,
-    //     avatar: "http://localhost:3000/uploads/" + this.filename,
-    //   }
-    //   this.profile_serices.updateAcount(item, this.user.account_id).subscribe(res => {
-    //     if (res) {
-
-    //       if (this.list_image.length > 0) {
-    //         this.onUpload();
-    //       }
-
-    //       localStorage.setItem("user", JSON.stringify(res));
-    //       this.profile_serices.ReloadData$.next(true)
-    //       this.layoutUtilsService.showActionNotification("Successfully", MessageType.Delete, 4000, true, false, 3000, 'top', 1);
-    //     }
-
-    //   })
-    //   this.userService.currentUserSubject.next(Object.assign({}, this.user));
-    //   this.userService.isLoadingSubject.next(false);
-    // }, 2000);
   }
   // submit() {
   //   let datee = new Date()

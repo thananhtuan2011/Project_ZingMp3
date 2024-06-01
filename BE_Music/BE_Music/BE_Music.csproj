@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <Folder Include="HinhAnh\" />
+    <Folder Include="Avatar\" />
     <Folder Include="Radio\" />
     <Folder Include="UploadSong\" />
   </ItemGroup>

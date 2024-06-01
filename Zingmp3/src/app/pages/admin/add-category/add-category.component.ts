@@ -58,7 +58,6 @@ export class AddCategoryComponent implements OnInit {
         var metaIdx1 = event.target.result.toString().indexOf(';base64,');
         base64Str = event.target.result.toString().substr(metaIdx1 + 8);
         this.base64 = base64Str;
-        console.log('ssss', this.base64)
         this.cdr.detectChanges();
 
 

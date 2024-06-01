@@ -34,5 +34,14 @@ export class AcountService extends TableService<any> {
     const header = this.getHttpHeaders_();
     return this.http.get<any>(this.baseUrl + `/GetInforUser`, { headers: header })
   }
+  ChangePass(pass_old: string, passnew: string): Observable<any> {
+    const header = this.getHttpHeaders_();
+    return this.http.post<any>(this.baseUrl + `/ChangePass?pass_old=${pass_old}&passnew=${passnew}`, null, { headers: header })
+  }
+  UpdateInforUser(body: any): Observable<any> {
+    const header = this.getHttpHeaders_();
+    return this.http.post<any>(this.baseUrl + `/UpdateInforUser`, body, { headers: header })
+  }
+
 
 }

@@ -18,6 +18,7 @@ using Microsoft.Extensions.Configuration;
 using BE_Music.Model.Acount;
 using System.Numerics;
 using System.Net;
+using BE_Music.Classes;
 
 namespace BE_Music.Controllers
 {
@@ -226,13 +227,70 @@ namespace BE_Music.Controllers
             }
 
         }
+        [HttpPost]
+        [Route("UpdateInforUser")]
+        public async Task<object> UpdateInforUser(Acount_Update acount)
+        {
+            
+
+            string token = RequestJwt.GetHeader(Request);
+            UserJWT loginData = RequestJwt._GetInfoUser(token);
+
+            string ConnectionString = _configuration["AppConfig:ConnectionString"];
+            using (DpsConnection cnn = new DpsConnection(ConnectionString))
+            {
+                SqlConditions Conds = new SqlConditions();
+                Conds.Add("account_id", loginData.acount_id);
+
+                DataTable checktbl = new DataTable();
+               
+
+            var    img = UploadHelper.UploadImage(acount.base64, acount.filename, "Avatar", "Avatar", true);
+
+                Hashtable val = new Hashtable();
+
+                if (img != null)
+                {
+                    val.Add("avatar", img);
+                }
+                val.Add("full_name",acount.full_name);
+                val.Add("phone", acount.phone);
+                val.Add("updated_at", DateTime.Now);
+                val.Add("email", acount.email);
+                val.Add("address", acount.address);
+                if (cnn.Update(val, Conds, "Acount") < 0)
+                {
+                    cnn.RollbackTransaction();
+                    return JsonResultCommon.ThatBai("Cập nhật thất bại", cnn.LastError);
+                }
+
+                var data =
+                             (from user in checktbl.AsEnumerable()
+                              select new
+                              {
+                                  account_id = user["account_id"],
+                                  email = user["email"],
+                                  vip = user["vip"],
+                                  full_name = user["full_name"],
+                                  phone = user["phone"],
+                                  role_code = user["role_code"],
+                                  address = user["address"],
+
+                              }).FirstOrDefault();
+
+
+                return JsonResultCommon.ThanhCong(data);
+            }
+
+        }
+
         [HttpGet]
         [Route("GetInforUser")]
         public async Task<object> GetInforUser()
         {
             string token = RequestJwt.GetHeader(Request);
             UserJWT loginData = RequestJwt._GetInfoUser(token);
-
+                    
             string ConnectionString = _configuration["AppConfig:ConnectionString"];
             using (DpsConnection cnn = new DpsConnection(ConnectionString))
             {
@@ -274,7 +332,7 @@ namespace BE_Music.Controllers
             using (DpsConnection cnn = new DpsConnection(ConnectionString))
             {
                 SqlConditions Conds = new SqlConditions();
-                Conds.Add("acount_id", loginData.acount_id);
+                Conds.Add("account_id", loginData.acount_id);
                 Conds.Add("password", pass_old);
                
                 DataTable checktbl = new DataTable();
@@ -288,10 +346,10 @@ namespace BE_Music.Controllers
                 else
                 {
                     Hashtable val = new Hashtable();
-
+            
                     val.Add("password", passnew);
 
-                    if (cnn.Update(val,Conds, "Acount") < 0)
+                    if (cnn.Update(val, Conds, "Acount") < 0)
                     {
                         cnn.RollbackTransaction();
                         return JsonResultCommon.ThatBai("Cập nhật thất bại", cnn.LastError);
