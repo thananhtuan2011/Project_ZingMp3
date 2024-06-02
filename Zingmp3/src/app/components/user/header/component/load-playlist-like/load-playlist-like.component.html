@@ -1,1 +1,62 @@
-<p>load-playlist-like works!</p>
+
+<div class="container">
+
+    <div style="text-align: center;">
+        <span style="    font-weight: bold;
+        color: white;
+        font-size: 30px;">Danh sách bài hát yêu thích</span>
+    </div>
+    <hr>
+<div class="layout" *ngFor="let item of list_Song ;let i=index">
+
+    <div class="linemusic">
+      
+        <div class="left title_home" >
+              <div style="    margin-right: 20px;" class="song-prefix mar-r-15">
+                
+                <span *ngIf="i==0" class="number is-top-1 is-center mar-r-5">{{i+1}}</span>
+                <span *ngIf="i==1" class="number is-top-2 is-center mar-r-5">{{i+1}}</span>
+                <span *ngIf="i==2" class="number is-top-3 is-center mar-r-5">{{i+1}}</span>
+                <span *ngIf="i==3" class="number is-top-4 is-center mar-r-5">{{i+1}}</span>
+                <span *ngIf="i==4" class="number is-top-5 is-center mar-r-5">{{i+1}}</span>
+                <span *ngIf="i==5" class="number is-top-6 is-center mar-r-5">{{i+1}}</span>
+                <span *ngIf="i==6" class="number is-top-7 is-center mar-r-5">{{i+1}}</span>
+                <span *ngIf="i==7" class="number is-top-8 is-center mar-r-5">{{i+1}}</span>
+                <span *ngIf="i==8" class="number is-top-9 is-center mar-r-5">{{i+1}}</span>
+                <span *ngIf="i==9" class="number is-top-10 is-center mar-r-5">{{i+1}}</span>
+                <span class="number_line">-</span>
+           
+        </div>
+            <div>
+                
+                <img src="{{item.image}}" alt="">
+             
+                      
+            </div>
+            <div class="author">
+                <span class="title_home">{{item.song_name}}</span>
+                <span style="font-size: 10px;color: grey;">{{item.singer_name}}</span>
+            </div>
+        </div>
+        <div  class="pauseloading" id="showplay_like{{i}}">
+            <img style="height: 60px;
+            width: 100% !important;
+        " src="../../../../assets/gif/playgif.gif">
+        </div>
+
+        <div class="right">
+            <i style="font-size: 25px;" id="songPlaying_like{{i}}" style="font-size: 25px;" class="bi bi-play bi-pause icon-pause bi bi-mic-fill"
+            (click)="toggleSong(i)" data-song="i"></i>
+            <i  (click)="AddLike(item.id_song)" style="color: red;" class="btn--icon song__icon icon--heart bi bi-heart"></i>
+
+         
+            <!-- <i class="btn--icon song__icon icon--heart bi bi-heart"></i> -->
+            <audio id="audioPlayer_like{{i}}"
+                src="{{item.url_song}}"></audio>
+            <!-- <span>{{ song1Duration }}</span> Thời gian bài hát 1 -->
+        </div>
+    </div>
+
+    <div class="hr"></div>
+</div>
+</div>
