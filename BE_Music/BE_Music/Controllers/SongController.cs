@@ -329,7 +329,53 @@ namespace BE_Music.Controllers
 
         }
 
+        [Route("GetMusicLike")]
+        [HttpGet]
+        public BaseModel<object> GetMusicLike()
+        {
 
+            try
+            {
+                string token = RequestJwt.GetHeader(Request);
+                UserJWT loginData = RequestJwt._GetInfoUser(token);
+
+                string connectionString = _configuration["AppConfig:ConnectionString"];
+                using (DpsConnection cnn = new DpsConnection(connectionString))
+                {
+                    SqlConditions Conds = new SqlConditions();
+                    Conds.Add("acount_id", loginData.acount_id);
+                    DataTable _datatable_like_song = cnn.CreateDataTable($@"	SELECT *  FROM Like_Song as like_song,Song as song where like_song.id_song=song.id_song and acount_id=@acount_id
+", Conds);
+
+
+                    var _data = from r in _datatable_like_song.AsEnumerable()
+                                select new
+                                {
+
+                                    id_song = r["id_song"],
+                                    singer_name = r["singer_name"],
+                                    lyrics = r["lyrics"],
+                                    vip = r["vip"],
+                                    url_song = "https://localhost:5001/" + "UploadSong/" + r["song_name"],
+                                    song_name = r["song_name"].ToString().Replace(".mp3", ""),
+                                    image = "https://localhost:5001/" + "HinhAnh/" + r["image"],
+                                    type_id = r["type_id"],
+                                    created_at = r["created_at"],
+                                    updated_at = r["updated_at"],
+
+
+
+
+                                };
+
+                    return JsonResultCommon.ThanhCong(_data);
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonResultCommon.Exception(ex);
+            }
+        }
 
         [Route("GetRanDom10Music")]
         [HttpGet]

@@ -115,7 +115,8 @@
           
           <li (click)="ChangePass()">
             
-            <a class="dropdown-item" href="javascript:;"style="display: flex"><i class="bi bi-play-circle icon-size"></i>Đổi mật khẩu</a>
+            <a class="dropdown-item" href="javascript:;"style="display: flex"><mat-icon style="font-size: 20px;
+              margin-left: 10px;"> vpn_key</mat-icon>Đổi mật khẩu</a>
           
           </li>
           <li>
@@ -135,14 +136,15 @@
       <!--  user infor  -->
       <li class="nav-item dropdown border-nav-list header__nav-item hide-on-mobile header__nav-btn1 nav-btn--theme">
             <div class="header__nav-item">
-        <img  (click)="toggleDropdown_User()" data-bs-toggle="dropdown" aria-expanded="false" src="../../../assets/images/logo.png" alt="" class="header__nav-btn dropbtn_user" />
+              <img *ngIf="!InforUser" (click)="toggleDropdown_User()" data-bs-toggle="dropdown" aria-expanded="false" src="../../../assets/images/logo.png" alt="" class="header__nav-btn dropbtn_user" />
+        <img *ngIf="InforUser" (click)="toggleDropdown_User()" data-bs-toggle="dropdown" aria-expanded="false" src="{{InforUser.avatar}}" alt="" class="header__nav-btn dropbtn_user" />
       </div>
         <div class="dropdown-content" [ngClass]="{'show': isDropdownOpen_User}" style="left:-150px;top:50px">
           <li routerLink="login">
             <a class="dropdown-item" href="javascript:;"style="display: flex">
               <i class="bi bi-shield-lock icon-size"></i>Đăng Nhập</a>
             </li>
-          <li>
+          <li (click)="ListSong_Like()">
             <a class="dropdown-item" href="javascript:;" style="display: flex"><i class="bi bi-badge-hd icon-size"></i>List bài hát yêu thích
             </a>
           <li>

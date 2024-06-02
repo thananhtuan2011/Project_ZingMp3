@@ -1,3 +1,4 @@
+import { AcountService } from './../../../services/Acount/acount.service';
 import { LayoutUtilsService, MessageType } from 'src/app/components/crud/utils/layout-utils.service';
 import { MusicService } from 'src/app/services/Music/music.service';
 import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
@@ -15,12 +16,14 @@ export class HomeComponent implements OnInit {
   showScrollbar = false;
   text = "";
   user: any
+  InforUser: any;
   disabled = false;
   compact = true;
   invertX = false;
   invertY = false;
   constructor(private music_services: MusicService, private change: ChangeDetectorRef,
     private matdialog: MatDialog,
+    private account_services: AcountService,
     private layoutUtilsService: LayoutUtilsService,
     private play_list_services: PlaylistService
 
@@ -52,8 +55,18 @@ export class HomeComponent implements OnInit {
       }
     })
   }
+
+  GetInforUser() {
+    this.account_services.GetInforUser().subscribe(res => {
+      this.InforUser = res.data;
+      console.log("InforUser", this.InforUser)
+      this.change.detectChanges();
+    }
+    )
+  }
   ngOnInit(): void {
     this.GetRanDomMusic();
+    this.GetInforUser();
     this.GetPlayList();
   }
   @ViewChild('audioPlayer', { static: true }) audioPlayer!: ElementRef;

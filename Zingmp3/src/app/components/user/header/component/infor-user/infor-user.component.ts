@@ -17,7 +17,7 @@ export class InforUserComponent implements OnInit, OnDestroy {
   base64!: string;
   InforUser: any;
   name!: string;
-  phone!: number;
+  phone!: string;
   address!: string;
   files: File[] = [];
   firstUserState: any;
@@ -60,6 +60,7 @@ export class InforUserComponent implements OnInit, OnDestroy {
   list_image: any[] = []
   filename: any;
   onSelectFile_PDF(event: any) {
+    this.list_image = []
     const files = event.target.files;
     var reader = new FileReader();
     let cat: any;
@@ -68,7 +69,6 @@ export class InforUserComponent implements OnInit, OnDestroy {
     let base64Str: any;
     if (files) {
       reader.onload = (event: any) => {
-        this.list_image.push(event.target.result);
         this.list_image.push(event.target.result);
         var metaIdx1 = event.target.result.toString().indexOf(';base64,');
         base64Str = event.target.result.toString().substr(metaIdx1 + 8);
@@ -121,7 +121,7 @@ export class InforUserComponent implements OnInit, OnDestroy {
 
     let item = {
       full_name: this.name,
-      phone: this.phone,
+      phone: this.phone.toString(),
       email: this.email,
       address: this.address,
       filename: this.filename == undefined ? "" : this.filename,

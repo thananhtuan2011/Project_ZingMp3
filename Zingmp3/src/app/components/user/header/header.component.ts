@@ -1,4 +1,5 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { AcountService } from './../../../services/Acount/acount.service';
+import { Component, OnInit, HostListener, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddHoiVienComponent } from '../add-hoi-vien/add-hoi-vien.component';
 import { GioithieuComponent } from '../gioithieu/gioithieu.component';
@@ -6,6 +7,7 @@ import { InforUserComponent } from './component/infor-user/infor-user.component'
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { ChangePassComponent } from './component/change-pass/change-pass.component';
+import { LoadPlaylistLikeComponent } from './component/load-playlist-like/load-playlist-like.component';
 
 @Component({
   selector: 'app-header',
@@ -15,10 +17,38 @@ import { ChangePassComponent } from './component/change-pass/change-pass.compone
 export class HeaderComponent implements OnInit {
   isDropdownOpen = false;
   isDropdownOpen_User = false;
-  myVal!: string
-  constructor(private router: Router, private cookie_services: CookieService, private dialog: MatDialog,) { }
+  myVal!: string;
+  InforUser: any;
+  constructor(private change: ChangeDetectorRef, private router: Router, private account_services: AcountService, private cookie_services: CookieService, private dialog: MatDialog,) { }
 
+  ListSong_Like() {
+    const dialogRef = this.dialog.open(LoadPlaylistLikeComponent, {
+      width: '800px',
+      // data: {  },
+      // with:'500px',
+
+      // panelClass:'no-padding'
+
+    });
+    dialogRef.afterClosed().subscribe(res => {
+
+      if (res) {
+      }
+    })
+
+
+  }
+
+  GetInforUser() {
+    this.account_services.GetInforUser().subscribe(res => {
+      this.InforUser = res.data;
+      this.change.detectChanges();
+    }
+    )
+  }
   ngOnInit(): void {
+
+    this.GetInforUser();
   }
   Remove_Search(envet: any) {
     if (envet) {

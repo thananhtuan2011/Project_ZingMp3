@@ -305,7 +305,7 @@ namespace BE_Music.Controllers
                                        {
                                            account_id = user["account_id"],
                                            email = user["email"],
-                                           avatar = user["avatar"],
+                                           avatar = "https://localhost:5001/"+"Avatar/" + user["avatar"],
                                            address = user["address"],
                                            phone = user["phone"],
                                            isGoogle = user["isGoogle"],

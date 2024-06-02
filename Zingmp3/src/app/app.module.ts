@@ -69,6 +69,7 @@ import { RadioComponent } from './pages/user/radio/radio.component';
 import { LoadRadioComponent } from './pages/admin/load-radio/load-radio.component';
 import { AddRadioComponent } from './pages/admin/add-radio/add-radio.component';
 import { ChangePassComponent } from './components/user/header/component/change-pass/change-pass.component';
+import { LoadPlaylistLikeComponent } from './components/user/header/component/load-playlist-like/load-playlist-like.component';
 // decorators
 @NgModule({
   declarations: [
@@ -116,6 +117,7 @@ import { ChangePassComponent } from './components/user/header/component/change-p
     LoadRadioComponent,
     AddRadioComponent,
     ChangePassComponent,
+    LoadPlaylistLikeComponent,
 
   ],
   imports: [

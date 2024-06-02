@@ -39,6 +39,11 @@ export class MusicService extends TableService<any> {
     const header = this.getHttpHeaders_();
     return this.http.get<any>(this.baseUrl_song + `/GetRanDom10Music`, { headers: header })
   }
+  GetMusicLike(): Observable<any> {
+    const header = this.getHttpHeaders_();
+    return this.http.get<any>(this.baseUrl_song + `/GetMusicLike`, { headers: header })
+  }
+
   getHttpHeaders_() {
 
     const token = this.cookie_servics.get("accessToken")

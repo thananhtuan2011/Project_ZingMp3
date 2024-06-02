@@ -1,9 +1,9 @@
 <div class="container">
-    <div class="app_header-user">
+    <div class="app_header-user" *ngIf="InforUser">
         <div class="app_user-avatar">
-            <img src="./assets/images/avatar.jpg" alt="" class="app_user-img">
+            <img src="{{InforUser.avatar}}" alt="" class="app_user-img">
         </div>
-        <span class="app_user-name">Trần Huyền My</span>
+        <span class="app_user-name">{{InforUser.full_name}}</span>
     </div>
 
     <div class="content">
