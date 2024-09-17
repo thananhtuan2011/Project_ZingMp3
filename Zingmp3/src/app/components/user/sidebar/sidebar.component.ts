@@ -42,7 +42,7 @@ export class SidebarComponent implements OnInit {
       height: '200px',
       // data: {  },
       // with:'500px',
-      // panelClass: 'dialogcss'
+      panelClass: 'dialogcss'
 
     });
     dialogRef.afterClosed().subscribe(res => {
